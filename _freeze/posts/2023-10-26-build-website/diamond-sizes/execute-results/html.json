@@ -1,0 +1,16 @@
+{
+  "hash": "47fb487e7d1539f7290691c8a88dcaa0",
+  "result": {
+    "markdown": "---\ntitle: \"Diamond sizes\"\ndate: 2023-10-26\nformat: html\ndraft: true\n---\n\n\n\n\nWe have data about 53940 diamonds.\nOnly 126 are larger than 2.5 carats.\nThe distribution of the remainder is shown below:\n\n\n::: {.cell}\n::: {.cell-output-display}\n![](diamond-sizes_files/figure-html/plot-smaller-diamonds-1.png){width=672}\n:::\n:::\n",
+    "supporting": [
+      "diamond-sizes_files"
+    ],
+    "filters": [
+      "rmarkdown/pagebreak.lua"
+    ],
+    "includes": {},
+    "engineDependencies": {},
+    "preserve": {},
+    "postProcess": true
+  }
+}
