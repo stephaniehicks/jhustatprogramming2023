@@ -1,0 +1,275 @@
+[
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Welcome to Statistical Programming Paradigms and Workflows!",
+    "section": "",
+    "text": "Welcome to Statistical Programming Paradigms and Workflows at Johns Hopkins Bloomberg School of Public Health!"
+  },
+  {
+    "objectID": "index.html#what-is-this-course",
+    "href": "index.html#what-is-this-course",
+    "title": "Welcome to Statistical Programming Paradigms and Workflows!",
+    "section": "What is this course?",
+    "text": "What is this course?\nThis course covers advanced statistical computing programming paradigms and workflows required for the research and application of statistical methods. Includes the basics of programming in unix and/or using command-line tools, introduction to version control, advanced R and tidyverse skills, introduction to creating R packages with documentation, working with relational databases, introduction to functional programming, getting and using data from APIs, introduction to Shiny and dashboards. Topics in statistical data analysis provide working examples."
+  },
+  {
+    "objectID": "index.html#getting-started",
+    "href": "index.html#getting-started",
+    "title": "Welcome to Statistical Programming Paradigms and Workflows!",
+    "section": "Getting started",
+    "text": "Getting started\nI suggest that you start by looking over the Syllabus and Schedule under General Information. After that, start with the Lectures content in the given order."
+  },
+  {
+    "objectID": "index.html#acknowledgements",
+    "href": "index.html#acknowledgements",
+    "title": "Welcome to Statistical Programming Paradigms and Workflows!",
+    "section": "Acknowledgements",
+    "text": "Acknowledgements\nThis course was developed and is maintained by Stephanie Hicks.\nThe following individuals have contributed to improving the course or materials have been adapted from their courses: Roger D. Peng, Andreas Handel, Naim Rashid, Michael Love.\nThe image above was generated with aRtsy.\nThe course materials are licensed under the Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License. Linked and embedded materials are governed by their own licenses. I assume that all external materials used or embedded here are covered under the educational fair use policy. If this is not the case and any material displayed here violates copyright, please let me know and I will remove it."
+  },
+  {
+    "objectID": "lectures.html",
+    "href": "lectures.html",
+    "title": "Lectures",
+    "section": "",
+    "text": "Authoring projects and websites with Quarto\n\n\n\n\n\n\n\nmodule 1\n\n\nweek 1\n\n\nwebsites\n\n\nquarto\n\n\n\n\nHello Quarto! Or next-generation literate programming\n\n\n\n\n\n\nOct 26, 2023\n\n\nStephanie Hicks\n\n\n\n\n\n\nNo matching items"
+  },
+  {
+    "objectID": "posts/2023-10-26-build-website/index.html",
+    "href": "posts/2023-10-26-build-website/index.html",
+    "title": "Authoring projects and websites with Quarto",
+    "section": "",
+    "text": "Read ahead\n\n\n\nBefore class, you can prepare by reading the following materials:\n\nMine and Julia’s talk about Collaborating with Quarto\nJoe Cheng’s Shiny Talk\nQuarto Publishing System: https://quarto.org\nr4ds book: https://r4ds.hadley.nz/quarto\n\n\n\n\n\n\nMaterial for this lecture was borrowed and adopted from\n\nr4ds book: https://r4ds.hadley.nz/quarto\nTed Laderas’s talk on Quarto/RMarkdown - What’s Different?\nQuarto Publishing System: https://quarto.org"
+  },
+  {
+    "objectID": "posts/2023-10-26-build-website/index.html#introduction-1",
+    "href": "posts/2023-10-26-build-website/index.html#introduction-1",
+    "title": "Authoring projects and websites with Quarto",
+    "section": "Introduction",
+    "text": "Introduction\nQuarto provides a unified authoring framework for data science, combining your code, its results, and your prose.\nQuarto documents are fully reproducible and support dozens of output formats, like PDFs, Word files, presentations, and more.\nQuarto files are designed to be used in three ways:\n\nFor communicating to decision makers, who want to focus on the conclusions, not the code behind the analysis.\nFor collaborating with other data scientists (including future you!), who are interested in both your conclusions, and how you reached them (i.e. the code).\nAs an environment in which to do data science, as a modern day lab notebook where you can capture not only what you did, but also what you were thinking.\n\n\n\n\n\n\n\nImportant\n\n\n\nQuarto is a command line interface tool, not an R package.\nThis means that help is, by-and-large, not available through ?.\nAnd not to add to the confusion, there is an quarto R package that has helper functions for you to use in R to e.g. check the Quarto version installed, etc.\n\n\nFormally, Quarto is a publishing system built on Pandoc that allows users to create dynamic content using R, Python, Julia, and ObservableJS (with plans to add more languages too!).\n\n\n\n\n\n\n\n\n\n\n\nArt by Allison Horst. Be sure to check out the rest of Allison’s seriously cute Quarto penguin art in the #rstudioconf2022 keynote talk, Hello Quarto, by Julie Lowndes & Mine Çetinkaya-Rundel!"
+  },
+  {
+    "objectID": "posts/2023-10-26-build-website/index.html#prerequisites",
+    "href": "posts/2023-10-26-build-website/index.html#prerequisites",
+    "title": "Authoring projects and websites with Quarto",
+    "section": "Prerequisites",
+    "text": "Prerequisites\nYou need the Quarto command line interface (Quarto CLI), but you don’t need to explicitly install it or load it, as RStudio automatically does both when needed.\n\nhttps://quarto.org/docs/get-started\nhttps://formulae.brew.sh/cask/quarto (this is my preferred way using home brew)"
+  },
+  {
+    "objectID": "posts/2023-10-26-build-website/index.html#qmd-files",
+    "href": "posts/2023-10-26-build-website/index.html#qmd-files",
+    "title": "Authoring projects and websites with Quarto",
+    "section": ".qmd files",
+    "text": ".qmd files\nQuarto files end in a .qmd. This is short for quarto markdown.\n\n\n\n\n\n\nNote\n\n\n\nThese files are decoupled from RStudio IDE and there are plugins to work with .qmd files for\n\nVSCode\nJupyterLab\nRStudio\n\n\n\n\nRendering\nUse the  Render button in the RStudio IDE to render the file and preview the output with a single click or keyboard shortcut (⇧⌘K).\n\n\n\n\n\nIf you prefer to automatically render whenever you save, you can check the Render on Save option on the editor toolbar. The preview will update whenever you re-render the document. Side-by-side preview works for both HTML and PDF outputs.\n\n\n\n\n\n\n\n\n\n\n\nNote\n\n\n\nDocuments can also be rendered from the R console via the quarto package:\n\n\nCode run in the R Console\n\ninstall.packages(\"quarto\")\nquarto::quarto_render(\"hello.qmd\")\n\nAnd documents can also be rendered from the command line:\n\n\nCode run in the command line\n\n# render single document (always executes code)\nquarto render document.qmd\n\n# render project subdirectory (always executes code)\nquarto render articles\n\n\n\n\nHow rendering works\nWhen you render a Quarto document, first knitr executes all of the code chunks and creates a new markdown (.md) document which includes the code and its output. The markdown file generated is then processed by pandoc, which creates the finished format. The Render button encapsulates these actions and executes them in the right order for you.\n\n\n\n\n\nWhen rendering, Quarto generates a new file that contains selected text, code, and results from the .qmd file. The new file can be an HTML, PDF, MS Word document, presentation, website, book, interactive document, or other format.\n\n\n\nAuthoring\nIn the image below we can see the same document in the two modes of the RStudio editor:\n\nvisual (on the left)\nsource (on the right)\n\nRStudio’s visual editor offers an WYSIWYM authoring experience for markdown. For formatting (e.g. bolding text) you can use the toolbar, a keyboard shortcut (⌘B), or the markdown construct (**bold**).\nYou can toggle back and forth these two modes by clicking on Source and Visual in the editor toolbar (or using the keyboard shortcut ⌘⇧ F4).\n\n\n\n\n\n\n\nHow does multi-language support work?\n\n\n\n\n\n\nQuarto supports multiple languages\n\n\n\nThese languages include\n\nR\nPython\nJulia\nObservable javascript\n\nQuarto can also interchange between languages using Apache Arrow.\n\n\nThe idea behind how quarto supports multi-language code is that the code output is “frozen” after it is rendered.\nIn this way, code output is not recomputed, unless you want it to."
+  },
+  {
+    "objectID": "posts/2023-10-26-build-website/index.html#r-markdown-vs-quarto",
+    "href": "posts/2023-10-26-build-website/index.html#r-markdown-vs-quarto",
+    "title": "Authoring projects and websites with Quarto",
+    "section": "R Markdown vs Quarto",
+    "text": "R Markdown vs Quarto\nSome high-level differences include\n\nStandardized YAML across formats\nDecoupled from RStudio\nMore consistent presentation across formats\nTab Panels\nCode Highlighting\n\n\nCode block options\nAnother noticeable difference are options for code blocks. Rather than being in the header of the code block, options are moved to within the code block using the #| (hash-pipe) for each line.\nThis is a code block for R Markdown:\n```{r setup, include=FALSE}\nlibrary(tidyverse)\nlibrary(tidytext)\n```\nThis is a code block for Quarto:\n```{r}\n#| label: \"setup\"\n#| include: false\nlibrary(tidyverse)\nlibrary(tidytext)\n```\n\n\nOutput Options\nThere are a wide variety of output options available for customizing output from executed code.\nAll of these options can be specified either\n\nglobally (in the document front-matter) or\nper code-block\n\nFor example, here’s a modification of the Python example to specify that we don’t want to “echo” the code into the output document:\n---\ntitle: \"My Document\"\nexecute:\n  echo: false\njupyter: python3\n---\nNote that we can override this option on a per code-block basis. For example:\n```{python}\n#| echo: true\n\nimport matplotlib.pyplot as plt\nplt.plot([1,2,3,4])\nplt.show()\n```\nCode block options available for customizing output include:\n\n\n\n\n\n\n\nOption\nDescription\n\n\n\n\neval\nEvaluate the code chunk (if false, just echos the code into the output).\n\n\necho\nInclude the source code in output\n\n\noutput\nInclude the results of executing the code in the output (true, false, or asis to indicate that the output is raw markdown and should not have any of Quarto’s standard enclosing markdown).\n\n\nwarning\nInclude warnings in the output.\n\n\nerror\nInclude errors in the output (note that this implies that errors executing code will not halt processing of the document).\n\n\ninclude\nCatch all for preventing any output (code or results) from being included (e.g. include: false suppresses all output from the code block).\n\n\n\nHere’s a example with r code blocks and some of these additional options included:\n---\ntitle: \"Knitr Document\"\nexecute:\n  echo: false\n---\n\n```{r}\n#| warning: false\n\nlibrary(ggplot2)\nggplot(airquality, aes(Temp, Ozone)) + \n  geom_point() + \n  geom_smooth(method = \"loess\", se = FALSE)\n```\n\n```{r}\nsummary(airquality)\n```\n\n\n\n\n\n\nTip\n\n\n\nWhen using the Knitr engine, you can also use any of the available native options (e.g. collapse, tidy, comment, etc.).\nSee the Knitr options documentation for additional details. You can include these native options in option comment blocks as shown above, or on the same line as the {r} as shown in the Knitr documentation.\n\n\n\n\nMargin content\nYou can place content within the right margin of Quarto document. For example, here we use the .column-margin class to place an image in the margin:\n::: {.column-margin}\nWe know from *the first fundamental theorem of calculus* that for $x$ in $[a, b]$:\n\n$$\\frac{d}{dx}\\left( \\int_{a}^{x} f(u)\\,du\\right)=f(x).$$\n:::\n\n\nWe know from the first fundamental theorem of calculus that for \\(x\\) in \\([a, b]\\):\n\\[\\frac{d}{dx}\\left( \\int_{a}^{x} f(u)\\,du\\right)=f(x).\\]\n\n\nMargin Figures\nFigures that you create using code blocks can be placed in the margin by using the column: margin code block option.\nIf the code produces more than one figure, each of the figures will be placed in the margin.\n\n```{r}\n#| label: fig-mtcars\n#| fig-cap: \"MPG vs horsepower, colored by transmission.\"\n#| column: margin\nlibrary(ggplot2)\nmtcars2 &lt;- mtcars\nmtcars2$am &lt;- factor(\n  mtcars$am, labels = c('automatic', 'manual')\n)\nggplot(mtcars2, aes(hp, mpg, color = am)) +\n  geom_point() +\n  geom_smooth(formula = y ~ x, method = \"loess\") +\n  theme(legend.position = 'bottom')\n```\n\n\n\n\n\nFigure 1: MPG vs horsepower, colored by transmission.\n\n\n\n\n\nMargin Tables\nYou an also place tables in the margin of your document by specifying column: margin.\n\n```{r}\n#| column: margin\nknitr::kable(\n  mtcars[1:6, 1:3]\n)\n```\n\n\n\n\n\n\nmpg\ncyl\ndisp\n\n\n\n\nMazda RX4\n21.0\n6\n160\n\n\nMazda RX4 Wag\n21.0\n6\n160\n\n\nDatsun 710\n22.8\n4\n108\n\n\nHornet 4 Drive\n21.4\n6\n258\n\n\nHornet Sportabout\n18.7\n8\n360\n\n\nValiant\n18.1\n6\n225\n\n\n\n\n\n\nCode line numbers\nIf you want to display line numbers alongside the code block, add the code-line-numbers option. For example:\nformat:\n  html:\n    code-line-numbers: true\nHere’s how a code block with line numbers would display throughout the document:\nlibrary(ggplot2)\nmtcars2 &lt;- mtcars\nmtcars2$am &lt;- factor(\n  mtcars$am, labels = c('automatic', 'manual')\n)\nggplot(mtcars2, aes(hp, mpg, color = am)) +\n  geom_point() +\n  geom_smooth(formula = y ~ x, method = \"loess\") +\n  theme(legend.position = 'bottom')\nYou can also enable line numbers for an individual code block using the code-line-numbers attribute.\n\n\nShould you switch to quarto?\n\nShould you switch to Quarto? Not necessarily. If you find R Markdown meet your need, you can definitely stay there. It is not imperative to switch. - Yihui Xie\n\n\n\nhttps://yihui.org/en/2022/04/quarto-r-markdown/"
+  },
+  {
+    "objectID": "posts/2023-10-26-build-website/index.html#project",
+    "href": "posts/2023-10-26-build-website/index.html#project",
+    "title": "Authoring projects and websites with Quarto",
+    "section": "Project",
+    "text": "Project\nHere are the general steps for creating a Quarto project:\n\nCreate a new Quarto project\nEdit _quarto.yml file\nAdd / delete relevant content\nRender the project"
+  },
+  {
+    "objectID": "posts/2023-10-26-build-website/index.html#website",
+    "href": "posts/2023-10-26-build-website/index.html#website",
+    "title": "Authoring projects and websites with Quarto",
+    "section": "Website",
+    "text": "Website\nHere are the general steps for creating a Quarto website:\n\nCreate a new Quarto project\nEdit _quarto.yml file\nAdd / delete relevant content\nRender the website\nDeploy the website\n\n\n\n\n\n\n\nDeploying a website\n\n\n\nquarto publish can push and update a number of different kinds of webhosts. You will need credentials to publish to each of these.\nquarto publish gh-pages    # GitHub Pages\nquarto publish quarto-pub  # Quarto.pub \nquarto publish netlify     # Netlify\nquarto publish connect     # RStudio Connect"
+  },
+  {
+    "objectID": "posts/2023-10-26-build-website/index.html#freeze-results-and-avoid-recomputing",
+    "href": "posts/2023-10-26-build-website/index.html#freeze-results-and-avoid-recomputing",
+    "title": "Authoring projects and websites with Quarto",
+    "section": "Freeze Results and avoid recomputing",
+    "text": "Freeze Results and avoid recomputing\nFreezing code output is generally used when you have either\n\nA large number of collaborators or\nMany computational documents created over a longer period of time\nA project with different types of file formats from different languages (e.g. .qmd, .ipynb, .Rmd)\n\nIn the above cases, it can be challenging to fully re-execute every document when you render the site.\nThis could be because some documents have esoteric or environment-specific requirements (e.g. require access/authentication to a data source) or due to general fragility of dependencies over time.\nUsing freeze ensures that you can always reproducibly render your site.\nThe computational results of documents executed with freeze are stored in the _freeze/ directory, and re-used when needed to fulfill document renders.\nYou should check the contents of _freeze/ into version control so that others rendering the project don’t need to reproduce your computational environment to render it in their environment.\n\n\n\n\n\n\nNote\n\n\n\nYou will still want to take care to fully re-render your project when things outside of source code change (e.g. input data).\nYou can remove previously frozen output by deleting the _freeze folder at the root of your project.\n\n\nFor example, consider the _quarto.yml file.\nOne argument in the file is the freeze option to denote that computational documents should never be re-rendered during a global project render, or alternatively only be re-rendered when their source file changes:\nproject:\n  title: \"qmd_rmd\"\n  type: website\n  output-dir: docs\n  \nexecute:\n  freeze: true  # never re-render during project render\nproject:\n  title: \"qmd_rmd\"\n  type: website\n  output-dir: docs\n\nexecute:\n  freeze: auto  # re-render only when source changes\n\n\n\n\n\n\nNote\n\n\n\nThe freeze option in the _quarto.yml file controls whether execution occurs during global project renders.\nIf you do an incremental render of either a single document or a project sub-directory then code is always executed. For example:\n\n\nTerminal\n\n# render single document (always executes code)\nquarto render document.qmd\n\n# render project subdirectory (always executes code)\nquarto render articles"
+  },
+  {
+    "objectID": "posts/2023-10-26-build-website/index.html#next-steps",
+    "href": "posts/2023-10-26-build-website/index.html#next-steps",
+    "title": "Authoring projects and websites with Quarto",
+    "section": "Next steps",
+    "text": "Next steps\nHere are some tutorials I really like for getting started with Quarto generally and for getting started building and deploying websites with Quarto:\n\nCreating Quarto websites\nCustomize Quarto websites"
+  },
+  {
+    "objectID": "projects.html",
+    "href": "projects.html",
+    "title": "Projects",
+    "section": "",
+    "text": "No matching items"
+  },
+  {
+    "objectID": "resources.html",
+    "href": "resources.html",
+    "title": "Resources",
+    "section": "",
+    "text": "Learning R\n\nBig Book of R: https://www.bigbookofr.com\nList of resources to learn R (but also Python, SQL, Javascript): https://github.com/delabj/datacamp_alternatives/blob/master/index.md\nlearnr4free. Resources (books, videos, interactive websites, papers) to learn R. Some of the resources are beginner-friendly and start with the installation process: https://www.learnr4free.com/en\nData Science with R by Danielle Navarro: https://robust-tools.djnavarro.net"
+  },
+  {
+    "objectID": "schedule.html",
+    "href": "schedule.html",
+    "title": "Schedule",
+    "section": "",
+    "text": "For Qmd files, go to the course GitHub repository and navigate the directories, or best of all to clone the repo and navigate within RStudio.\n\n\n\n\n\n\n\n\n\n\n\nWeek\nDates\nTopics\nProjects\n\n\n\n\n\nModule 1\n\nStatistical programming at the command-line\n\n\n\n\n\n\n\n\n\n\n\nWeek 1\nOct 26\nCourse introduction [syllabus]\n🌴 Project 1\n\n\n\n\n\nBuilding websites with quarto [html] [Qmd]\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nWeek 2\nOct 31\nIntroduction to the command-line\n\n\n\n\n\n\n\n\n\n\n\n\nNov 2\nMore advanced command-line tools\n\n\n\n\n\n\n\n\n\n\n\nWeek 3\nNov 7\nVersion control (git)\n🌴 Project 2\n\n\n\n\n\n\n\n\n\n\n\nNov 9\nVersion control (GitHub)\n\n\n\n\n\n\n\n\n\n\n\n\nNov 10\n\n🍂 Project 1 due\n\n\n\n\n\n\n\n\n\n\nModule 2\n\nR software development\n\n\n\n\n\n\n\n\n\n\n\nWeek 4\nNov 14\nObject Oriented Programming\n\n\n\n\n\n\n\n\n\n\n\n\nNov 16\nR package software development\n\n\n\n\n\n\n\n\n\n\n\nWeek 5\nNov 21\n🦃 Class is canceled\n\n\n\n\n\n\n\n\n\n\n\n\nNov 23\n🦃 No lecture, enjoy the break!\n\n\n\n\n\n\n\n\n\n\n\n\nNov 24j\n\n\n\n\n\n\n\n\n\n\n\n\nModule 3\n\nAdvanced programming paradigms\n\n\n\n\n\n\n\n\n\n\n\nWeek 6\nNov 28\nFunctional programming with purrr\n🍂 Project 2 due  🌴 Project 3\n\n\n\n\n\n\n\n\n\n\n\nNov 30\nProject management with targets\n\n\n\n\n\n\nPackage website with pkgdown\n\n\n\n\n\n\n\n\n\n\n\nWeek 7\nDec 5\nRetrieving data from APIs\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nDec 7\nRelational databases and SQL basics\n\n\n\n\n\n\n\n\n\n\n\nModule 4\n\nInteractive web apps and dashboards\n\n\n\n\n\n\n\n\n\n\n\nWeek 8\nDec 12\nBuilding dashboards with flexdashboard and shinydashboard\n🍂 Project 3 due  🌴 Project 4\n\n\n\n\n\n\n\n\n\n\n\nDec 14\nScraping data from the web with rvest\n\n\n\n\n\n\n\n\n\n\n\nModule 5\n\nDealing with “big” data\n\n\n\n\n\n\n\n\n\n\n\nWeek 9\nDec 19\nProfiling R code\n\n\n\n\n\n\nStrategies for dealing with large data\n\n\n\n\n\n\n\n\n\n\n\n\nDec 21\n❄️ Class is canceled\n\n\n\n\n\n\n\n\n\n\n\n\nDec 22\n\n🍂 Project 4 due"
+  },
+  {
+    "objectID": "schedule.html#schedule-and-course-materials",
+    "href": "schedule.html#schedule-and-course-materials",
+    "title": "Schedule",
+    "section": "",
+    "text": "For Qmd files, go to the course GitHub repository and navigate the directories, or best of all to clone the repo and navigate within RStudio.\n\n\n\n\n\n\n\n\n\n\n\nWeek\nDates\nTopics\nProjects\n\n\n\n\n\nModule 1\n\nStatistical programming at the command-line\n\n\n\n\n\n\n\n\n\n\n\nWeek 1\nOct 26\nCourse introduction [syllabus]\n🌴 Project 1\n\n\n\n\n\nBuilding websites with quarto [html] [Qmd]\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nWeek 2\nOct 31\nIntroduction to the command-line\n\n\n\n\n\n\n\n\n\n\n\n\nNov 2\nMore advanced command-line tools\n\n\n\n\n\n\n\n\n\n\n\nWeek 3\nNov 7\nVersion control (git)\n🌴 Project 2\n\n\n\n\n\n\n\n\n\n\n\nNov 9\nVersion control (GitHub)\n\n\n\n\n\n\n\n\n\n\n\n\nNov 10\n\n🍂 Project 1 due\n\n\n\n\n\n\n\n\n\n\nModule 2\n\nR software development\n\n\n\n\n\n\n\n\n\n\n\nWeek 4\nNov 14\nObject Oriented Programming\n\n\n\n\n\n\n\n\n\n\n\n\nNov 16\nR package software development\n\n\n\n\n\n\n\n\n\n\n\nWeek 5\nNov 21\n🦃 Class is canceled\n\n\n\n\n\n\n\n\n\n\n\n\nNov 23\n🦃 No lecture, enjoy the break!\n\n\n\n\n\n\n\n\n\n\n\n\nNov 24j\n\n\n\n\n\n\n\n\n\n\n\n\nModule 3\n\nAdvanced programming paradigms\n\n\n\n\n\n\n\n\n\n\n\nWeek 6\nNov 28\nFunctional programming with purrr\n🍂 Project 2 due  🌴 Project 3\n\n\n\n\n\n\n\n\n\n\n\nNov 30\nProject management with targets\n\n\n\n\n\n\nPackage website with pkgdown\n\n\n\n\n\n\n\n\n\n\n\nWeek 7\nDec 5\nRetrieving data from APIs\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nDec 7\nRelational databases and SQL basics\n\n\n\n\n\n\n\n\n\n\n\nModule 4\n\nInteractive web apps and dashboards\n\n\n\n\n\n\n\n\n\n\n\nWeek 8\nDec 12\nBuilding dashboards with flexdashboard and shinydashboard\n🍂 Project 3 due  🌴 Project 4\n\n\n\n\n\n\n\n\n\n\n\nDec 14\nScraping data from the web with rvest\n\n\n\n\n\n\n\n\n\n\n\nModule 5\n\nDealing with “big” data\n\n\n\n\n\n\n\n\n\n\n\nWeek 9\nDec 19\nProfiling R code\n\n\n\n\n\n\nStrategies for dealing with large data\n\n\n\n\n\n\n\n\n\n\n\n\nDec 21\n❄️ Class is canceled\n\n\n\n\n\n\n\n\n\n\n\n\nDec 22\n\n🍂 Project 4 due"
+  },
+  {
+    "objectID": "syllabus.html",
+    "href": "syllabus.html",
+    "title": "Syllabus",
+    "section": "",
+    "text": "Location: In person for Fall 2023\nCourse time: Tuesdays and Thursdays from 1:30-2:50pm (Eastern Daylight Time zone)\nCourse location: TBA\nAssignments: Four projects\n\n\n\n\nStephanie C. Hicks (https://www.stephaniehicks.com)\n\nOffice Location: E3545, Wolfe Street building\nEmail: shicks19@jhu.edu\n\n\nI am an Associate Professor in the Department of Biostatistics at the Johns Hopkins Bloomberg School of Public Health, a faculty member of the Johns Hopkins Data Science Lab, and have affiliations with the Malone Center for Engineering in Healthcare, Center for Computational Biology, the Department of Genetic Medicine, and the Department of Biochemistry and Molecular Biology.\nMy research focuses on developing fast, scalable, statistical methodology and open-source software for genomics and biomedical data analysis for human health and disease. My research is problem-forward: I develop statistical methods and software that are motivated by concrete problems, often with real-world, noisy, messy data. I’m also interested in developing theory for how to incorporate design thinking (alongside statistical thinking) in practice of data analysis.\nIf you want, you can find me on Twitter. I’m also a co-host of the The Corresponding Author podcast, member of the Editorial Board for Genome Biology, an Associate Editor for Reproducibility at the Journal of the American Statistical Association, and co-founder of R-Ladies Baltimore.\n\n\n\nJoe Sartini (jsartin1@jhu.edu) is a third year Ph.D. student in Biostatistics, with interest in models for precision medicine applications. Currently, the focus of his work is extracting meaningful insights from time-series produced by Continuous Glucose Monitoring and other devices worn by Type 2 diabetics. Outside of research, he enjoys participating in endurance sports and weightlifting.\nInstructor and TA office hours are announced on CoursePlus. If there are conflicts and/or need to cancel office hours, announcements will be made on CoursePlus.\n\n\n\n\nCourse website: https://stephaniehicks.com/jhustatprogramming2023\nGitHub repository with all course material: https://github.com/stephaniehicks/jhustatprogramming2023\n\n\n\n\nUpon successfully completing this course, students will be able to:\n\nWrite unix code with command-line tools\nInstall and configure software necessary for a statistical programming environment and with version control\nWrite code for advanced programming topics in R, Python, SQL, and tidyverse\nBuild and organize a software package with documentation for publishing on the internet\nWrite code using functional or other programming paradigms and discuss strategies for getting data from APIs or working with large data\nBuild an interactive web application using Shiny or other dashboard tools"
+  },
+  {
+    "objectID": "syllabus.html#instructor",
+    "href": "syllabus.html#instructor",
+    "title": "Syllabus",
+    "section": "",
+    "text": "Stephanie C. Hicks (https://www.stephaniehicks.com)\n\nOffice Location: E3545, Wolfe Street building\nEmail: shicks19@jhu.edu\n\n\nI am an Associate Professor in the Department of Biostatistics at the Johns Hopkins Bloomberg School of Public Health, a faculty member of the Johns Hopkins Data Science Lab, and have affiliations with the Malone Center for Engineering in Healthcare, Center for Computational Biology, the Department of Genetic Medicine, and the Department of Biochemistry and Molecular Biology.\nMy research focuses on developing fast, scalable, statistical methodology and open-source software for genomics and biomedical data analysis for human health and disease. My research is problem-forward: I develop statistical methods and software that are motivated by concrete problems, often with real-world, noisy, messy data. I’m also interested in developing theory for how to incorporate design thinking (alongside statistical thinking) in practice of data analysis.\nIf you want, you can find me on Twitter. I’m also a co-host of the The Corresponding Author podcast, member of the Editorial Board for Genome Biology, an Associate Editor for Reproducibility at the Journal of the American Statistical Association, and co-founder of R-Ladies Baltimore."
+  },
+  {
+    "objectID": "syllabus.html#teaching-assistant",
+    "href": "syllabus.html#teaching-assistant",
+    "title": "Syllabus",
+    "section": "",
+    "text": "Joe Sartini (jsartin1@jhu.edu) is a third year Ph.D. student in Biostatistics, with interest in models for precision medicine applications. Currently, the focus of his work is extracting meaningful insights from time-series produced by Continuous Glucose Monitoring and other devices worn by Type 2 diabetics. Outside of research, he enjoys participating in endurance sports and weightlifting.\nInstructor and TA office hours are announced on CoursePlus. If there are conflicts and/or need to cancel office hours, announcements will be made on CoursePlus."
+  },
+  {
+    "objectID": "syllabus.html#important-links",
+    "href": "syllabus.html#important-links",
+    "title": "Syllabus",
+    "section": "",
+    "text": "Course website: https://stephaniehicks.com/jhustatprogramming2023\nGitHub repository with all course material: https://github.com/stephaniehicks/jhustatprogramming2023"
+  },
+  {
+    "objectID": "syllabus.html#learning-objectives",
+    "href": "syllabus.html#learning-objectives",
+    "title": "Syllabus",
+    "section": "",
+    "text": "Upon successfully completing this course, students will be able to:\n\nWrite unix code with command-line tools\nInstall and configure software necessary for a statistical programming environment and with version control\nWrite code for advanced programming topics in R, Python, SQL, and tidyverse\nBuild and organize a software package with documentation for publishing on the internet\nWrite code using functional or other programming paradigms and discuss strategies for getting data from APIs or working with large data\nBuild an interactive web application using Shiny or other dashboard tools"
+  },
+  {
+    "objectID": "syllabus.html#courseplus",
+    "href": "syllabus.html#courseplus",
+    "title": "Syllabus",
+    "section": "Courseplus",
+    "text": "Courseplus\nThe primary communication for the class will go through Courseplus. That is where we will post course announcements, share resources, host most of our asynchronous course discussion, and as the primary means of communication between course participants and course instructors\n\n\n\n\n\n\nImportant\n\n\n\nIf you are registered for the course, you should have access to Courseplus now. Once you have access you will also be able to find all material and dates/times of drop-in hours. Any zoom links will be posted on Courseplus.\n\n\nThe course will make use of the CoursePlus Discussion Forum in order to ask and answer questions regarding any of the course materials. The Instructor and the Teaching Assistants will monitor the discussion boards and answer questions when appropriate."
+  },
+  {
+    "objectID": "syllabus.html#github",
+    "href": "syllabus.html#github",
+    "title": "Syllabus",
+    "section": "GitHub",
+    "text": "GitHub\nYou can access all course materials (e.g. lectures, project assignments) here\n\nCourse website: https://stephaniehicks.com/jhustatprogramming2023\nGitHub repository with all course material: https://github.com/stephaniehicks/jhustatprogramming2023"
+  },
+  {
+    "objectID": "syllabus.html#lectures",
+    "href": "syllabus.html#lectures",
+    "title": "Syllabus",
+    "section": "Lectures",
+    "text": "Lectures\nWe will have in person lectures that will not be recorded. Mandatory attendance is not required."
+  },
+  {
+    "objectID": "syllabus.html#getting-help",
+    "href": "syllabus.html#getting-help",
+    "title": "Syllabus",
+    "section": "Getting help",
+    "text": "Getting help\nIn order of preference, here is a preferred list of ways to get help:\n\nWe strongly encourage you to use Courseplus to ask questions first, before joining office hours. The reason for this is so that other students in the class (who likely have similar questions) can also benefit from the questions and answers asked by your colleagues.\nYou are welcome to join office hours to get more group interactive feedback.\nIf you are not able to make the office hours, appointments can be made by email with the instructor."
+  },
+  {
+    "objectID": "syllabus.html#textbook-and-other-course-material",
+    "href": "syllabus.html#textbook-and-other-course-material",
+    "title": "Syllabus",
+    "section": "Textbook and Other Course Material",
+    "text": "Textbook and Other Course Material\nThere is no required textbook. We will make use of several freely available textbooks and other materials. All course materials will be provided. We will use the R and Python software for data analysis, which is freely available for download."
+  },
+  {
+    "objectID": "syllabus.html#software",
+    "href": "syllabus.html#software",
+    "title": "Syllabus",
+    "section": "Software",
+    "text": "Software\nWe will make heavy use of R in this course, so you should have R installed. You can obtain R from the Comprehensive R Archive Network. There are versions available for Mac, Windows, and Unix/Linux. This software is required for this course.\nIt is important that you have the latest version of R installed. For this course we will be using R version r paste(version$major, version$minor, sep = \".\"). You can determine what version of R you have by starting up R and typing into the console R.version.string and hitting the return/enter key. If you do not have the proper version of R installed, go to CRAN and download and install the latest version.\nWe will also make use of the RStudio interactive development environment (IDE). RStudio requires that R be installed, and so is an “add-on” to R. You can obtain the RStudio Desktop for free from the RStudio web site. In particular, we will make heavy use of it when developing R packages. It is also essential that you have the latest release of RStudio. You can determine the version of RStudio by looking at menu item Help &gt; About RStudio. You should be using RStudio version 1.4.1106 or higher."
+  },
+  {
+    "objectID": "syllabus.html#projects",
+    "href": "syllabus.html#projects",
+    "title": "Syllabus",
+    "section": "Projects",
+    "text": "Projects\nThere will be 4 assignments, due every 2–3 weeks. Projects will be submitted electronically via the Drop Box on the CoursePlus web site (unless otherwise specified).\nThe project assignments will be due on\n\nProject 1: Friday November 10, 11:59pm\nProject 2: Tuesday November 28, 11:59pm\nProject 3: Tuesday December 12, 11:59pm\nProject 4: Friday December 22, 11:59pm\n\n\nProject collaboration\nPlease feel free to study together and talk to one another about project assignments. The mutual instruction that students give each other is among the most valuable that can be achieved.\nHowever, it is expected that project assignments will be implemented and written up independently unless otherwise specified. Specifically, please do not share analytic code or output. Please do not collaborate on write-up and interpretation. Please do not access or use solutions from any source before your project assignment is submitted for grading."
+  },
+  {
+    "objectID": "syllabus.html#exams",
+    "href": "syllabus.html#exams",
+    "title": "Syllabus",
+    "section": "Exams",
+    "text": "Exams\nThere are no exams in this course."
+  },
+  {
+    "objectID": "syllabus.html#grading",
+    "href": "syllabus.html#grading",
+    "title": "Syllabus",
+    "section": "Grading",
+    "text": "Grading\nGrades in the course will be based on Projects 1–4. Grades for the projects and the final grade will be issued via the CoursePlus grade book.\n\nRelative weights\nThe grades are based on four projects. The breakdown of grading will be\n\n25% for Project 1\n25% for Project 2\n25% for Project 3\n25% for Project 4"
+  },
+  {
+    "objectID": "syllabus.html#policy-for-submitted-projects-late",
+    "href": "syllabus.html#policy-for-submitted-projects-late",
+    "title": "Syllabus",
+    "section": "Policy for submitted projects late",
+    "text": "Policy for submitted projects late\n\n\n\n\n\n\nImportant\n\n\n\nThe instructor and TA(s) will not accept email late day policy requests.\n\n\nThis is the policy for late submissions that applies to Projects 1-4.\n\nEach student will be given three “free late days” for the rest of the course.\nA late day extends the individual project deadline by 24 hours without penalty.\nThe late days can be applied to just one project (e.g. two late days for Project 2), or they can be split across the two projects (one late day for Project 2 and one late day for Project 3). This is entirely left up to the discretion of the student.\nA max of two “free late days” can be applied to any project.\nFree late days are intended to give you flexibility: you can use them for any reason no questions asked.\nYou do not get any bonus points for not using your late days.\n\nAlthough the each student is only given a total of three “free late days”, we will be accepting homework from students that pass this limit.\n\nWe will deduct 5% off the 100% starting point for each day the assignment is late.\nIf you use two “free late days” for project, but need a 3rd day, there will be no penalty for the first two late days and there will be a 5% penalty for the 3rd late day.\nIf you do not have any more late days for the term, we will deduct 5% for the assignment that is &lt;24 hours late, 10% points for the assignment that is 24-48 hours late, and 15% points for the assignment that is 48-72 hours late.\n\n\n\n\n\n\n\nImportant\n\n\n\nWe will not grade assignments that are more than 3 days (or more than 72 hours) past the original due date.\n\n\n\nRegrading Policy\nIt is very important to us that all assignments are properly graded. If you believe there is an error in your assignment grading, please send an email to one of the instructors within 7 days of receiving the grade. No re-grade requests will be accepted orally, and no regrade requests will be accepted more than 7 days after you receive the grade for the assignment."
+  },
+  {
+    "objectID": "syllabus.html#academic-ethics-and-student-conduct-code",
+    "href": "syllabus.html#academic-ethics-and-student-conduct-code",
+    "title": "Syllabus",
+    "section": "Academic Ethics and Student Conduct Code",
+    "text": "Academic Ethics and Student Conduct Code\nStudents enrolled in the Bloomberg School of Public Health of The Johns Hopkins University assume an obligation to conduct themselves in a manner appropriate to the University’s mission as an institution of higher education. A student is obligated to refrain from acts which he or she knows, or under the circumstances has reason to know, impair the academic integrity of the University. Violations of academic integrity include, but are not limited to: cheating; plagiarism; knowingly furnishing false information to any agent of the University for inclusion in the academic record; violation of the rights and welfare of animal or human subjects in research; and misconduct as a member of either School or University committees or recognized groups or organizations.\nStudents should be familiar with the policies and procedures specified under Policy and Procedure Manual Student-01 (Academic Ethics), available on the school’s portal.\nThe faculty, staff and students of the Bloomberg School of Public Health and the Johns Hopkins University have the shared responsibility to conduct themselves in a manner that upholds the law and respects the rights of others. Students enrolled in the School are subject to the Student Conduct Code (detailed in Policy and Procedure Manual Student-06) and assume an obligation to conduct themselves in a manner which upholds the law and respects the rights of others. They are responsible for maintaining the academic integrity of the institution and for preserving an environment conducive to the safe pursuit of the School’s educational, research, and professional practice missions.\n\nCourse code of Conduct\nWe are committed to providing a welcoming, inclusive, and harassment-free experience for everyone, regardless of gender, gender identity and expression, age, sexual orientation, disability, physical appearance, body size, race, ethnicity, religion (or lack thereof), political beliefs/leanings, or technology choices. We do not tolerate harassment of course participants in any form. Sexual language and imagery is not appropriate for any work event, including group meetings, conferences, talks, parties, Twitter and other online media. This code of conduct applies to all course participants, including instructors and TAs, and applies to all modes of interaction, both in-person and online, including GitHub project repos, Slack channels, and Twitter.\nCourse participants violating these rules will be referred to leadership of the Department of Biostatistics and the Title IX coordinator at JHU and may face expulsion from the class.\nAll class participants agree to:\n\nBe considerate in speech and actions, and actively seek to acknowledge and respect the boundaries of other members.\nBe respectful. Disagreements happen, but do not require poor behavior or poor manners. Frustration is inevitable, but it should never turn into a personal attack. A community where people feel uncomfortable or threatened is not a productive one. Course participants should be respectful both of the other course participants and those outside the course.\nRefrain from demeaning, discriminatory, or harassing behavior and speech. Harassment includes, but is not limited to: deliberate intimidation; stalking; unwanted photography or recording; sustained or willful disruption of talks or other events; inappropriate physical contact; use of sexual or discriminatory imagery, comments, or jokes; and unwelcome sexual attention. If you feel that someone has harassed you or otherwise treated you inappropriately, please alert Stephanie Hicks.\nTake care of each other. Refrain from advocating for, or encouraging, any of the above behavior. And, if someone asks you to stop, then stop. Alert Stephanie Hicks if you notice a dangerous situation, someone in distress, or violations of this code of conduct, even if they seem inconsequential.\n\n\n\nNeed Help?\nPlease speak with Stephanie Hicks or one of the TAs. You can also reach out to Karen Bandeen-Roche, chair of the department of Biostatistics or Margaret Taub, Ombudsman for the Department of Biostatistics.\nYou may also reach out to any Hopkins resource for sexual harassment, discrimination, or misconduct:\n\nJHU Sexual Assault Helpline, 410-516-7333 (confidential)\n\nUniversity Sexual Assault Response and Prevention website\nJohns Hopkins Compliance Hotline, 844-SPEAK2US (844-733-2528)\nHopkins Policies Online\nJHU Office of Institutional Equity 410-516-8075 (nonconfidential)\nJohns Hopkins Student Assistance Program (JHSAP), 443-287-7000\nUniversity Health Services, 410-955-1892\nThe Faculty and Staff Assistance Program (FASAP), 443-997-7000"
+  },
+  {
+    "objectID": "syllabus.html#license-and-attribution",
+    "href": "syllabus.html#license-and-attribution",
+    "title": "Syllabus",
+    "section": "License and attribution",
+    "text": "License and attribution\nThis Code of Conduct is distributed under a Attribution-NonCommercial-ShareAlike 4.0 International (CC BY-NC-SA 4.0) license. Portions of above text comprised of language from the Codes of Conduct adopted by rOpenSci and Django, which are licensed by CC BY-SA 4.0 and CC BY 3.0. This work was further inspired by Ada Initiative’s ‘’how to design a code of conduct for your community’’ and Geek Feminism’s Code of conduct evaluations and expanded by Ashley Johnson and Shannon Ellis in the Jeff Leek group."
+  },
+  {
+    "objectID": "syllabus.html#disability-support-service",
+    "href": "syllabus.html#disability-support-service",
+    "title": "Syllabus",
+    "section": "Disability Support Service",
+    "text": "Disability Support Service\nStudents requiring accommodations for disabilities should register with Student Disability Service (SDS). It is the responsibility of the student to register for accommodations with SDS. Accommodations take effect upon approval and apply to the remainder of the time for which a student is registered and enrolled at the Bloomberg School of Public Health. Once you are f a student in your class has approved accommodations you will receive formal notification and the student will be encouraged to reach out. If you have questions about requesting accommodations, please contact BSPH.dss@jhu.edu."
+  },
+  {
+    "objectID": "syllabus.html#prerequisites",
+    "href": "syllabus.html#prerequisites",
+    "title": "Syllabus",
+    "section": "Prerequisites",
+    "text": "Prerequisites\nPrerequisite for the course is Biostatistics 140.776 or knowledge of material from 140.776 is assumed.\nIf you did not take the above course, please contact course instructor to get permission to enroll."
+  },
+  {
+    "objectID": "syllabus.html#general-disclaimers",
+    "href": "syllabus.html#general-disclaimers",
+    "title": "Syllabus",
+    "section": "General Disclaimers",
+    "text": "General Disclaimers\nThis syllabus is a general plan, deviations announced to the class by the instructor may be necessary."
+  },
+  {
+    "objectID": "syllabus.html#typos-and-corrections",
+    "href": "syllabus.html#typos-and-corrections",
+    "title": "Syllabus",
+    "section": "Typos and corrections",
+    "text": "Typos and corrections\nFeel free to submit typos/errors/etc via the github repository associated with the class: https://github.com/stephaniehicks/jhustatprogramming2023. You will have the thanks of your grateful instructor!"
+  }
+]
