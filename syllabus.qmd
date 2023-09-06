@@ -15,7 +15,7 @@ title: "Syllabus"
     -   Office Location: E3545, Wolfe Street building
     -   Email: shicks19\@jhu.edu
 
-I am an Associate Professor in the [Department of Biostatistics](https://publichealth.jhu.edu/departments/biostatistics) at the [Johns Hopkins Bloomberg School of Public Health](https://publichealth.jhu.edu), a faculty member of the [Johns Hopkins Data Science Lab](http://jhudatascience.org), and have affiliations with the [Malone Center for Engineering in Healthcare](https://malonecenter.jhu.edu), [Center for Computational Biology](https://ccb.jhu.edu/people.php), the [Department of Genetic Medicine](https://www.hopkinsmedicine.org/institute-genetic-medicine/education-training/predoctoral-human-genetics), and the [Department of Biochemistry and Molecular Biology](http://www.jhu-bmb-phd.org/faculty/stephanie-hicks).
+I am an Associate Professor in the [Department of Biostatistics](https://publichealth.jhu.edu/departments/biostatistics) at the [Bloomberg School of Public Health](https://publichealth.jhu.edu) and [Department of Biomedical Engineering](https://www.bme.jhu.edu) in the [Whiting School of Engineering](https://engineering.jhu.edu) at Johns Hopkins University, a faculty member of the [Johns Hopkins Data Science Lab](http://jhudatascience.org), and have affiliations with the [Malone Center for Engineering in Healthcare](https://malonecenter.jhu.edu), [Center for Computational Biology](https://ccb.jhu.edu/people.php), the [Department of Genetic Medicine](https://www.hopkinsmedicine.org/institute-genetic-medicine/education-training/predoctoral-human-genetics), and the [Department of Biochemistry and Molecular Biology](http://www.jhu-bmb-phd.org/faculty/stephanie-hicks).
 
 My research focuses on developing fast, scalable, statistical methodology and open-source software for genomics and biomedical data analysis for human health and disease. My research is **problem-forward**: I develop statistical methods and software that are motivated by concrete problems, often with real-world, noisy, messy data. I'm also interested in developing theory for how to incorporate *design thinking* (alongside *statistical thinking*) in practice of data analysis.
 
@@ -68,7 +68,7 @@ You can access all course materials (e.g. lectures, project assignments) here
 
 ## Lectures
 
-We will have in person lectures that will not be recorded. **Mandatory attendance is not required.**
+We will have in person lectures that will not be recorded. Attendance is not taken, but we encourage you to attend class to ask questions and participate in class exercises. 
 
 ## Getting help
 
