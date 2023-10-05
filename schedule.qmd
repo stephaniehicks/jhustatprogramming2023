@@ -31,9 +31,9 @@ For Qmd files, go to the [course GitHub repository](https://github.com/stephanie
 | | | | | 
 | **Module 2** |         | **R software development** | |  
 | | | |
-| Week 4 | Nov 14 | Object Oriented Programming (Zoom only)  |  | 
+| Week 4 | Nov 14 | Object Oriented Programming  |  | 
 | | | | |
-| | Nov 16 | More OOP (Zoom only) | | 
+| | Nov 16 | More OOP | | 
 | | | | | 
 | Week 5   | Nov 21 | R package software development | | 
 | | | | | 
@@ -48,7 +48,7 @@ For Qmd files, go to the [course GitHub repository](https://github.com/stephanie
 | | Nov 30  | Project management with `targets` | |
 | | | Package website with `pkgdown`  | |
 | | | | | 
-| Week 7 | Dec 5  | Retrieving data from APIs (Zoom only) | | 
+| Week 7 | Dec 5  | Retrieving data from APIs | | 
 | |  |  | |
 | | | |
 | | Dec 7 | Relational databases and SQL basics  | | 

@@ -6,7 +6,7 @@ title: "Syllabus"
 
 -   Location: In person for Fall 2023
 -   Course time: Tuesdays and Thursdays from 1:30-2:50pm (**Eastern Daylight Time** zone)
--   Course location: TBA
+-   Course location: W4030
 -   Assignments: Four projects
 
 ## Instructor
