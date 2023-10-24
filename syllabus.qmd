@@ -1,5 +1,6 @@
 ---
 title: "Syllabus"
+knitr: true
 ---
 
 # Course Information
@@ -57,7 +58,7 @@ The primary communication for the class will go through Courseplus. That is wher
 If you are registered for the course, you should have access to Courseplus now. Once you have access you will also be able to find all material and dates/times of drop-in hours. Any zoom links will be posted on Courseplus.
 :::
 
-The course will make use of the CoursePlus Discussion Forum in order to ask and answer questions regarding any of the course materials. The Instructor and the Teaching Assistants will monitor the discussion boards and answer questions when appropriate.
+The course will make use of the CoursePlus Discussion Forum in order to ask and answer questions regarding any of the course materials. The Instructor and the Teaching Assistant will monitor the discussion boards and answer questions when appropriate.
 
 ## GitHub
 
@@ -68,7 +69,14 @@ You can access all course materials (e.g. lectures, project assignments) here
 
 ## Lectures
 
-We will have in person lectures that will not be recorded. Attendance is not taken, but we encourage you to attend class to ask questions and participate in class exercises. 
+This is course has only one section ending in `.01`, which means it is an [Onsite Synchronous course](https://publichealth.jhu.edu/academics/course-directory/course/section-numbers-explained). 
+This means you are expected to attend class in person.
+While, I will record the lectures via a zoom recording, I do not plan to post the recordings on CoursePlus. 
+ If have an unexpected event that comes up and you are unable to attend the lecture in person, you can email me to ask for the recording. 
+I just ask that you briefly provide 1 sentence explanation to hopefully minimize people not abusing this system. 
+
+Attendance is not taken, but I strongly encourage you to attend class to ask questions and participate in class exercises. 
+**You will get as much out of the course as you put into it**. 
 
 ## Getting help
 
@@ -86,9 +94,9 @@ There is no required textbook. We will make use of several freely available text
 
 We will make heavy use of R in this course, so you should have R installed. You can obtain R from the [Comprehensive R Archive Network](https://cran.r-project.org). There are versions available for Mac, Windows, and Unix/Linux. This software is **required** for this course.
 
-It is important that you have the latest version of R installed. For this course we will be using **R version `r paste(version$major, version$minor, sep = ".")`**. You can determine what version of R you have by starting up R and typing into the console `R.version.string` and hitting the `return`/`enter` key. If you do not have the proper version of R installed, go to [CRAN](https://cran.r-project.org) and download and install the latest version.
+It is important that you have the latest version of R installed. For this course we will be using **R version `r paste(version$major, version$minor, sep = ".")`**. You can determine what version of R you have by starting up R and typing into the console `R.version.string` and hitting the `return`/`enter` key. If you do not have this version of R installed, go to [CRAN](https://cran.r-project.org) and download and install the latest version.
 
-We will also make use of the RStudio interactive development environment (IDE). RStudio requires that R be installed, and so is an "add-on" to R. You can obtain the RStudio Desktop for free from the [RStudio web site](https://www.rstudio.com/). In particular, we will make heavy use of it when developing R packages. It is also essential that you have the latest release of RStudio. You can determine the version of RStudio by looking at menu item `Help > About RStudio`. You should be using **RStudio version 1.4.1106 or higher**.
+We will also make use of the RStudio interactive development environment (IDE). RStudio requires that R be installed, and so is an "add-on" to R. You can obtain the RStudio Desktop for free from the [RStudio web site](https://www.rstudio.com/). In particular, we will make heavy use of it when developing R packages. It is also essential that you have the latest release of RStudio. You can determine the version of RStudio by looking at menu item `Help > About RStudio`. You should be using **RStudio version 2023.09.1+494 (2023.09.1+494) or higher**, which requires R version 3.3.0 or higher.
 
 ## Projects
 
@@ -135,7 +143,7 @@ This is the policy for late submissions that applies to Projects 1-4.
 -   Each student will be given **three "free late days"** for the rest of the course.
 -   A late day extends the individual project deadline by 24 hours without penalty.
 -   The late days can be applied to just one project (e.g. two late days for Project 2), or they can be split across the two projects (one late day for Project 2 and one late day for Project 3). This is entirely left up to the discretion of the student.
--   A max of two "free late days" can be applied to any project.
+-   A max of two "free late days" can be applied to any one project.
 -   Free late days are intended to give you flexibility: you can use them for any reason no questions asked.
 -   You do not get any bonus points for not using your late days.
 
@@ -151,7 +159,7 @@ We will not grade assignments that are more than 3 days (or more than 72 hours) 
 
 ### Regrading Policy
 
-It is very important to us that all assignments are properly graded. If you believe there is an error in your assignment grading, please send an email to one of the instructors within 7 days of receiving the grade. No re-grade requests will be accepted orally, and no regrade requests will be accepted more than 7 days after you receive the grade for the assignment.
+It is very important to us that all assignments are properly graded. If you believe there is an error in your assignment grading, please send an email to the instructor within 7 days of receiving the grade. No re-grade requests will be accepted orally, and no regrade requests will be accepted more than 7 days after you receive the grade for the assignment.
 
 ## Academic Ethics and Student Conduct Code
 
@@ -195,7 +203,9 @@ This Code of Conduct is distributed under a Attribution-NonCommercial-ShareAlike
 
 ## Disability Support Service
 
-Students requiring accommodations for disabilities should register with [Student Disability Service (SDS)](https://publichealth.jhu.edu/about/inclusion-diversity-anti-racism-and-equity-idare/student-disability-services). It is the responsibility of the student to register for accommodations with SDS. Accommodations take effect upon approval and apply to the remainder of the time for which a student is registered and enrolled at the Bloomberg School of Public Health. Once you are f a student in your class has approved accommodations you will receive formal notification and the student will be encouraged to reach out. If you have questions about requesting accommodations, please contact `BSPH.dss@jhu.edu`.
+Students requiring accommodations for disabilities should register with [Student Disability Service (SDS)](https://publichealth.jhu.edu/about/inclusion-diversity-anti-racism-and-equity-idare/student-disability-services). It is the responsibility of the student to register for accommodations with SDS. Accommodations take effect upon approval and apply to the remainder of the time for which a student is registered and enrolled at the Bloomberg School of Public Health. Once a student has been approved for accommodations, the student will receive formal notification and the student will be encouraged to reach out to the instructor. 
+
+If you have questions about requesting accommodations, please contact `BSPH.dss@jhu.edu`.
 
 ## Prerequisites
 
