@@ -31,9 +31,9 @@ For Qmd files, go to the [course GitHub repository](https://github.com/stephanie
 | | | | | 
 | **Module 2** |         | **R software development** | |  
 | | | |
-| Week 4 | Nov 14  | Object Oriented Programming **(Guest lecture: Joe Sartini)**  |  | 
+| Week 4 | Nov 14  | Object Oriented Programming |  | 
 | | | | |
-| | Nov 16 | More OOP **(Guest lecture: Joe Sartini)** | | 
+| | Nov 16 | More OOP | | 
 | | | | | 
 | Week 5   | Nov 21 | R package software development | | 
 | | | | | 
@@ -43,15 +43,15 @@ For Qmd files, go to the [course GitHub repository](https://github.com/stephanie
 | | | | |
 | **Module 3** |         | **Advanced programming paradigms** | |  
 | | | | | 
-| Week 6 | Nov 28 | Functional programming with `purrr` **(Guest lecture: Boyi Guo)** | `r emojifont::emoji('fallen_leaf')` Project 2 due  <br /> `r emojifont::emoji('palm_tree')` Project 3    |
+| Week 6 | Nov 28 | Functional programming with `purrr` | `r emojifont::emoji('fallen_leaf')` Project 2 due  <br /> `r emojifont::emoji('palm_tree')` Project 3    |
 | | | | | 
-| | Nov 30  | Project management with `targets` **(Guest lecture: Boyi Guo)** | |
+| | Nov 30  | Project management with `targets`  | |
 | | | Package website with `pkgdown`  | |
 | | | | | 
-| Week 7 | Dec 5  | Retrieving data from APIs | | 
+| Week 7 | Dec 5  | Retrieving data from APIs  | | 
 | |  |  | |
 | | | |
-| | Dec 7 | Relational databases and SQL basics **(Guest lecture: Alyssa Columbus)** | | 
+| | Dec 7 | Relational databases and SQL basics | | 
 | | | |
 | **Module 4** |  | **Interactive web apps and dashboards**  | | 
 | | | |

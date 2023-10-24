@@ -12,6 +12,14 @@ categories: [module 1, week 1, websites, quarto]
 
 <!-- Add interesting quote -->
 
+# Announcements
+
+The next lecture falls on `r emojifont::emoji('ghost')` Halloween ! 
+I plan to give the lecture dressed up in a costume. 
+This is entirely optional, but I encourage students to come in costume if you wish! 
+**Candy `r emojifont::emoji('candy')` will be offered to anyone in costume!**
+
+
 # Pre-lecture materials
 
 ### Read ahead

@@ -1,0 +1,12 @@
+---
+title: "More OOP"
+author: 
+  - name: Joe Sartini
+    affiliation: Department of Biostatistics, Johns Hopkins
+    affiliation_url: https://publichealth.jhu.edu
+description: "Introduction to S3, S4, or reference class with generics and methods"
+date: 2023-11-16
+categories: [module 2, week 4, R, functions, programming]
+draft: true
+---
+
