@@ -8,6 +8,7 @@ author:
 description: "Building a website and practicing with command-line tools"
 date: 2023-10-26
 categories: [project 1, projects]
+knitr: true
 ---
 
 # Background
@@ -90,7 +91,10 @@ As you read the introductions from other folks in the class, feel free to commen
 1. Use [`wget`](https://www.gnu.org/software/wget) to download four files that end in `.fastq` from [here](https://github.com/stephaniehicks/jhustatprogramming2023/tree/main/data). 
 2. Create a directory to download the data. The top level directory should be called `raw_data` and there should be a sub-level directory called `fastq`. The command you write should force the creation of both directories at the same time if either of them do not exist yet.
 3. Move all the `.fastq` files into the `fastq` sub-level directory. 
-4. Write a for loop in the shell that iterates over each `.fastq` file. For each `.fastq` file, do the following. In the first 1000 rows for each file, count the number of lines where the "@" symbol appears. Your final output should be four numbers printed to the screen. 
+4. List all the `.fastq` files that end in a 12 or 13. 
+5. Search for the string `NNNN` in the `SRR1039512_subset_1.fastq` file. In addition to returning the matched line in the `.fastq` file, your output should also return the two lines before and the four lines after the matching line.  
+6. Write a for loop in the shell that iterates over each `.fastq` file. For each `.fastq` file, do the following. In the first 1000 rows for each file, count the number of lines where the "@" symbol appears. Your final output should be four numbers printed to the screen. 
+
 
 ```{bash}
 # Add your solution here
