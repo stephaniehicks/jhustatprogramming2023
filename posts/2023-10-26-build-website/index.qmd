@@ -19,7 +19,6 @@ I plan to give the lecture dressed up in a costume.
 This is entirely optional, but I encourage students to come in costume if you wish! 
 **Candy `r emojifont::emoji('candy')` will be offered to anyone in costume!**
 
-
 # Pre-lecture materials
 
 ### Read ahead
@@ -72,7 +71,7 @@ There are many great tools to be able to help you get started on building a pers
 6.  It helps future employers learn about who you are.
 :::
 
-In Statistical Computing (140.776), we learned how to create websites with things like blogdown, distill, or just R Markdown.
+In Statistical Computing (140.776), you learned how to create websites with things like blogdown, distill, or just R Markdown.
 
 Here, we will learn about Quarto and how it can be used to create many types of products, including websites!
 
@@ -93,9 +92,9 @@ Quarto files are designed to be used in three ways:
 ::: callout-important
 Quarto is a **command line interface tool**, not an R package.
 
-This means that help is, by-and-large, not available through `?`.
+This means that help is, by-and-large, not available through `?` in the R console.
 
-And not to add to the confusion, there is an [`quarto` R package](https://cran.r-project.org/web/packages/quarto/index.html) that has helper functions for you to use in R to e.g. check the Quarto version installed, etc.
+And not to add to the confusion, but there is an [`quarto` R package](https://cran.r-project.org/web/packages/quarto/index.html) that has helper functions for you to use in R to e.g. check the Quarto version installed, etc.
 :::
 
 Formally, [Quarto](https://quarto.org/) is a publishing system built on Pandoc that allows users to create dynamic content using R, Python, Julia, and ObservableJS (with plans to add more languages too!).
@@ -229,6 +228,8 @@ These files are decoupled from RStudio IDE and there are plugins to work with `.
 -   VSCode
 -   JupyterLab
 -   RStudio
+
+**(Quick demo in VSCode)**
 :::
 
 ### Rendering
@@ -480,7 +481,7 @@ You can also enable line numbers for an individual code block using the `code-li
 
 ### Should you switch to quarto?
 
-> Should you switch to Quarto? Not necessarily. If you find R Markdown meet your need, you can definitely stay there. It is not imperative to switch. - Yihui Xie
+> Should you switch to Quarto? Not necessarily. If you find R Markdown meets your need, you can definitely stay there. It is not imperative to switch. - Yihui Xie
 
 ::: aside
 <https://yihui.org/en/2022/04/quarto-r-markdown/>
