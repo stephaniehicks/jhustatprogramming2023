@@ -72,7 +72,7 @@ You can access all course materials (e.g. lectures, project assignments) here
 This is course has only one section ending in `.01`, which means it is an [Onsite Synchronous course](https://publichealth.jhu.edu/academics/course-directory/course/section-numbers-explained). 
 This means you are expected to attend class in person.
 While, I will record the lectures via a zoom recording, I do not plan to post the recordings on CoursePlus. 
- If have an unexpected event that comes up and you are unable to attend the lecture in person, you can email me to ask for the recording. 
+ If you have an unexpected / emergency event that comes up and you are unable to attend the lecture in person, you can email me to ask for the recording. 
 I just ask that you briefly provide 1 sentence explanation to hopefully minimize people not abusing this system. 
 
 Attendance is not taken, but I strongly encourage you to attend class to ask questions and participate in class exercises. 
