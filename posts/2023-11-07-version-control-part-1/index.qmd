@@ -1,0 +1,1361 @@
+---
+title: "Version control (Part 1)"
+author: 
+  - name: Stephanie Hicks
+    url: https://stephaniehicks.com
+    affiliation: Department of Biostatistics, Johns Hopkins
+    affiliation_url: https://publichealth.jhu.edu
+description: "Introduction to version control with git and GitHub (part 1)"
+date: 2023-11-07
+categories: [module 1, week 3, version control, git, GitHub]
+---
+
+
+# Pre-lecture materials
+
+### Read ahead
+
+
+::: callout-note
+## Read ahead
+
+**Before class, you can prepare by reading the following materials:**
+
+-   [Software Carpentry: Version Control with Git](https://swcarpentry.github.io/git-novice/)
+:::
+
+
+### Acknowledgements
+
+Material for this lecture was borrowed and adopted from
+
+-   [Software Carpentry: Version Control with Git](https://swcarpentry.github.io/git-novice/)
+
+
+# Learning objectives
+
+
+::: callout-note
+# Learning objectives
+
+**At the end of this lesson you will:**
+
+-   Understand the benefits of an automated version control system.
+-   Understand how to set up git.
+-   Understand how to set up a git repository.
+-   Understand how to track changes, explore history, and ignore files in a git repository.
+:::
+
+
+# Introduction
+
+::: callout-note
+### Questions
+
+-   What is version control and why should I use it?
+:::
+
+
+::: callout-note
+### Objectives
+
+-   Understand the benefits of an automated version control system.
+-   Understand the basics of how automated version control systems work.
+:::
+
+
+We will start by exploring how version control can be used to keep track of what one person did and when.
+
+### Overview
+
+First, a brief motivating example from Wolfman and Dracula. This story is from the [Version Control with Git](https://swcarpentry.github.io/git-novice/index.html) from Software Carpentry. 
+
+![](../../images/git/motivatingexample.png)
+
+[[Source | Software Carpentry: Version Control with Git](https://swcarpentry.github.io/git-novice/index.html)]
+
+::: callout-tip
+### The story of Wolfman and Dracula
+
+Wolfman and Dracula have been hired by Universal Missions (a space services spinoff from Euphoric State University) to investigate if it is possible to send their next planetary lander to Mars. They want to be able to work on the plans at the same time, but they have run into problems doing this in the past. If they take turns, each one will spend a lot of time waiting for the other to finish, but if they work on their own copies and email changes back and forth things will be lost, overwritten, or duplicated.
+
+A colleague suggests using version control to manage their work. Version control is better than mailing files back and forth:
+
+- Nothing that is committed to version control is ever lost, unless you work really, really hard at it. Since all old versions of files are saved, it’s always possible to go back in time to see exactly who wrote what on a particular day, or what version of a program was used to generate a particular set of results.
+
+- As we have this record of who made what changes when, we know who to ask if we have questions later on, and, if needed, revert to a previous version, much like the “undo” feature in an editor.
+
+- When several people collaborate in the same project, it is possible to accidentally overlook or overwrite someone’s changes. The version control system automatically notifies users whenever there is a conflict between one person’s work and another’s.
+:::
+
+Teams are not the only ones to benefit from version control: lone researchers can benefit immensely. Keeping a record of what was changed, when, and why is extremely useful for all researchers if they ever need to come back to the project later on (e.g., a year later, when memory has faded).
+
+**Version control is the lab notebook of the digital world**: it is what professionals use to keep track of what they have done and to collaborate with other people. Every large software development project relies on it, and most programmers use it for their small jobs as well. And it is not just for software: books, papers, small data sets, and anything that changes over time or needs to be shared can and should be stored in a version control system.
+
+#### Does this sound familiar? 
+
+We have all been in this situation before: it seems unnecessary to have multiple nearly-identical versions of the same document. Some word processors let us deal with this a little better, such as Microsoft Word's Track Changes or Google Docs' version history.
+
+Version control systems start with a base version of the document and then record changes you make each step of the way.
+
+For example, two users can make independent sets of changes on the same document.
+
+Unless multiple users make changes to the same section of the document - a conflict - you can incorporate two sets of changes into the same base document.
+
+A version control system is a tool that keeps track of these changes for us, effectively creating different versions of our files.
+
+It allows us to decide which changes will be made to the next version (each record of these changes is called a commit), and keeps useful metadata about them. The complete history of commits for a particular project and their metadata make up a repository. Repositories can be kept in sync across different computers, facilitating collaboration among different people.
+
+
+
+::: callout-tip
+### Terminology
+
+-   `commit`: a record of each set of changes in a document or file
+-   `repository`: the complete history of commits for a particular project and their metadata
+:::
+
+
+::: callout-important
+### Key Points
+
+-   Version control is like an unlimited 'undo'.
+-   Version control also allows many people to work in parallel.
+:::
+
+
+# Setting Up Git
+
+::: callout-note
+### Questions
+
+-   How do I get set up to use Git?
+:::
+
+
+::: callout-note
+### Objectives
+
+-   Configure `git` the first time it is used on a computer.
+-   Understand the meaning of the `--global` configuration flag.
+:::
+
+
+When we use Git on a new computer for the first time, we need to configure a few things:
+
+-   our name and email address
+-   what our preferred text editor is
+-   and that we want to use these settings globally (i.e. for every project).
+
+On a command line, Git commands are written as `git verb options`, where `verb` is what we actually want to do and `options` is additional optional information.
+
+Here is how to set up Git on a new laptop:
+
+```bash
+$ git config --global user.name "My Name"
+$ git config --global user.email "myemail@email.com"
+```
+
+This user name and email will be associated with your subsequent Git activity after this lesson.
+
+For this lesson, we will be interacting with GitHub and so the email address used should be the same as the one used when setting up your GitHub account.
+
+
+### Check settings
+
+You can check your settings at any time:
+
+```bash
+$ git config --list
+```
+
+
+::: callout-tip
+### Git Help and Manual
+
+If you forget the options of a `git` command, you can type `git <command> -h` or access the corresponding Git manual by typing `git <command> --help`, e.g.:
+
+```bash
+$ git config -h
+$ git config --help
+```
+
+You can press Q to exit the manual.
+
+You can also get the list of available git commands and further resources of the Git manual typing:
+
+```bash
+$ git help
+```
+:::
+
+
+::: callout-important
+### Key Points
+
+-   Use `git config` with the `--global` option to configure a user name, email address, editor, and other preferences once per machine.
+:::
+
+
+Note that we will omit the `$` from shell commands shown from here onwards to make it easier to run them interactively in this tutorial.
+
+
+# Creating a Repository
+
+::: callout-note
+### Questions
+
+-   Where does Git store information?
+:::
+
+
+::: callout-note
+### Objectives
+
+-   Create a local Git repository.
+-   Describe the purpose of the `.git` directory.
+:::
+
+
+Once Git is configured, we can start using it.
+
+First, let's create a new directory in the Desktop folder for our work and then change the current working directory to the newly created one:
+
+```bash
+cd ~/Desktop
+mkdir planets
+cd planets
+```
+
+```bash
+pwd
+```
+
+```default
+/Users/stephaniehicks/Desktop/planets
+```
+
+Then we tell Git to make `planets` a repository – a place where Git can store versions of our files:
+
+```bash
+git init
+```
+
+Note that the creation of the `planets` directory and its initialization as a repository are completely separate processes.
+
+If we use `ls` to show the directory's contents, it appears that nothing has changed:
+
+```bash
+ls
+```
+
+But if we add the `-a` flag to show everything, we can see that Git has created a hidden directory within planets called `.git`:
+
+```bash
+ls -a
+```
+
+```default
+.	..	.git
+```
+
+Git uses this special subdirectory to store all the information about the project, including the tracked files and sub-directories located within the project's directory.
+
+If we ever delete the `.git` subdirectory, we will lose the project's history.
+
+Next, we will change the default branch to be called `main.` This might be the default branch depending on your settings and version of git.
+
+```bash
+git checkout -b main
+```
+
+```default
+Switched to a new branch 'main'
+```
+
+We can check that everything is set up correctly by asking Git to tell us the status of our project:
+
+```bash
+git status
+```
+
+```default
+On branch main
+
+No commits yet
+
+nothing to commit (create/copy files and use "git add" to track)
+```
+
+
+::: callout-note
+### Correcting `git init` Mistakes
+
+Suppose you have created the Git repository in the wrong directory, or made some other mistake.
+
+You can delete the git repository by simply deleting the `.git` directory, either in Finder / Windows Explorer or from the command line:
+
+```bash
+rm -rf .git
+```
+
+But be careful! Running this command in the wrong directory will remove the entire Git history of a project you might want to keep. Therefore, always check your current directory using the command `pwd`.
+:::
+
+
+::: callout-important
+### Key Points
+
+-   `git init` initializes a repository.
+-   Git stores all of its repository data in the `.git` directory.
+:::
+
+
+# Tracking Changes
+
+::: callout-note
+### Questions
+
+-   How do I record changes in Git?
+-   How do I check the status of my version control repository?
+-   How do I record notes about what changes I made and why?
+:::
+
+
+::: callout-note
+### Objectives
+-   Go through the modify-add-commit cycle for one or more files.
+-   Explain where information is stored at each stage of that cycle.
+-   Distinguish between descriptive and non-descriptive commit messages.
+:::
+
+
+First let's make sure we are still in the right directory. You should be in the `planets` directory.
+
+```bash
+cd ~/Desktop/planets
+pwd
+```
+
+```default
+/Users/stephaniehicks/Desktop/planets
+```
+
+
+### Adding a new file
+
+Let's create a file called `mars.txt` that contains some notes about the Red Planet's suitability as a base.
+
+We will use `touch` to create the file, and then open it in TextEdit or Notepad. Alternatively, you can use a command-line text editor such as `nano`.
+
+```bash
+touch mars.txt
+```
+
+Navigate to the directory in Finder / Windows Explorer and open the `.txt` file in TextEdit / Notepad.
+
+Type the text below into the `mars.txt` file:
+
+```default
+Cold and dry, but everything is my favorite color
+```
+
+Let's first verify that the file was properly created by running the list command (`ls`):
+
+```bash
+ls
+```
+
+`mars.txt` contains a single line, which we can see by running:
+
+```bash
+cat mars.txt
+```
+
+```default
+Cold and dry, but everything is my favorite color
+```
+
+If we check the status of our project again, Git tells us that it's noticed the new file:
+
+```bash
+git status
+```
+
+```default
+On branch main
+
+No commits yet
+
+Untracked files:
+   (use "git add <file>..." to include in what will be committed)
+
+	mars.txt
+
+nothing added to commit but untracked files present (use "git add" to track)
+```
+
+The "untracked files" message means that there is a file in the directory that Git is not keeping track of. We can tell Git to track a file using `git add`:
+
+```bash
+git add mars.txt
+```
+
+and then check that the right thing happened:
+
+```bash
+git status
+```
+
+```default
+On branch main
+
+No commits yet
+
+Changes to be committed:
+  (use "git rm --cached <file>..." to unstage)
+
+	new file:   mars.txt
+
+```
+
+Git now knows that it is supposed to keep track of `mars.txt`, but it has not recorded these changes as a commit yet. To get it to do that, we need to run one more command:
+
+```bash
+git commit -m "Start notes on Mars as a base"
+```
+
+```default
+[main (root-commit) ef11b6d] Start notes on Mars as a base
+ 1 file changed, 1 insertion(+)
+ create mode 100644 mars.txt
+```
+
+When we run git commit, Git takes everything we have told it to save by using `git add` and stores a copy permanently inside the special `.git` directory. This permanent copy is called a commit (or revision) and its short identifier is `ef11b6d`. Your commit may have another identifier.
+
+We use the `-m` flag (for "message") to record a short, descriptive, and specific comment that will help us remember later on what we did and why. If we just run `git commit` without the `-m` option, Git will launch `nano` (or whatever other editor is configured as `core.editor`) so that we can write a longer message.
+
+Good commit messages start with a brief (<50 characters) statement about the changes made in the commit. Generally, the message should complete the sentence "If applied, this commit will". If you want to go into more detail, add a blank line between the summary line and your additional notes. Use this additional space to explain why you made changes and/or what their impact will be.
+
+If we run `git status` now:
+
+```bash
+git status
+```
+
+```default
+On branch main
+nothing to commit, working tree clean
+```
+
+it tells us everything is up to date. If we want to know what we've done recently, we can ask Git to show us the project's history using `git log`:
+
+```bash
+git log
+```
+
+```
+commit ef11b6d0b1181bcf34bed85e7d60e663e8bbde93 (HEAD -> main)
+Author: Stephanie Hicks <stephaniechicks@gmail.com>
+Date:   Sun Oct 29 22:12:47 2023 -0400
+
+    Start notes on Mars as a base
+```
+
+`git log` lists all commits made to a repository in reverse chronological order.
+
+
+### Adding changes to a file
+
+Now suppose we add more information to the file. (Again, we will edit with TextEdit / Notepad and then `cat` the file to show its contents.)
+
+Paste the following second line into the file:
+
+```default
+Cold and dry, but everything is my favorite color
+The two moons may be a problem for Wolfman
+```
+
+When we run `git status` now, it tells us that a file it already knows about has been modified:
+
+```bash
+git status
+```
+
+```default
+On branch main
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git checkout -- <file>..." to discard changes in working directory)
+
+	modified:   mars.txt
+
+no changes added to commit (use "git add" and/or "git commit -a")
+```
+
+The last line is the key phrase: "no changes added to commit". We have changed this file, but we have not told Git we will want to save those changes (which we do with `git add`) nor have we saved them (which we do with `git commit`).
+
+So let's do that now. It is good practice to always review our changes before saving them. We do this using `git diff`. This shows us the differences between the current state of the file and the most recently saved version:
+
+```bash
+git diff
+```
+
+```default
+diff --git a/mars.txt b/mars.txt
+index bd9fd42..6967aea 100644
+--- a/mars.txt
++++ b/mars.txt
+@@ -1 +1,2 @@
+ Cold and dry, but everything is my favorite color
++The two moons may be a problem for Wolfman
+```
+
+The output is cryptic because it is actually a series of commands for tools like editors and `patch` telling them how to reconstruct one file given the other.
+
+After reviewing our change, it's time to commit it:
+
+```bash
+git commit -m "Add concerns about effects of Mars' moons on Wolfman"
+```
+
+```default
+On branch main
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git checkout -- <file>..." to discard changes in working directory)
+
+	modified:   mars.txt
+
+no changes added to commit (use "git add" and/or "git commit -a")
+```
+
+Whoops: Git will no commit because we did not use `git add` first. Let's fix that:
+
+```bash
+git add mars.txt
+git commit -m "Add concerns about effects of Mars' moons on Wolfman"
+```
+
+```default
+[main 5635827] Add concerns about effects of Mars' moons on Wolfman
+ 1 file changed, 1 insertion(+)
+```
+
+
+### Staging area
+
+Git insists that we add files to the set we want to commit before actually committing anything. This allows us to commit our changes in stages and capture changes in logical portions rather than only large batches.
+
+To allow for this, Git has a special staging area where it keeps track of things that have been added but not yet committed.
+
+
+::: callout-note
+### Staging Area
+
+If you think of Git as taking snapshots of changes over the life of a project, `git add` specifies what will go in a snapshot (putting things in the staging area), and `git commit` then actually takes the snapshot, and makes a permanent record of it (as a commit).
+
+If you do not have anything staged when you type git commit, Git will prompt you to use `git commit -a` or `git commit --all`, which will add all files. However, it's almost always better to explicitly add things to the staging area, because you might commit changes you forgot you made.
+
+Try to stage things manually, or you might find yourself searching for "git undo commit" more than you would like!
+:::
+
+
+Let's watch as our changes to a file move from our editor to the staging area and into long-term storage. First, we'll add another line to the file:
+
+```bash
+cat mars.txt
+```
+
+```default
+Cold and dry, but everything is my favorite color
+The two moons may be a problem for Wolfman
+But the Mummy will appreciate the lack of humidity
+```
+
+```bash
+git diff
+```
+
+```default
+diff --git a/mars.txt b/mars.txt
+index 6967aea..b36abfd 100644
+--- a/mars.txt
++++ b/mars.txt
+@@ -1,2 +1,3 @@
+ Cold and dry, but everything is my favorite color
+ The two moons may be a problem for Wolfman
++But the Mummy will appreciate the lack of humidity
+```
+
+So far, so good: we've added one line to the end of the file (shown with a `+` in the first column). Now let's put that change in the staging area and see what `git diff` reports:
+
+```bash
+git add mars.txt
+git diff
+```
+
+There is no output: as far as Git can tell, there's no difference between what it's been asked to save permanently and what's currently in the directory. However, if we do this:
+
+```bash
+git diff --staged
+```
+
+```default
+diff --git a/mars.txt b/mars.txt
+index 6967aea..b36abfd 100644
+--- a/mars.txt
++++ b/mars.txt
+@@ -1,2 +1,3 @@
+ Cold and dry, but everything is my favorite color
+ The two moons may be a problem for Wolfman
++But the Mummy will appreciate the lack of humidity
+```
+
+it shows us the difference between the last committed change and what's in the staging area. Let's save our changes:
+
+```bash
+git commit -m "Discuss concerns about Mars' climate for Mummy"
+```
+
+```default
+[main e86c8f6] Discuss concerns about Mars' climate for Mummy
+ 1 file changed, 1 insertion(+)
+```
+
+check our status:
+
+```bash
+git status
+```
+
+```default
+On branch main
+nothing to commit, working tree clean
+```
+
+and look at the history of what we've done so far:
+
+```bash
+git log
+```
+
+```default
+commit e86c8f6fdb53a390a5dfea6f9f9052f05fd35baa (HEAD -> main)
+Author: Stephanie Hicks <stephaniechicks@gmail.com>
+Date:   Sun Oct 29 23:27:34 2023 -0400
+
+    Discuss concerns about Mars' climate for Mummy
+
+commit 563582798a711c58c0f23555c452685c71fd4c4e
+Author: Stephanie Hicks <stephaniechicks@gmail.com>
+Date:   Sun Oct 29 23:23:16 2023 -0400
+
+    Add concerns about effects of Mars' moons on Wolfman
+
+commit ef11b6d0b1181bcf34bed85e7d60e663e8bbde93
+Author: Stephanie Hicks <stephaniechicks@gmail.com>
+Date:   Sun Oct 29 23:12:47 2023 -0400
+
+    Start notes on Mars as a base
+```
+
+
+::: callout-note
+### Word-based diffing
+
+Sometimes, e.g. in the case of the text documents a line-wise diff is too coarse. That is where the `--color-words` option of `git diff` comes in very useful as it highlights the changed words using colors.
+:::
+
+
+::: callout-note
+### Paging the Log
+
+If the output of `git log` is too long to fit in your screen, Git splits it into pages.
+
+To get out of the pager, press `Q`.
+
+To move to the next page, press `Spacebar`.
+:::
+
+
+### Directories
+
+Two important facts you should know about directories in Git.
+
+First, Git does not track directories on their own, only files within them. Try it for yourself:
+
+```bash
+mkdir spaceships
+git status
+git add spaceships
+git status
+```
+
+```default
+On branch main
+nothing to commit, working tree clean
+```
+
+Note, our newly created empty directory `spaceships` does not appear in the list of untracked files even if we explicitly add it (via `git add`) to our repository.
+
+
+Second, if you create a directory in your Git repository and populate it with files, you can add all files in the directory at once by:
+
+```bash
+git add <directory-with-files>
+```
+
+Try it for yourself:
+
+```bash
+touch spaceships/apollo-11 spaceships/sputnik-1
+git status
+git add spaceships
+git status
+```
+
+```default
+On branch main
+Changes to be committed:
+  (use "git restore --staged <file>..." to unstage)
+        new file:   spaceships/apollo-11
+        new file:   spaceships/sputnik-1
+
+```
+
+Before moving on, we will commit these changes.
+
+```bash
+git commit -m "Add some initial thoughts on spaceships"
+```
+
+```default
+[main ac23fe8] Add some initial thoughts on spaceships
+ 2 files changed, 0 insertions(+), 0 deletions(-)
+ create mode 100644 spaceships/apollo-11
+ create mode 100644 spaceships/sputnik-1
+```
+
+To recap, when we want to add changes to our repository, we first need to add the changed files to the staging area (`git add`) and then commit the staged changes to the repository (`git commit`).
+
+For a visualization of this workflow, see the [Software Carpentry: Version Control with Git](https://swcarpentry.github.io/git-novice/04-changes.html#directories) page.
+
+
+### Exercises
+
+::: callout-tip
+### Choosing a Commit Message
+
+Which of the following commit messages would be most appropriate for the last commit made to `mars.txt`?
+
+1. "Changes"
+2. "Added line 'But the Mummy will appreciate the lack of humidity' to mars.txt"
+3. "Discuss effects of Mars' climate on the Mummy"
+:::
+
+
+::: callout-tip
+### Committing Changes to Git
+
+Which command(s) below would save the changes of `myfile.txt` to my local Git repository?
+
+```bash
+git commit -m "my recent changes"
+```
+
+```bash
+git init myfile.txt
+git commit -m "my recent changes"
+```
+
+```bash
+git add myfile.txt
+git commit -m "my recent changes"
+```
+
+```bash
+git commit -m myfile.txt "my recent changes"
+```
+:::
+
+
+Additional exercises are available on the [Software Carpentry: Version Control with Git](https://swcarpentry.github.io/git-novice/04-changes.html#choosing-a-commit-message) page.
+
+
+::: callout-important
+### Key Points
+
+-   `git status` shows the status of a repository.
+-   Files can be stored in a project's working directory (which users see), the staging area (where the next commit is being built up) and the local repository (where commits are permanently recorded).
+-   `git add` puts files in the staging area.
+-   `git commit` saves the staged content as a new commit in the local repository.
+-   Write a commit message that accurately describes your changes.
+:::
+
+
+# Exploring History
+
+::: callout-note
+### Questions
+
+- How can I identify old versions of files?
+- How do I review my changes?
+- How can I recover old versions of files?
+:::
+
+
+::: callout-note
+### Objectives
+
+- Explain what the HEAD of a repository is and how to use it.
+- Identify and use Git commit numbers.
+- Compare various versions of tracked files.
+- Restore old versions of files.
+:::
+
+
+As we saw in the previous episode, we can refer to commits by their identifiers. You can refer to the _most recent commit_ of the working directory by using the identifier `HEAD`.
+
+Let's make a change to mars.txt, adding yet another line.
+
+```bash
+cat mars.txt
+```
+
+```default
+Cold and dry, but everything is my favorite color
+The two moons may be a problem for Wolfman
+But the Mummy will appreciate the lack of humidity
+An ill-considered change
+```
+
+Now, let's see what we get.
+
+```bash
+git diff HEAD mars.txt
+```
+
+```default
+diff --git a/mars.txt b/mars.txt
+index b36abfd..93a3e13 100644
+--- a/mars.txt
++++ b/mars.txt
+@@ -1,3 +1,4 @@
+ Cold and dry, but everything is my favorite color
+ The two moons may be a problem for Wolfman
+ But the Mummy will appreciate the lack of humidity
++An ill-considered change
+```
+
+which is the same as what you would get if you leave out `HEAD` (try it).
+
+You can refer to previous commits by adding `~1` (where "~" is "tilde") to refer to the commit one before `HEAD`.
+
+```bash
+git diff HEAD~1 mars.txt
+```
+
+If we want to see the differences between older commits we can use `git diff` again, but with the notation `HEAD~1`, `HEAD~2`, and so on, to refer to them:
+
+```bash
+git diff HEAD~3 mars.txt
+```
+
+```default
+diff --git a/mars.txt b/mars.txt
+index df0654a..93a3e13 100644
+--- a/mars.txt
++++ b/mars.txt
+@@ -1 +1,4 @@
+ Cold and dry, but everything is my favorite color
++The two moons may be a problem for Wolfman
++But the Mummy will appreciate the lack of humidity
++An ill-considered change
+```
+
+We could also use `git show` which shows us what changes we made at an older commit as well as the commit message, rather than the differences between a commit and our working directory that we see by using `git diff`.
+
+```bash
+git show HEAD~3 mars.txt
+```
+
+```default
+commit ef11b6d0b1181bcf34bed85e7d60e663e8bbde93
+Author: Stephanie Hicks <stephaniechicks@gmail.com>
+Date:   Sun Oct 29 23:12:47 2023 -0400
+
+    Start notes on Mars as a base
+
+diff --git a/mars.txt b/mars.txt
+new file mode 100644
+index 0000000..bd9fd42
+--- /dev/null
++++ b/mars.txt
+@@ -0,0 +1 @@
++Cold and dry, but everything is my favorite color
+```
+
+In this way, we can build up a chain of commits. The most recent end of the chain is referred to as `HEAD`; we can refer to previous commits using the `~` notation, so `HEAD~1` means "the previous commit".
+
+We can also refer to commits using those long strings of digits and letters that `git log` displays. These are unique IDs for the changes, and "unique" really does mean unique: every change to any set of files on any computer has a unique 40-character identifier. Our first commit was given the ID `ef11b6d0b1181bcf34bed85e7d60e663e8bbde93`, so let’s try this:
+
+```bash
+git diff ef11b6d0b1181bcf34bed85e7d60e663e8bbde93 mars.txt
+```
+
+```default
+diff --git a/mars.txt b/mars.txt
+index bd9fd42..93a3e13 100644
+--- a/mars.txt
++++ b/mars.txt
+@@ -1 +1,4 @@
+ Cold and dry, but everything is my favorite color
++The two moons may be a problem for Wolfman
++But the Mummy will appreciate the lack of humidity
++An ill-considered change
+```
+
+Git lets us use just the first few characters (typically seven):
+
+```bash
+git diff ef11b6d mars.txt
+```
+
+```default
+diff --git a/mars.txt b/mars.txt
+index bd9fd42..93a3e13 100644
+--- a/mars.txt
++++ b/mars.txt
+@@ -1 +1,4 @@
+ Cold and dry, but everything is my favorite color
++The two moons may be a problem for Wolfman
++But the Mummy will appreciate the lack of humidity
++An ill-considered change
+```
+
+
+### Restoring older versions
+
+All right! So we can save changes to files and see what we've changed.
+
+Now, how can we restore older versions of things? Let's suppose we change our mind about the last update to `mars.txt`.
+
+`git status` now tells us that the file has been changed, but those changes have not been staged:
+
+```bash
+git status
+```
+
+```default
+On branch main
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git checkout -- <file>..." to discard changes in working directory)
+
+    modified:   mars.txt
+
+no changes added to commit (use "git add" and/or "git commit -a")
+```
+
+We can put things back the way they were by using `git checkout`:
+
+```bash
+git checkout HEAD mars.txt
+cat mars.txt
+```
+
+```default
+Cold and dry, but everything is my favorite color
+The two moons may be a problem for Wolfman
+But the Mummy will appreciate the lack of humidity
+```
+
+As you might guess from its name, `git checkout` checks out (i.e., restores) an old version of a file. In this case, we are telling Git that we want to recover the version of the file recorded in `HEAD`, which is the last saved commit.
+
+If we want to go back even further, we can use a commit identifier instead:
+
+```bash
+git checkout ef11b6d mars.txt
+```
+
+```default
+Updated 1 path from 3e62de1
+```
+
+```bash
+cat mars.txt
+```
+
+```default
+Cold and dry, but everything is my favorite color
+```
+
+```bash
+git status
+```
+
+```default
+On branch main
+Changes to be committed:
+  (use "git restore --staged <file>..." to unstage)
+        modified:   mars.txt
+
+```
+
+Notice that the changes are currently in the staging area. Again, we can put things back the way they were by using git checkout:
+
+```bash
+git checkout HEAD mars.txt
+```
+
+```default
+Updated 1 path from aab57ac
+```
+
+
+::: callout-warning
+### Don't Lose Your HEAD
+
+Above we used
+
+```bash
+git checkout ef11b6d mars.txt
+```
+
+to revert `mars.txt` to its state after the commit `ef11b6d`.
+
+But be careful! The command `checkout` has other important functionalities and Git will misunderstand your intentions if you are not accurate with the typing.
+
+For example, if you forget `mars.txt` in the previous command.
+
+```bash
+git checkout ef11b6d
+```
+
+```default
+Note: switching to 'ef11b6d'.
+
+You are in 'detached HEAD' state. You can look around, make experimental
+changes and commit them, and you can discard any commits you make in this
+state without impacting any branches by switching back to a branch.
+
+If you want to create a new branch to retain commits you create, you may
+do so (now or later) by using -c with the switch command. Example:
+
+  git switch -c <new-branch-name>
+
+Or undo this operation with:
+
+  git switch -
+
+Turn off this advice by setting config variable advice.detachedHead to false
+
+HEAD is now at ef11b6d Start notes on Mars as a base
+```
+
+The "detached HEAD" state lets you look around without the repository without making any changes, so you shouldn't make any changes in this state. After investigating your repository's past state, reattach your `HEAD` with `git checkout main`.
+
+```bash
+git checkout main
+```
+
+```default
+Previous HEAD position was ef11b6d Start notes on Mars as a base
+Switched to branch 'main'
+```
+:::
+
+
+::: callout-note
+### Sequence of commits
+
+It's important to remember that we must use the commit number that identifies the state of the repository _before_ the change we're trying to undo. A common mistake is to use the number of the commit in which we made the change we're trying to discard.
+:::
+
+
+For some additional visualizations, see the [Software Carpentry: Version Control with Git](https://swcarpentry.github.io/git-novice/05-history.html#dont-lose-your-head) page.
+
+
+::: callout-note
+### Simplifying the Common Case
+
+If you read the output of `git status` carefully, you will see that it includes this hint:
+
+```default
+(use "git checkout -- <file>..." to discard changes in working directory)
+```
+
+As it says, `git checkout` without a version identifier restores files to the state saved in `HEAD.` The double dash `--` is needed to separate the names of the files being recovered from the command itself: without it, Git would try to use the name of the file as the commit identifier.
+:::
+
+
+The fact that files can be reverted one by one tends to change the way people organize their work. If everything is in one large document, it is hard (but not impossible) to undo changes to the introduction without also undoing changes made later to the conclusion. If the introduction and conclusion are stored in separate files, on the other hand, moving backward and forward in time becomes much easier.
+
+
+### Exercises
+
+::: callout-tip
+### Recovering Older Versions of a File
+
+Jennifer has made changes to the R script that she has been working on for weeks, and the modifications she made this morning "broke" the script and it no longer runs. She has spent ~ 1hr trying to fix it, with no luck...
+
+Luckily, she has been keeping track of her project's versions using Git! Which commands below will let her recover the last committed version of her R script called `data_cruncher.R`?
+
+1.    `git checkout HEAD`
+2.    `git checkout HEAD data_cruncher.R`
+3.    `git checkout HEAD~1 data_cruncher.R`
+4.    `git checkout <unique ID of last commit> data_cruncher.R`
+5.    Both 2 and 4
+:::
+
+
+::: callout-tip
+### Reverting a Commit
+
+Jennifer is collaborating with colleagues on her R script. She realizes her last commit to the project's repository contained an error, and wants to undo it. Jennifer wants to undo correctly so everyone in the project's repository gets the correct change. The command `git revert [erroneous commit ID]` will create a new commit that reverses the erroneous commit.
+
+The command `git revert` is different from `git checkout [commit ID]` because `git checkout` returns the files not yet committed within the local repository to a previous state, whereas git revert reverses changes committed to the local and project repositories.
+
+Below are the right steps and explanations for Jennifer to use `git revert`, what is the missing command?
+
+1.    `________ # Look at the git history of the project to find the commit ID`
+2.    Copy the ID (the first few characters of the ID, e.g. `0b1d055`).
+3.    `git revert [commit ID]`
+4.    Type in the new commit message.
+5.    Save and close
+:::
+
+
+::: callout-tip
+### Checking Understanding of `git diff`
+
+Consider this command: `git diff HEAD~9 mars.txt`. What do you predict this command will do if you execute it? What happens when you do execute it? Why?
+
+Try another command, `git diff [ID] mars.txt`, where `[ID]` is replaced with the unique identifier for your most recent commit. What do you think will happen, and what does happen?
+:::
+
+
+Additional exercises are available on the [Software Carpentry: Version Control with Git](https://swcarpentry.github.io/git-novice/05-history.html#recovering-older-versions-of-a-file) page.
+
+
+::: callout-important
+### Key Points
+
+-   `git diff` displays differences between commits.
+-   `git checkout` recovers old versions of files.
+:::
+
+
+# Ignoring Things
+
+::: callout-note
+### Questions
+
+-   How can I tell Git to ignore files I do not want to track?
+:::
+
+
+::: callout-note
+### Objectives
+
+-   Configure Git to ignore specific files.
+-   Explain why ignoring files can be useful.
+:::
+
+
+What if we have files that we do not want Git to track for us, like backup files created by our editor or intermediate files created during data analysis? Let's create a few dummy files:
+
+```bash
+mkdir results
+touch a.dat b.dat c.dat results/a.out results/b.out
+```
+
+and see what Git says:
+
+```bash
+git status
+```
+
+```default
+On branch main
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+
+	a.dat
+	b.dat
+	c.dat
+	results/
+
+nothing added to commit but untracked files present (use "git add" to track)
+```
+
+Putting these files under version control would be a waste of disk space. What's worse, having them all listed could distract us from changes that actually matter, so let's tell Git to ignore them.
+
+We do this by creating a file in the root directory of our project called `.gitignore`:
+
+```bash
+touch .gitignore
+```
+
+Open the file in TextEdit / Notepad, or alternatively from the command line using `nano`.
+
+Note this is a hidden file (filename beginning with `.`), so you will need to enable Finder / Windows Explorer to show hidden files.
+
+Add the following lines in the `.gitignore` file and save it.
+
+```default
+*.dat
+results/
+```
+
+```bash
+cat .gitignore
+```
+
+These patterns tell Git to ignore any file whose name ends in `.dat` and everything in the `results` directory.
+
+::: callout-warning
+### Adding existing files in `.gitignore`
+
+Note that if any of these files were already being tracked, Git would continue to track them.
+:::
+
+
+Once we have created this file, the output of `git status` is much cleaner:
+
+```bash
+git status
+```
+
+```default
+On branch main
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+
+	.gitignore
+
+nothing added to commit but untracked files present (use "git add" to track)
+```
+
+The only thing Git notices now is the newly-created `.gitignore` file. You might think we wouldn't want to track it, but everyone we're sharing our repository with will probably want to ignore the same things that we're ignoring. Let's add and commit `.gitignore`:
+
+```bash
+git add .gitignore
+git commit -m "Ignore data files and the results folder."
+git status
+```
+
+```default
+On branch main
+nothing to commit, working tree clean
+```
+
+As a bonus, using `.gitignore` helps us avoid accidentally adding files to the repository that we don't want to track:
+
+```bash
+git add a.dat
+```
+
+```default
+The following paths are ignored by one of your .gitignore files:
+a.dat
+Use -f if you really want to add them.
+```
+
+If we really want to override our ignore settings, we can use `git add -f` to force Git to add something. For example, `git add -f a.dat`. We can also always see the status of ignored files if we want:
+
+```bash
+git status --ignored
+```
+
+```default
+On branch main
+Ignored files:
+ (use "git add -f <file>..." to include in what will be committed)
+
+        a.dat
+        b.dat
+        c.dat
+        results/
+
+nothing to commit, working tree clean
+```
+
+
+### Exercises
+
+::: callout-tip
+### Ignoring Nested Files
+
+Given a directory structure that looks like:
+
+```default
+results/data
+results/plots
+```
+
+How would you ignore only `results/plots` and not `results/data`?
+:::
+
+
+::: callout-tip
+### Including Specific Files
+
+How would you ignore all `.dat` files in your root directory except for `final.dat`?
+
+Hint: Find out what `!` (the exclamation point operator) does.
+
+The exclamation point operator will include a previously excluded entry.
+:::
+
+
+::: callout-tip
+### Ignoring all data Files in a Directory
+
+Assuming you have an empty `.gitignore` file, and given a directory structure that looks like:
+
+```default
+results/data/position/gps/a.dat
+results/data/position/gps/b.dat
+results/data/position/gps/c.dat
+results/data/position/gps/info.txt
+results/plots
+```
+
+What's the shortest `.gitignore` rule you could write to ignore all `.dat` files in `result/data/position/gps`? Do not ignore the `info.txt`.
+:::
+
+
+::: callout-tip
+### Ignoring all data Files in the repository
+
+Let us assume you have many `.dat` files in different subdirectories of your repository. For example, you might have:
+
+```default
+results/a.dat
+data/experiment_1/b.dat
+data/experiment_2/c.dat
+data/experiment_2/variation_1/d.dat
+```
+
+How do you ignore all the `.dat` files, without explicitly listing the names of the corresponding folders?
+:::
+
+
+Additional exercises are available on the [Software Carpentry: Version Control with Git](https://swcarpentry.github.io/git-novice/06-ignore.html#ignoring-nested-files) page.
+
+
+::: callout-important
+### Key Points
+
+-   The `.gitignore` file tells Git what files to ignore.
+:::
+
+
+# Post-lecture materials
+
+### Preparation for next lesson
+
+In the next lesson, we will learn how to use git remotes and GitHub. As preparation, you can sign up for a GitHub account if you do not already have one.
+
