@@ -131,7 +131,7 @@ Let's get started.
 
 You can follow these directions for setting up your shell for Windows, macOS, and Linux operating systems: 
 
-- <https://swcarpentry.github.io/shell-novice>
+- <https://swcarpentry.github.io/shell-novice/index.html>
 
 :::
 
@@ -146,6 +146,8 @@ $
 ``` {.bash filename="Zsh"}
 %
 ```
+
+
 
 The **shell typically uses `$` as the prompt**, but may use a different symbol (for the purposes of the rest of the lecture, I will omit the `$`).
 
