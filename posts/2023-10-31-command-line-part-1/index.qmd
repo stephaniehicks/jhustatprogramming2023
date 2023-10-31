@@ -131,7 +131,7 @@ Let's get started.
 
 You can follow these directions for setting up your shell for Windows, macOS, and Linux operating systems: 
 
-- <https://swcarpentry.github.io/shell-novice/setup>
+- <https://swcarpentry.github.io/shell-novice>
 
 :::
 
@@ -141,6 +141,10 @@ When the shell is first opened, you are presented with a prompt, indicating that
 
 ``` {.bash filename="Bash"}
 $
+```
+
+``` {.bash filename="Zsh"}
+%
 ```
 
 The **shell typically uses `$` as the prompt**, but may use a different symbol (for the purposes of the rest of the lecture, I will omit the `$`).
@@ -263,7 +267,7 @@ DESCRIPTION
 
 Let's explore the manual pages of `date` in the command line to show you what that looks like. 
 
-- We will figure out what is the argument to print out the number of seconds since the [Unix epoch](https://en.wikipedia.org/wiki/Unix_time) or 00:00:00 UTC on 1 January 1970.
+- We will figure out what is the argument to print the date since the [Unix epoch](https://en.wikipedia.org/wiki/Unix_time) or 00:00:00 UTC on 1 January 1970 as a function of the number of seconds.
 - We will figure out what is the argument to display the date in UTC.
 
 
@@ -725,7 +729,7 @@ You can see the value of the PATH variable on your computer by typing
 echo $PATH
 ```
 
-That means that when I type `python`, my computer will first look in the folder `/opt/homebrew/Caskroom/miniforge/base/bin` to see if there is a file named `python` it can run. If it can’t find one there, it moves on to to the next one. 
+That means that when I type `python`, my computer will first look in the folder `/Applications/quarto/bin` to see if there is a file named `python` it can run. If it can’t find one there, it moves on to to the next one. 
 
 ### Why is this useful
 
