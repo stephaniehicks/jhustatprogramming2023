@@ -102,6 +102,7 @@ In the previous lecture, we learned that if we wanted to redirect that output fr
 
 :::
 
+
 :::{.callout-note}
 
 ### Question 
