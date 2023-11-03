@@ -8,9 +8,7 @@ author:
 description: "Introduction to version control with git and GitHub (part 2)"
 date: 2023-11-09
 categories: [module 1, week 3, version control, git, GitHub]
-draft: true
 ---
-
 
 # Pre-lecture materials
 
@@ -28,7 +26,7 @@ draft: true
 
 In the previous lesson, we learned how to use git from the command line.
 
-In this lesson, we will learn how to use git remotes and GitHub. As preparation, you can sign up for a GitHub account if you do not already have one.
+In this lesson, we will learn how to use git remotes and GitHub. As preparation, you can sign up for a [GitHub](https://github.com/) account if you do not already have one.
 
 We will use the local git repository in the `planets` directory that we created in the previous lesson. If you do not have this any more, please create it by initializing the git repository and adding the set of git commits from the previous lesson.
 :::
@@ -75,7 +73,7 @@ Material for this lecture was borrowed and adopted from
 
 Version control really comes into its own when we begin to collaborate with other people. We already have most of the machinery we need to do this; the only thing missing is to copy changes from one repository to another.
 
-Systems like Git allow us to move work between any two repositories. In practice, though, it's easiest to use one copy as a central hub, and to keep it on the web rather than on someone's laptop. Most programmers use hosting services like GitHub to hold those main copies.
+Systems like Git allow us to move work between any two repositories. In practice, though, it's easiest to use one copy as a central hub, and to keep it on the web rather than on someone's laptop. Most programmers use hosting services like [GitHub](https://github.com/) to hold those main copies.
 
 Let's start by sharing the changes we've made to our current project (in the previous lesson) with the world. To this end we are going to create a _remote_ repository that will be linked to our local repository.
 
@@ -84,20 +82,23 @@ Let's start by sharing the changes we've made to our current project (in the pre
 
 Log in to GitHub, then click on the icon in the top right corner to create a new repository called `planets`.
 
-(See [screenshots](https://swcarpentry.github.io/git-novice/07-github/index.html#1-create-a-remote-repository) on the Software Carpentry website.)
-
+![](../../images/git/github-create-repo-01.png)
 
 Name your repository "planets" and then click "Create Repository".
 
-Note: Since this repository will be connected to a local repository, it needs to be empty. Leave "Initialize this repository with a README" unchecked, and keep "None" as options for both "Add .gitignore" and "Add a license." See the "GitHub License and README files" exercise in the Software Carpentry materials for a full explanation of why the repository needs to be empty.
+::: callout-note
 
-(See [screenshots](https://swcarpentry.github.io/git-novice/07-github/index.html#1-create-a-remote-repository) on the Software Carpentry website.)
+- Since this repository will be connected to a local repository, it needs to be empty. 
+- Leave "Initialize this repository with a README" unchecked, and keep "None" as options for both "Add .gitignore" and "Add a license." 
+- See the "GitHub License and README files" exercise in the Software Carpentry materials for a full explanation of why the repository needs to be empty.
 
+:::
+
+![](../../images/git/github-create-repo-02.png)
 
 As soon as the repository is created, GitHub displays a page with a URL and some information on how to configure your local repository
 
-(See [screenshots](https://swcarpentry.github.io/git-novice/07-github/index.html#1-create-a-remote-repository) on the Software Carpentry website.)
-
+![](../../images/git/github-create-repo-03.png)
 
 This effectively does the following on GitHub's servers:
 
@@ -110,15 +111,17 @@ git init
 
 If you remember back to the earlier lesson where we added and committed our earlier work on `mars.txt`, we had a diagram of the local repository which looked like this:
 
-(See [screenshots](https://swcarpentry.github.io/git-novice/07-github/index.html#1-create-a-remote-repository) on the Software Carpentry website.)
-
+![](../../images/git/git-staging-area.svg)
 
 Now that we have two repositories, we need a diagram like this:
 
-(See [screenshots](https://swcarpentry.github.io/git-novice/07-github/index.html#1-create-a-remote-repository) on the Software Carpentry website.)
+![](../../images/git/git-freshly-made-github-repo.svg)
 
+::: callout-note
 
-Note that our local repository still contains our earlier work on `mars.txt`, but the remote repository on GitHub appears empty as it doesn't contain any files yet.
+Our local repository still contains our earlier work on `mars.txt`, but the remote repository on GitHub appears empty as it does not contain any files yet.
+
+::: 
 
 Check that we still have our history of commits in the git repository from the previous lesson:
 
@@ -140,8 +143,7 @@ cf69058 Start notes on Mars as a base
 
 Now we connect the two repositories. We do this by making the GitHub repository a "remote" for the local repository. The home page of the repository on GitHub includes the URL string we need to identify it:
 
-(See [screenshots](https://swcarpentry.github.io/git-novice/07-github/index.html#2-connect-local-to-remote-repository) on the Software Carpentry website.)
-
+![](../../images/git/github-find-repo-string.png)
 
 Click on the 'SSH' link to change the protocol from HTTPS to SSH.
 
@@ -153,8 +155,7 @@ We use SSH here because, while it requires some additional configuration, it is 
 :::
 
 
-(See [screenshots](https://swcarpentry.github.io/git-novice/07-github/index.html#2-connect-local-to-remote-repository) on the Software Carpentry website.)
-
+![](../../images/git/github-change-repo-string.png)
 
 Copy that URL from the browser, go into the local `planets` repository, and run this command:
 
@@ -173,8 +174,8 @@ git remote -v
 ```
 
 ```default
-origin   git@github.com:lmweber/planets.git (fetch)
-origin   git@github.com:lmweber/planets.git (push)
+origin   git@github.com:stephaniehicks/planets.git (fetch)
+origin   git@github.com:stephaniehicks/planets.git (push)
 ```
 
 We'll discuss remotes in more detail in the next section, while talking about how they might be used for collaboration.
@@ -325,7 +326,7 @@ ssh -T git@github.com
 ```
 
 ```default
-Hi lmweber! You've successfully authenticated, but GitHub does not provide shell access.
+Hi stephaniehicks! You've successfully authenticated, but GitHub does not provide shell access.
 ```
 
 Good! This output confirms that the SSH key works as intended. We are now ready to push our work to the remote repository.
@@ -349,7 +350,7 @@ Compressing objects: 100% (11/11), done.
 Writing objects: 100% (16/16), 1.45 KiB | 372.00 KiB/s, done.
 Total 16 (delta 2), reused 0 (delta 0)
 remote: Resolving deltas: 100% (2/2), done.
-To https://github.com/lmweber/planets.git
+To https://github.com/stephaniehicks/planets.git
  * [new branch]      main -> main
 ```
 
@@ -380,8 +381,7 @@ in the terminal, before you run `git push`.
 
 Our local and remote repositories are now in this state:
 
-(See [screenshots](https://swcarpentry.github.io/git-novice/07-github/index.html#password-managers) on the Software Carpentry website.)
-
+![](../../images/git/github-repo-after-first-push.svg)
 
 ::: callout-tip
 ### The `-u` Flag
@@ -399,7 +399,7 @@ git pull origin main
 ```
 
 ```default
-From https://github.com/lmweber/planets
+From https://github.com/stephaniehicks/planets
  * branch            main     -> FETCH_HEAD
 Already up-to-date.
 ```
@@ -464,7 +464,7 @@ remote: Enumerating objects: 3, done.
 remote: Counting objects: 100% (3/3), done.
 remote: Total 3 (delta 0), reused 0 (delta 0), pack-reused 0
 Unpacking objects: 100% (3/3), done.
-From https://github.com/lmweber/planets
+From https://github.com/stephaniehicks/planets
  * branch            main     -> FETCH_HEAD
  * [new branch]      main     -> origin/main
 fatal: refusing to merge unrelated histories
@@ -477,7 +477,7 @@ git pull --allow-unrelated-histories origin main
 ```
 
 ```default
-From https://github.com/lmweber/planets
+From https://github.com/stephaniehicks/planets
  * branch            main     -> FETCH_HEAD
 Merge made by the 'recursive' strategy.
 README.md | 1 +
@@ -527,7 +527,7 @@ Alternatively, if you are working through this lesson on your own, you can carry
 
 The Owner needs to give the Collaborator access. On GitHub, click the "Settings" button on the right, select "Collaborators", click "Add people", and then enter your partner's username.
 
-(See [screenshots](https://swcarpentry.github.io/git-novice/08-collab/index.html#overview) on the Software Carpentry website.)
+![](../../images/git/github-add-collaborators.png)
 
 
 To accept access to the Owner's repo, the Collaborator needs to go to `https://github.com/notifications` or check for email notification. Once there you can accept access to the Owner's repo.
@@ -546,7 +546,8 @@ Replace 'vlad' with the Owner's username.
 
 If you choose to clone without the clone path (`~/Desktop/vlad-planets`) specified at the end, you will clone inside your own `planets` folder! Make sure to navigate to the Desktop folder first. Alternatively, you can create a directory somewhere else, navigate to it, and run `git clone git@github.com:vlad/planets.git` (without the clone path).
 
-(See [screenshots](https://swcarpentry.github.io/git-novice/08-collab/index.html#overview) on the Software Carpentry website.)
+
+![](../../images/git/github-collaboration.svg)
 
 
 The Collaborator can now make a change in their clone of the Owner's repository, exactly the same way as we've been doing before.
