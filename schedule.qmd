@@ -35,7 +35,7 @@ For Qmd files, go to the [course GitHub repository](https://github.com/stephanie
 | | | | |
 | | Nov 16 | More OOP | | 
 | | | | | 
-| Week 5   | Nov 21 | R package software development | | 
+| Week 5   | Nov 21 | R package software development \[[html](posts/2023-11-21-r-pkg-dev/index.qmd)\] \[[Qmd](https://github.com/stephaniehicks/jhustatprogramming2023/blob/main/posts/2023-11-21-r-pkg-dev/index.qmd)\] | | 
 | | | | | 
 | |  Nov 23 | `r emojifont::emoji('turkey')` No lecture, enjoy the break! | | 
 | | | | |
