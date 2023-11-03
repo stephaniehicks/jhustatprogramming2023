@@ -237,15 +237,26 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#introduction" id="toc-introduction" class="nav-link" data-scroll-target="#introduction">Introduction</a>
   <ul class="collapse">
   <li><a href="#overview" id="toc-overview" class="nav-link" data-scroll-target="#overview">Overview</a></li>
+  <li><a href="#a-common-scenario" id="toc-a-common-scenario" class="nav-link" data-scroll-target="#a-common-scenario">A common scenario</a></li>
+  <li><a href="#git" id="toc-git" class="nav-link" data-scroll-target="#git">git</a></li>
+  <li><a href="#github" id="toc-github" class="nav-link" data-scroll-target="#github">GitHub</a></li>
+  <li><a href="#getting-started" id="toc-getting-started" class="nav-link" data-scroll-target="#getting-started">Getting started</a></li>
+  <li><a href="#using-gitgithub-in-our-course" id="toc-using-gitgithub-in-our-course" class="nav-link" data-scroll-target="#using-gitgithub-in-our-course">Using git/GitHub in our course</a></li>
   </ul></li>
   <li><a href="#setting-up-git" id="toc-setting-up-git" class="nav-link" data-scroll-target="#setting-up-git">Setting Up Git</a>
   <ul class="collapse">
-  <li><a href="#check-settings" id="toc-check-settings" class="nav-link" data-scroll-target="#check-settings">Check settings</a></li>
+  <li><a href="#git-config" id="toc-git-config" class="nav-link" data-scroll-target="#git-config">git config</a></li>
+  <li><a href="#git-config-settings" id="toc-git-config-settings" class="nav-link" data-scroll-target="#git-config-settings">git config settings</a></li>
   </ul></li>
-  <li><a href="#creating-a-repository" id="toc-creating-a-repository" class="nav-link" data-scroll-target="#creating-a-repository">Creating a Repository</a></li>
+  <li><a href="#creating-a-repository" id="toc-creating-a-repository" class="nav-link" data-scroll-target="#creating-a-repository">Creating a Repository</a>
+  <ul class="collapse">
+  <li><a href="#git-init" id="toc-git-init" class="nav-link" data-scroll-target="#git-init">git init</a></li>
+  <li><a href="#git-status" id="toc-git-status" class="nav-link" data-scroll-target="#git-status">git status</a></li>
+  </ul></li>
   <li><a href="#tracking-changes" id="toc-tracking-changes" class="nav-link" data-scroll-target="#tracking-changes">Tracking Changes</a>
   <ul class="collapse">
-  <li><a href="#adding-a-new-file" id="toc-adding-a-new-file" class="nav-link" data-scroll-target="#adding-a-new-file">Adding a new file</a></li>
+  <li><a href="#git-add" id="toc-git-add" class="nav-link" data-scroll-target="#git-add">git add</a></li>
+  <li><a href="#git-commit" id="toc-git-commit" class="nav-link" data-scroll-target="#git-commit">git commit</a></li>
   <li><a href="#adding-changes-to-a-file" id="toc-adding-changes-to-a-file" class="nav-link" data-scroll-target="#adding-changes-to-a-file">Adding changes to a file</a></li>
   <li><a href="#staging-area" id="toc-staging-area" class="nav-link" data-scroll-target="#staging-area">Staging area</a></li>
   <li><a href="#directories" id="toc-directories" class="nav-link" data-scroll-target="#directories">Directories</a></li>
@@ -362,8 +373,8 @@ Objectives
 </div>
 </div>
 <p>We will start by exploring how version control can be used to keep track of what one person did and when.</p>
-<section id="overview" class="level3">
-<h3 class="anchored" data-anchor-id="overview">Overview</h3>
+<section id="overview" class="level2">
+<h2 class="anchored" data-anchor-id="overview">Overview</h2>
 <p>First, a brief motivating example from Wolfman and Dracula. This story is from the <a href="https://swcarpentry.github.io/git-novice/index.html">Version Control with Git</a> from Software Carpentry.</p>
 <p><img src="../../images/git/motivatingexample.png" class="img-fluid"></p>
 <p>[<a href="https://swcarpentry.github.io/git-novice/index.html">Source | Software Carpentry: Version Control with Git</a>]</p>
@@ -378,24 +389,49 @@ The story of Wolfman and Dracula
 </div>
 <div class="callout-body-container callout-body">
 <p>Wolfman and Dracula have been hired by Universal Missions (a space services spinoff from Euphoric State University) to investigate if it is possible to send their next planetary lander to Mars. They want to be able to work on the plans at the same time, but they have run into problems doing this in the past. If they take turns, each one will spend a lot of time waiting for the other to finish, but if they work on their own copies and email changes back and forth things will be lost, overwritten, or duplicated.</p>
-<p>A colleague suggests using version control to manage their work. Version control is better than mailing files back and forth:</p>
+<p>A colleague suggests using <strong>version control</strong> to manage their work. Version control is better than mailing files back and forth:</p>
 <ul>
-<li><p>Nothing that is committed to version control is ever lost, unless you work really, really hard at it. Since all old versions of files are saved, it’s always possible to go back in time to see exactly who wrote what on a particular day, or what version of a program was used to generate a particular set of results.</p></li>
-<li><p>As we have this record of who made what changes when, we know who to ask if we have questions later on, and, if needed, revert to a previous version, much like the “undo” feature in an editor.</p></li>
-<li><p>When several people collaborate in the same project, it is possible to accidentally overlook or overwrite someone’s changes. The version control system automatically notifies users whenever there is a conflict between one person’s work and another’s.</p></li>
+<li><p><strong>Nothing that is committed to version control is ever lost</strong>, unless you work really, really hard at it. Since all old versions of files are saved, it’s always possible to go back in time to see exactly who wrote what on a particular day, or what version of a program was used to generate a particular set of results.</p></li>
+<li><p>As we have this record of who made what changes when, we know who to ask if we have questions later on, and, if needed, <strong>revert to a previous version, much like the “undo” feature</strong> in an editor.</p></li>
+<li><p>When several people collaborate in the same project, it is possible to accidentally overlook or overwrite someone’s changes. The version control system <strong>automatically notifies users whenever there is a conflict</strong> between one person’s work and another’s.</p></li>
 </ul>
 </div>
 </div>
-<p>Teams are not the only ones to benefit from version control: lone researchers can benefit immensely. Keeping a record of what was changed, when, and why is extremely useful for all researchers if they ever need to come back to the project later on (e.g., a year later, when memory has faded).</p>
-<p><strong>Version control is the lab notebook of the digital world</strong>: it is what professionals use to keep track of what they have done and to collaborate with other people. Every large software development project relies on it, and most programmers use it for their small jobs as well. And it is not just for software: books, papers, small data sets, and anything that changes over time or needs to be shared can and should be stored in a version control system.</p>
-<section id="does-this-sound-familiar" class="level4">
-<h4 class="anchored" data-anchor-id="does-this-sound-familiar">Does this sound familiar?</h4>
+<p>Teams are not the only ones to benefit from version control: <strong>lone researchers can benefit immensely</strong>. Keeping a record of what was changed, when, and why is extremely useful for all researchers if they ever need to come back to the project later on (e.g., a year later, when memory has faded).</p>
+<p>Another way of thinking about this:</p>
+<ul>
+<li><strong>Version control is the lab notebook of the digital world</strong>. It is what professionals use to keep track of what they have done and to collaborate with other people. Every large software development project relies on it, and most programmers use it for their small jobs as well.</li>
+<li>It is <strong>not just for software</strong>: books, papers, small data sets, and anything that changes over time or needs to be shared can and should be stored in a version control system.</li>
+</ul>
+</section>
+<section id="a-common-scenario" class="level2">
+<h2 class="anchored" data-anchor-id="a-common-scenario">A common scenario</h2>
 <p>We have all been in this situation before: it seems unnecessary to have multiple nearly-identical versions of the same document. Some word processors let us deal with this a little better, such as Microsoft Word’s Track Changes or Google Docs’ version history.</p>
-<p>Version control systems start with a base version of the document and then record changes you make each step of the way.</p>
-<p>For example, two users can make independent sets of changes on the same document.</p>
-<p>Unless multiple users make changes to the same section of the document - a conflict - you can incorporate two sets of changes into the same base document.</p>
-<p>A version control system is a tool that keeps track of these changes for us, effectively creating different versions of our files.</p>
-<p>It allows us to decide which changes will be made to the next version (each record of these changes is called a commit), and keeps useful metadata about them. The complete history of commits for a particular project and their metadata make up a repository. Repositories can be kept in sync across different computers, facilitating collaboration among different people.</p>
+<div class="cell">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="../../images/phdversioncontrol.gif" class="img-fluid figure-img" style="width:80.0%"></p>
+<figcaption class="figure-caption">How not to use GitHub [image from PhD Comics]</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<p>[<a href="http://phdcomics.com/comics/archive_print.php?comicid=1531">Source: PhD Comics</a>]</p>
+</section>
+<section id="git" class="level2">
+<h2 class="anchored" data-anchor-id="git">git</h2>
+<p><strong>Git</strong> is what one type of a <strong>version control system</strong> for file management. The main idea is that as you (and your collaborators) work on a project, the software tracks, and records any changes made by anyone.</p>
+<ul>
+<li>Similar to the “track changes” features in Microsoft Word, but more rigorous, powerful, and scaled up to multiple files</li>
+<li>Great for solo or collaborative work</li>
+<li><strong>Version control systems</strong> start with <strong>a base version</strong> of the document and then <strong>record changes you make each step of the way</strong>.</li>
+<li>For example, two users can make independent sets of changes on the same document.</li>
+<li>Unless multiple users make changes to the same section of the document - a <strong>conflict</strong> - you can incorporate two sets of changes into the same base document.</li>
+<li>It allows us to decide which changes will be made to the next version (each record of these changes is called a <strong>commit</strong>), and keeps useful metadata about them.</li>
+<li>The complete history of commits for a particular project and their metadata make up a <strong>repository</strong>.</li>
+<li>Repositories can be kept in sync across different computers, facilitating collaboration among different people.</li>
+</ul>
 <div class="callout callout-style-default callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -429,6 +465,103 @@ Key Points
 </div>
 </div>
 </section>
+<section id="github" class="level2">
+<h2 class="anchored" data-anchor-id="github">GitHub</h2>
+<p><strong>GitHub</strong> is a hosting service on internet for git-aware folders and projects</p>
+<ul>
+<li>Similar to the DropBox or Google, but more structured, powerful, and programmatic</li>
+<li>Great for solo or collaborative work!</li>
+<li>Technically <strong>GitHub</strong> is distinct from <strong>Git</strong>. However, <em>GitHub</em> is in some sense the interface and <em>Git</em> the underlying engine (a bit like <em>RStudio</em> and <em>R</em>).</li>
+</ul>
+<p>Since we will only be using <em>Git</em> through <em>GitHub</em>, I tend to not distinguish between the two. In the following, I refer to all of it as just <em>GitHub</em>. Note that other interfaces to <em>Git</em> exist, e.g., <em>Bitbucket</em>, but <em>GitHub</em> is the most widely used one.</p>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Tip
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>To learn a bit more about Git/GitHub and why you might want to use it, <a href="https://peerj.com/preprints/3159/">read this article by Jenny Bryan</a>.</p>
+<p><strong>Note her explanation of what’s special with the <code>README.md</code> file on GitHub.</strong></p>
+</div>
+</div>
+<div class="callout callout-style-default callout-important callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+What to (not) do
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<ul>
+<li><p><strong>GitHub is ideal if</strong> you have a project with a fair number of files, most of those files are text files (such as code, LaTeX, (R)markdown, etc.) and different people work on different parts of the project.</p></li>
+<li><p><strong>GitHub is less useful if</strong> you have a lot of non-text files (e.g.&nbsp;Word or Powerpoint) and different team members might want to edit the same document at the same time. In that instance, a solution like Google Docs, Word+Dropbox, Word+Onedrive, etc. might be better.</p></li>
+</ul>
+</div>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+How to use Git/GitHub
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Git and GitHub is fundamentally <strong>based on commands you type into the command line</strong>. Lots of online resources show you how to use the command line. This is the most powerful, and the way I almost always interact with git/GitHub. However, many folks find this the most confusing way to use git/GitHub. Alternatively, there are graphical interfaces.</p>
+<ul>
+<li><a href="https://desktop.github.com/">GitHub itself</a> provides a grapical interface with basic functionality.</li>
+<li>RStudio also has <a href="https://happygitwithr.com/rstudio-git-github.html">Git/GitHub integration</a>. Of course this only works for R project GitHub integration.</li>
+<li>There are also third party GitHub clients with many advanced features, most of which you won’t need initially, but might eventually.</li>
+</ul>
+</div>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Pro-tip
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>As student, you can (and should) upgrade to the Pro version of GitHub for free (i.e.&nbsp;access to unlimited private repositories is one benefit), see the <a href="https://education.github.com/pack">GitHub student developer pack</a> on how to do this.</p>
+</div>
+</div>
+</section>
+<section id="getting-started" class="level2">
+<h2 class="anchored" data-anchor-id="getting-started">Getting started</h2>
+<p>One of my favorite resources for getting started with git/GitHub is the Happy Git with R from Jenny Bryan:</p>
+<ul>
+<li><a href="https://happygitwithr.com" class="uri">https://happygitwithr.com</a></li>
+</ul>
+<div class="cell">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="../../images/happygitwithr.png" class="img-fluid figure-img" style="width:80.0%"></p>
+<figcaption class="figure-caption">A screenshot of the Happy Git with R online book from Jenny Bryan</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<p>It truly is one of the <strong>best resources</strong> out there for getting started with git/GitHub, especially with the integration to RStudio. Therefore, at this point, I will encourage all of you to go read through the online book.</p>
+<p>Some of you may only need to skim it, others will need to spend some time reading through it. Either way, I will bet that you won’t regret the time investment.</p>
+</section>
+<section id="using-gitgithub-in-our-course" class="level2">
+<h2 class="anchored" data-anchor-id="using-gitgithub-in-our-course">Using git/GitHub in our course</h2>
+<p>In this course, you will use git/GitHub in the following ways:</p>
+<ol type="1">
+<li>Projects 2-4 - You will use git locally (on your compute environment) to track your changes over time and, you will push your project solutions to a private GitHub repository on GitHub Classroom (i.e.&nbsp;you will use the command-line commands <code>git add</code>, <code>git commit</code>, <code>git push</code>, <code>git pull</code>, etc) .</li>
+</ol>
+<p>Learning these skills will be useful down the road if you ever work collaboratively on a project (i.e.&nbsp;writing code as a group). In this scenario, you will use the skills you have been practicing in your projects to work together as a team in a single GitHub repository.</p>
 </section>
 </section>
 <section id="setting-up-git" class="level1">
@@ -464,6 +597,8 @@ Objectives
 </ul>
 </div>
 </div>
+<section id="git-config" class="level2">
+<h2 class="anchored" data-anchor-id="git-config">git config</h2>
 <p>When we use Git on a new computer for the first time, we need to configure a few things:</p>
 <ul>
 <li>our name and email address</li>
@@ -474,10 +609,23 @@ Objectives
 <p>Here is how to set up Git on a new laptop:</p>
 <div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> git config <span class="at">--global</span> user.name <span class="st">"My Name"</span></span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> git config <span class="at">--global</span> user.email <span class="st">"myemail@email.com"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>This user name and email will be associated with your subsequent Git activity after this lesson.</p>
-<p>For this lesson, we will be interacting with GitHub and so the email address used should be the same as the one used when setting up your GitHub account.</p>
-<section id="check-settings" class="level3">
-<h3 class="anchored" data-anchor-id="check-settings">Check settings</h3>
+<p>This user name and email will be associated with your subsequent Git activity after this lecture.</p>
+<div class="callout callout-style-default callout-important callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Important
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>For the lectures this week, we will be interacting with GitHub and so the email address used should be the same as the one used when setting up your GitHub account.</p>
+</div>
+</div>
+</section>
+<section id="git-config-settings" class="level2">
+<h2 class="anchored" data-anchor-id="git-config-settings">git config settings</h2>
 <p>You can check your settings at any time:</p>
 <div class="sourceCode" id="cb2"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> git config <span class="at">--list</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="callout callout-style-default callout-tip callout-titled">
@@ -549,6 +697,8 @@ Objectives
 </ul>
 </div>
 </div>
+<section id="git-init" class="level2">
+<h2 class="anchored" data-anchor-id="git-init">git init</h2>
 <p>Once Git is configured, we can start using it.</p>
 <p>First, let’s create a new directory in the Desktop folder for our work and then change the current working directory to the newly created one:</p>
 <div class="sourceCode" id="cb5"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> ~/Desktop</span>
@@ -569,6 +719,9 @@ Objectives
 <p>Next, we will change the default branch to be called <code>main.</code> This might be the default branch depending on your settings and version of git.</p>
 <div class="sourceCode" id="cb12"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> checkout <span class="at">-b</span> main</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="sourceCode" id="cb13"><pre class="sourceCode default code-with-copy"><code class="sourceCode default"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>Switched to a new branch 'main'</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="git-status" class="level2">
+<h2 class="anchored" data-anchor-id="git-status">git status</h2>
 <p>We can check that everything is set up correctly by asking Git to tell us the status of our project:</p>
 <div class="sourceCode" id="cb14"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> status</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="sourceCode" id="cb15"><pre class="sourceCode default code-with-copy"><code class="sourceCode default"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>On branch main</span>
@@ -589,7 +742,7 @@ Correcting <code>git init</code> Mistakes
 <p>Suppose you have created the Git repository in the wrong directory, or made some other mistake.</p>
 <p>You can delete the git repository by simply deleting the <code>.git</code> directory, either in Finder / Windows Explorer or from the command line:</p>
 <div class="sourceCode" id="cb16"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="fu">rm</span> <span class="at">-rf</span> .git</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>But be careful! Running this command in the wrong directory will remove the entire Git history of a project you might want to keep. Therefore, always check your current directory using the command <code>pwd</code>.</p>
+<p>But <strong>be careful</strong>! Running this command in the wrong directory will remove the entire Git history of a project you might want to keep. Therefore, always check your current directory using the command <code>pwd</code>.</p>
 </div>
 </div>
 <div class="callout callout-style-default callout-important callout-titled">
@@ -608,6 +761,7 @@ Key Points
 </ul>
 </div>
 </div>
+</section>
 </section>
 <section id="tracking-changes" class="level1">
 <h1>Tracking Changes</h1>
@@ -649,13 +803,12 @@ Objectives
 <div class="sourceCode" id="cb17"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> ~/Desktop/planets</span>
 <span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a><span class="bu">pwd</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="sourceCode" id="cb18"><pre class="sourceCode default code-with-copy"><code class="sourceCode default"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>/Users/stephaniehicks/Desktop/planets</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<section id="adding-a-new-file" class="level3">
-<h3 class="anchored" data-anchor-id="adding-a-new-file">Adding a new file</h3>
+<section id="git-add" class="level2">
+<h2 class="anchored" data-anchor-id="git-add">git add</h2>
 <p>Let’s create a file called <code>mars.txt</code> that contains some notes about the Red Planet’s suitability as a base.</p>
 <p>We will use <code>touch</code> to create the file, and then open it in TextEdit or Notepad. Alternatively, you can use a command-line text editor such as <code>nano</code>.</p>
 <div class="sourceCode" id="cb19"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="fu">touch</span> mars.txt</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>Navigate to the directory in Finder / Windows Explorer and open the <code>.txt</code> file in TextEdit / Notepad.</p>
-<p>Type the text below into the <code>mars.txt</code> file:</p>
+<p>Now, open the <code>.txt</code> file and type the text below into the <code>mars.txt</code> file:</p>
 <div class="sourceCode" id="cb20"><pre class="sourceCode default code-with-copy"><code class="sourceCode default"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>Cold and dry, but everything is my favorite color</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>Let’s first verify that the file was properly created by running the list command (<code>ls</code>):</p>
 <div class="sourceCode" id="cb21"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ls</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -674,7 +827,7 @@ Objectives
 <span id="cb25-8"><a href="#cb25-8" aria-hidden="true" tabindex="-1"></a>    mars.txt</span>
 <span id="cb25-9"><a href="#cb25-9" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb25-10"><a href="#cb25-10" aria-hidden="true" tabindex="-1"></a>nothing added to commit but untracked files present (use "git add" to track)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>The “untracked files” message means that there is a file in the directory that Git is not keeping track of. We can tell Git to track a file using <code>git add</code>:</p>
+<p>The “untracked files” message means that there is a file in the directory that Git is not keeping track of. We can <strong>tell Git to track a file</strong> using <code>git add</code>:</p>
 <div class="sourceCode" id="cb26"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> add mars.txt</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>and then check that the right thing happened:</p>
 <div class="sourceCode" id="cb27"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> status</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -686,13 +839,46 @@ Objectives
 <span id="cb28-6"><a href="#cb28-6" aria-hidden="true" tabindex="-1"></a>  (use "git rm --cached &lt;file&gt;..." to unstage)</span>
 <span id="cb28-7"><a href="#cb28-7" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb28-8"><a href="#cb28-8" aria-hidden="true" tabindex="-1"></a>    new file:   mars.txt</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>Git now knows that it is supposed to keep track of <code>mars.txt</code>, but it has not recorded these changes as a commit yet. To get it to do that, we need to run one more command:</p>
+</section>
+<section id="git-commit" class="level2">
+<h2 class="anchored" data-anchor-id="git-commit">git commit</h2>
+<p>Git now <strong>knows that it is supposed to keep track</strong> of <code>mars.txt</code>, but it has not recorded these changes as a commit yet. To get it to do that, we need to run one more command:</p>
 <div class="sourceCode" id="cb29"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> commit <span class="at">-m</span> <span class="st">"Start notes on Mars as a base"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="sourceCode" id="cb30"><pre class="sourceCode default code-with-copy"><code class="sourceCode default"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a>[main (root-commit) ef11b6d] Start notes on Mars as a base</span>
 <span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a> 1 file changed, 1 insertion(+)</span>
 <span id="cb30-3"><a href="#cb30-3" aria-hidden="true" tabindex="-1"></a> create mode 100644 mars.txt</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>When we run git commit, Git takes everything we have told it to save by using <code>git add</code> and stores a copy permanently inside the special <code>.git</code> directory. This permanent copy is called a commit (or revision) and its short identifier is <code>ef11b6d</code>. Your commit may have another identifier.</p>
-<p>We use the <code>-m</code> flag (for “message”) to record a short, descriptive, and specific comment that will help us remember later on what we did and why. If we just run <code>git commit</code> without the <code>-m</code> option, Git will launch <code>nano</code> (or whatever other editor is configured as <code>core.editor</code>) so that we can write a longer message.</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>When we run git commit,</p>
+<ul>
+<li>Git takes everything we have told it to save by using <code>git add</code> and stores a copy permanently inside the special <code>.git</code> directory.</li>
+<li>This permanent copy is called a commit (or revision) and its short identifier is <code>ef11b6d</code>.</li>
+<li>Your commit may have another identifier.</li>
+</ul>
+</div>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+git commit message
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>We use the <code>-m</code> flag (for “message”) to record a short, descriptive, and specific comment that will help us remember later on what we did and why.</p>
+<p>If we just run <code>git commit</code> without the <code>-m</code> option, Git will launch <code>nano</code> (or whatever other editor is configured as <code>core.editor</code>) so that we can write a longer message.</p>
+</div>
+</div>
 <p>Good commit messages start with a brief (&lt;50 characters) statement about the changes made in the commit. Generally, the message should complete the sentence “If applied, this commit will”. If you want to go into more detail, add a blank line between the summary line and your additional notes. Use this additional space to explain why you made changes and/or what their impact will be.</p>
 <p>If we run <code>git status</code> now:</p>
 <div class="sourceCode" id="cb31"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> status</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -707,8 +893,8 @@ Date:   Sun Oct 29 22:12:47 2023 -0400
     Start notes on Mars as a base</code></pre>
 <p><code>git log</code> lists all commits made to a repository in reverse chronological order.</p>
 </section>
-<section id="adding-changes-to-a-file" class="level3">
-<h3 class="anchored" data-anchor-id="adding-changes-to-a-file">Adding changes to a file</h3>
+<section id="adding-changes-to-a-file" class="level2">
+<h2 class="anchored" data-anchor-id="adding-changes-to-a-file">Adding changes to a file</h2>
 <p>Now suppose we add more information to the file. (Again, we will edit with TextEdit / Notepad and then <code>cat</code> the file to show its contents.)</p>
 <p>Paste the following second line into the file:</p>
 <div class="sourceCode" id="cb35"><pre class="sourceCode default code-with-copy"><code class="sourceCode default"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a>Cold and dry, but everything is my favorite color</span>
@@ -750,8 +936,8 @@ Date:   Sun Oct 29 22:12:47 2023 -0400
 <div class="sourceCode" id="cb43"><pre class="sourceCode default code-with-copy"><code class="sourceCode default"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a>[main 5635827] Add concerns about effects of Mars' moons on Wolfman</span>
 <span id="cb43-2"><a href="#cb43-2" aria-hidden="true" tabindex="-1"></a> 1 file changed, 1 insertion(+)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
-<section id="staging-area" class="level3">
-<h3 class="anchored" data-anchor-id="staging-area">Staging area</h3>
+<section id="staging-area" class="level2">
+<h2 class="anchored" data-anchor-id="staging-area">Staging area</h2>
 <p>Git insists that we add files to the set we want to commit before actually committing anything. This allows us to commit our changes in stages and capture changes in logical portions rather than only large batches.</p>
 <p>To allow for this, Git has a special staging area where it keeps track of things that have been added but not yet committed.</p>
 <div class="callout callout-style-default callout-note callout-titled">
@@ -852,8 +1038,8 @@ Paging the Log
 </div>
 </div>
 </section>
-<section id="directories" class="level3">
-<h3 class="anchored" data-anchor-id="directories">Directories</h3>
+<section id="directories" class="level2">
+<h2 class="anchored" data-anchor-id="directories">Directories</h2>
 <p>Two important facts you should know about directories in Git.</p>
 <p>First, Git does not track directories on their own, only files within them. Try it for yourself:</p>
 <div class="sourceCode" id="cb57"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb57-1"><a href="#cb57-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mkdir</span> spaceships</span>
@@ -884,8 +1070,8 @@ Paging the Log
 <p>To recap, when we want to add changes to our repository, we first need to add the changed files to the staging area (<code>git add</code>) and then commit the staged changes to the repository (<code>git commit</code>).</p>
 <p>For a visualization of this workflow, see the <a href="https://swcarpentry.github.io/git-novice/04-changes.html#directories">Software Carpentry: Version Control with Git</a> page.</p>
 </section>
-<section id="exercises" class="level3">
-<h3 class="anchored" data-anchor-id="exercises">Exercises</h3>
+<section id="exercises" class="level2">
+<h2 class="anchored" data-anchor-id="exercises">Exercises</h2>
 <div class="callout callout-style-default callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -1052,8 +1238,8 @@ Objectives
 <span id="cb80-7"><a href="#cb80-7" aria-hidden="true" tabindex="-1"></a>+The two moons may be a problem for Wolfman</span>
 <span id="cb80-8"><a href="#cb80-8" aria-hidden="true" tabindex="-1"></a>+But the Mummy will appreciate the lack of humidity</span>
 <span id="cb80-9"><a href="#cb80-9" aria-hidden="true" tabindex="-1"></a>+An ill-considered change</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<section id="restoring-older-versions" class="level3">
-<h3 class="anchored" data-anchor-id="restoring-older-versions">Restoring older versions</h3>
+<section id="restoring-older-versions" class="level2">
+<h2 class="anchored" data-anchor-id="restoring-older-versions">Restoring older versions</h2>
 <p>All right! So we can save changes to files and see what we’ve changed.</p>
 <p>Now, how can we restore older versions of things? Let’s suppose we change our mind about the last update to <code>mars.txt</code>.</p>
 <p><code>git status</code> now tells us that the file has been changed, but those changes have not been staged:</p>
@@ -1157,8 +1343,8 @@ Simplifying the Common Case
 </div>
 <p>The fact that files can be reverted one by one tends to change the way people organize their work. If everything is in one large document, it is hard (but not impossible) to undo changes to the introduction without also undoing changes made later to the conclusion. If the introduction and conclusion are stored in separate files, on the other hand, moving backward and forward in time becomes much easier.</p>
 </section>
-<section id="exercises-1" class="level3">
-<h3 class="anchored" data-anchor-id="exercises-1">Exercises</h3>
+<section id="exercises-1" class="level2">
+<h2 class="anchored" data-anchor-id="exercises-1">Exercises</h2>
 <div class="callout callout-style-default callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -1338,8 +1524,8 @@ Adding existing files in <code>.gitignore</code>
 <span id="cb112-8"><a href="#cb112-8" aria-hidden="true" tabindex="-1"></a>        results/</span>
 <span id="cb112-9"><a href="#cb112-9" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb112-10"><a href="#cb112-10" aria-hidden="true" tabindex="-1"></a>nothing to commit, working tree clean</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<section id="exercises-2" class="level3">
-<h3 class="anchored" data-anchor-id="exercises-2">Exercises</h3>
+<section id="exercises-2" class="level2">
+<h2 class="anchored" data-anchor-id="exercises-2">Exercises</h2>
 <div class="callout callout-style-default callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -1428,9 +1614,9 @@ Key Points
 </section>
 <section id="post-lecture-materials" class="level1">
 <h1>Post-lecture materials</h1>
-<section id="preparation-for-next-lesson" class="level3">
-<h3 class="anchored" data-anchor-id="preparation-for-next-lesson">Preparation for next lesson</h3>
-<p>In the next lesson, we will learn how to use git remotes and GitHub. As preparation, you can sign up for a GitHub account if you do not already have one.</p>
+<section id="preparation-for-next-lesson" class="level2">
+<h2 class="anchored" data-anchor-id="preparation-for-next-lesson">Preparation for next lesson</h2>
+<p>In the next lesson, we will learn how to use git remotes and GitHub. As preparation, you can sign up for a <a href="https://github.com/">GitHub</a> account if you do not already have one.</p>
 
 
 </section>
