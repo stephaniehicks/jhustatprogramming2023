@@ -10,7 +10,6 @@ date: 2023-11-07
 categories: [module 1, week 3, version control, git, GitHub]
 ---
 
-
 # Pre-lecture materials
 
 ### Read ahead
@@ -66,7 +65,7 @@ Material for this lecture was borrowed and adopted from
 
 We will start by exploring how version control can be used to keep track of what one person did and when.
 
-### Overview
+## Overview
 
 First, a brief motivating example from Wolfman and Dracula. This story is from the [Version Control with Git](https://swcarpentry.github.io/git-novice/index.html) from Software Carpentry. 
 
@@ -79,34 +78,49 @@ First, a brief motivating example from Wolfman and Dracula. This story is from t
 
 Wolfman and Dracula have been hired by Universal Missions (a space services spinoff from Euphoric State University) to investigate if it is possible to send their next planetary lander to Mars. They want to be able to work on the plans at the same time, but they have run into problems doing this in the past. If they take turns, each one will spend a lot of time waiting for the other to finish, but if they work on their own copies and email changes back and forth things will be lost, overwritten, or duplicated.
 
-A colleague suggests using version control to manage their work. Version control is better than mailing files back and forth:
+A colleague suggests using **version control** to manage their work. Version control is better than mailing files back and forth:
 
-- Nothing that is committed to version control is ever lost, unless you work really, really hard at it. Since all old versions of files are saved, it’s always possible to go back in time to see exactly who wrote what on a particular day, or what version of a program was used to generate a particular set of results.
+- **Nothing that is committed to version control is ever lost**, unless you work really, really hard at it. Since all old versions of files are saved, it’s always possible to go back in time to see exactly who wrote what on a particular day, or what version of a program was used to generate a particular set of results.
 
-- As we have this record of who made what changes when, we know who to ask if we have questions later on, and, if needed, revert to a previous version, much like the “undo” feature in an editor.
+- As we have this record of who made what changes when, we know who to ask if we have questions later on, and, if needed, **revert to a previous version, much like the "undo" feature** in an editor.
 
-- When several people collaborate in the same project, it is possible to accidentally overlook or overwrite someone’s changes. The version control system automatically notifies users whenever there is a conflict between one person’s work and another’s.
+- When several people collaborate in the same project, it is possible to accidentally overlook or overwrite someone’s changes. The version control system **automatically notifies users whenever there is a conflict** between one person's work and another's.
 :::
 
-Teams are not the only ones to benefit from version control: lone researchers can benefit immensely. Keeping a record of what was changed, when, and why is extremely useful for all researchers if they ever need to come back to the project later on (e.g., a year later, when memory has faded).
+Teams are not the only ones to benefit from version control: **lone researchers can benefit immensely**. Keeping a record of what was changed, when, and why is extremely useful for all researchers if they ever need to come back to the project later on (e.g., a year later, when memory has faded).
 
-**Version control is the lab notebook of the digital world**: it is what professionals use to keep track of what they have done and to collaborate with other people. Every large software development project relies on it, and most programmers use it for their small jobs as well. And it is not just for software: books, papers, small data sets, and anything that changes over time or needs to be shared can and should be stored in a version control system.
+Another way of thinking about this: 
 
-#### Does this sound familiar? 
+- **Version control is the lab notebook of the digital world**. It is what professionals use to keep track of what they have done and to collaborate with other people. Every large software development project relies on it, and most programmers use it for their small jobs as well. 
+- It is **not just for software**: books, papers, small data sets, and anything that changes over time or needs to be shared can and should be stored in a version control system.
+
+## A common scenario
 
 We have all been in this situation before: it seems unnecessary to have multiple nearly-identical versions of the same document. Some word processors let us deal with this a little better, such as Microsoft Word's Track Changes or Google Docs' version history.
 
-Version control systems start with a base version of the document and then record changes you make each step of the way.
+```{r}
+#| label: versioncontrol
+#| echo: false
+#| fig-cap: 'How not to use GitHub [image from PhD Comics]'
+#| out-width: '80%'
+knitr::include_graphics("../../images/phdversioncontrol.gif")
+```
 
-For example, two users can make independent sets of changes on the same document.
-
-Unless multiple users make changes to the same section of the document - a conflict - you can incorporate two sets of changes into the same base document.
-
-A version control system is a tool that keeps track of these changes for us, effectively creating different versions of our files.
-
-It allows us to decide which changes will be made to the next version (each record of these changes is called a commit), and keeps useful metadata about them. The complete history of commits for a particular project and their metadata make up a repository. Repositories can be kept in sync across different computers, facilitating collaboration among different people.
+\[[Source: PhD Comics](http://phdcomics.com/comics/archive_print.php?comicid=1531)\]
 
 
+## git
+
+**Git** is what one type of a **version control system** for file management. The main idea is that as you (and your collaborators) work on a project, the software tracks, and records any changes made by anyone.
+
+-   Similar to the "track changes" features in Microsoft Word, but more rigorous, powerful, and scaled up to multiple files
+-   Great for solo or collaborative work
+- **Version control systems** start with **a base version** of the document and then **record changes you make each step of the way**.
+- For example, two users can make independent sets of changes on the same document.
+- Unless multiple users make changes to the same section of the document - a **conflict** - you can incorporate two sets of changes into the same base document.
+- It allows us to decide which changes will be made to the next version (each record of these changes is called a **commit**), and keeps useful metadata about them. 
+- The complete history of commits for a particular project and their metadata make up a **repository**. 
+- Repositories can be kept in sync across different computers, facilitating collaboration among different people.
 
 ::: callout-tip
 ### Terminology
@@ -122,6 +136,84 @@ It allows us to decide which changes will be made to the next version (each reco
 -   Version control is like an unlimited 'undo'.
 -   Version control also allows many people to work in parallel.
 :::
+
+
+
+## GitHub
+
+**GitHub** is a hosting service on internet for git-aware folders and projects
+
+-   Similar to the DropBox or Google, but more structured, powerful, and programmatic
+-   Great for solo or collaborative work!
+-   Technically **GitHub** is distinct from **Git**. However, *GitHub* is in some sense the interface and *Git* the underlying engine (a bit like *RStudio* and *R*).
+
+Since we will only be using *Git* through *GitHub*, I tend to not distinguish between the two. In the following, I refer to all of it as just *GitHub*. Note that other interfaces to *Git* exist, e.g., *Bitbucket*, but *GitHub* is the most widely used one.
+
+::: callout-tip
+
+To learn a bit more about Git/GitHub and why you might want to use it, [read this article by Jenny Bryan](https://peerj.com/preprints/3159/).
+
+**Note her explanation of what's special with the `README.md` file on GitHub.**
+
+::: 
+
+::: callout-important
+
+### What to (not) do
+
+- **GitHub is ideal if** you have a project with a fair number of files, most of those files are text files (such as code, LaTeX, (R)markdown, etc.) and different people work on different parts of the project.
+
+- **GitHub is less useful if** you have a lot of non-text files (e.g. Word or Powerpoint) and different team members might want to edit the same document at the same time. In that instance, a solution like Google Docs, Word+Dropbox, Word+Onedrive, etc. might be better.
+
+:::
+
+::: callout-tip
+
+### How to use Git/GitHub
+
+Git and GitHub is fundamentally **based on commands you type into the command line**. Lots of online resources show you how to use the command line. This is the most powerful, and the way I almost always interact with git/GitHub. However, many folks find this the most confusing way to use git/GitHub. Alternatively, there are graphical interfaces.
+
+-   [GitHub itself](https://desktop.github.com/) provides a grapical interface with basic functionality.
+-   RStudio also has [Git/GitHub integration](https://happygitwithr.com/rstudio-git-github.html). Of course this only works for R project GitHub integration.
+-   There are also third party GitHub clients with many advanced features, most of which you won't need initially, but might eventually.
+
+:::
+
+::: callout-tip
+
+### Pro-tip
+
+As student, you can (and should) upgrade to the Pro version of GitHub for free (i.e. access to unlimited private repositories is one benefit), see the [GitHub student developer pack](https://education.github.com/pack) on how to do this.
+
+:::
+
+## Getting started
+
+One of my favorite resources for getting started with git/GitHub is the Happy Git with R from Jenny Bryan:
+
+-   <https://happygitwithr.com>
+
+```{r}
+#| label: happygitwithr
+#| echo: false
+#| fig-cap: 'A screenshot of the Happy Git with R online book from Jenny Bryan'
+#| out-width: '80%'
+knitr::include_graphics("../../images/happygitwithr.png")
+```
+
+It truly is one of the **best resources** out there for getting started with git/GitHub, especially with the integration to RStudio. Therefore, at this point, I will encourage all of you to go read through the online book.
+
+Some of you may only need to skim it, others will need to spend some time reading through it. Either way, I will bet that you won't regret the time investment.
+
+## Using git/GitHub in our course
+
+In this course, you will use git/GitHub in the following ways:
+
+1.  Projects 2-4 - You will use git locally (on your compute environment) to track your changes over time and, you will push your project solutions to a private GitHub repository on GitHub Classroom (i.e. you will use the command-line commands `git add`, `git commit`, `git push`, `git pull`, etc) .
+
+Learning these skills will be useful down the road if you ever work collaboratively on a project (i.e. writing code as a group). In this scenario, you will use the skills you have been practicing in your projects to work together as a team in a single GitHub repository.
+
+
 
 
 # Setting Up Git
@@ -141,6 +233,8 @@ It allows us to decide which changes will be made to the next version (each reco
 :::
 
 
+## git config 
+
 When we use Git on a new computer for the first time, we need to configure a few things:
 
 -   our name and email address
@@ -156,12 +250,14 @@ $ git config --global user.name "My Name"
 $ git config --global user.email "myemail@email.com"
 ```
 
-This user name and email will be associated with your subsequent Git activity after this lesson.
+This user name and email will be associated with your subsequent Git activity after this lecture.
 
-For this lesson, we will be interacting with GitHub and so the email address used should be the same as the one used when setting up your GitHub account.
+::: callout-important 
 
+For the lectures this week, we will be interacting with GitHub and so the email address used should be the same as the one used when setting up your GitHub account.
+:::
 
-### Check settings
+## git config settings
 
 You can check your settings at any time:
 
@@ -216,6 +312,7 @@ Note that we will omit the `$` from shell commands shown from here onwards to ma
 -   Describe the purpose of the `.git` directory.
 :::
 
+## git init
 
 Once Git is configured, we can start using it.
 
@@ -273,6 +370,8 @@ git checkout -b main
 Switched to a new branch 'main'
 ```
 
+## git status
+
 We can check that everything is set up correctly by asking Git to tell us the status of our project:
 
 ```bash
@@ -299,7 +398,7 @@ You can delete the git repository by simply deleting the `.git` directory, eithe
 rm -rf .git
 ```
 
-But be careful! Running this command in the wrong directory will remove the entire Git history of a project you might want to keep. Therefore, always check your current directory using the command `pwd`.
+But **be careful**! Running this command in the wrong directory will remove the entire Git history of a project you might want to keep. Therefore, always check your current directory using the command `pwd`.
 :::
 
 
@@ -342,7 +441,7 @@ pwd
 ```
 
 
-### Adding a new file
+## git add 
 
 Let's create a file called `mars.txt` that contains some notes about the Red Planet's suitability as a base.
 
@@ -352,9 +451,7 @@ We will use `touch` to create the file, and then open it in TextEdit or Notepad.
 touch mars.txt
 ```
 
-Navigate to the directory in Finder / Windows Explorer and open the `.txt` file in TextEdit / Notepad.
-
-Type the text below into the `mars.txt` file:
+Now, open the `.txt` file and type the text below into the `mars.txt` file:
 
 ```default
 Cold and dry, but everything is my favorite color
@@ -395,7 +492,7 @@ Untracked files:
 nothing added to commit but untracked files present (use "git add" to track)
 ```
 
-The "untracked files" message means that there is a file in the directory that Git is not keeping track of. We can tell Git to track a file using `git add`:
+The "untracked files" message means that there is a file in the directory that Git is not keeping track of. We can **tell Git to track a file** using `git add`:
 
 ```bash
 git add mars.txt
@@ -419,7 +516,9 @@ Changes to be committed:
 
 ```
 
-Git now knows that it is supposed to keep track of `mars.txt`, but it has not recorded these changes as a commit yet. To get it to do that, we need to run one more command:
+## git commit 
+
+Git now **knows that it is supposed to keep track** of `mars.txt`, but it has not recorded these changes as a commit yet. To get it to do that, we need to run one more command:
 
 ```bash
 git commit -m "Start notes on Mars as a base"
@@ -431,9 +530,25 @@ git commit -m "Start notes on Mars as a base"
  create mode 100644 mars.txt
 ```
 
-When we run git commit, Git takes everything we have told it to save by using `git add` and stores a copy permanently inside the special `.git` directory. This permanent copy is called a commit (or revision) and its short identifier is `ef11b6d`. Your commit may have another identifier.
+::: callout-note 
 
-We use the `-m` flag (for "message") to record a short, descriptive, and specific comment that will help us remember later on what we did and why. If we just run `git commit` without the `-m` option, Git will launch `nano` (or whatever other editor is configured as `core.editor`) so that we can write a longer message.
+When we run git commit, 
+
+- Git takes everything we have told it to save by using `git add` and stores a copy permanently inside the special `.git` directory. 
+- This permanent copy is called a commit (or revision) and its short identifier is `ef11b6d`. 
+- Your commit may have another identifier.
+
+:::
+
+::: callout-tip
+
+### git commit message
+
+We use the `-m` flag (for "message") to record a short, descriptive, and specific comment that will help us remember later on what we did and why. 
+
+If we just run `git commit` without the `-m` option, Git will launch `nano` (or whatever other editor is configured as `core.editor`) so that we can write a longer message.
+
+:::
 
 Good commit messages start with a brief (<50 characters) statement about the changes made in the commit. Generally, the message should complete the sentence "If applied, this commit will". If you want to go into more detail, add a blank line between the summary line and your additional notes. Use this additional space to explain why you made changes and/or what their impact will be.
 
@@ -465,7 +580,7 @@ Date:   Sun Oct 29 22:12:47 2023 -0400
 `git log` lists all commits made to a repository in reverse chronological order.
 
 
-### Adding changes to a file
+## Adding changes to a file
 
 Now suppose we add more information to the file. (Again, we will edit with TextEdit / Notepad and then `cat` the file to show its contents.)
 
@@ -543,7 +658,7 @@ git commit -m "Add concerns about effects of Mars' moons on Wolfman"
 ```
 
 
-### Staging area
+## Staging area
 
 Git insists that we add files to the set we want to commit before actually committing anything. This allows us to commit our changes in stages and capture changes in logical portions rather than only large batches.
 
@@ -679,7 +794,7 @@ To move to the next page, press `Spacebar`.
 :::
 
 
-### Directories
+## Directories
 
 Two important facts you should know about directories in Git.
 
@@ -742,7 +857,7 @@ To recap, when we want to add changes to our repository, we first need to add th
 For a visualization of this workflow, see the [Software Carpentry: Version Control with Git](https://swcarpentry.github.io/git-novice/04-changes.html#directories) page.
 
 
-### Exercises
+## Exercises
 
 ::: callout-tip
 ### Choosing a Commit Message
@@ -935,7 +1050,7 @@ index bd9fd42..93a3e13 100644
 ```
 
 
-### Restoring older versions
+## Restoring older versions
 
 All right! So we can save changes to files and see what we've changed.
 
@@ -1093,7 +1208,7 @@ As it says, `git checkout` without a version identifier restores files to the st
 The fact that files can be reverted one by one tends to change the way people organize their work. If everything is in one large document, it is hard (but not impossible) to undo changes to the introduction without also undoing changes made later to the conclusion. If the introduction and conclusion are stored in separate files, on the other hand, moving backward and forward in time becomes much easier.
 
 
-### Exercises
+## Exercises
 
 ::: callout-tip
 ### Recovering Older Versions of a File
@@ -1283,7 +1398,7 @@ nothing to commit, working tree clean
 ```
 
 
-### Exercises
+## Exercises
 
 ::: callout-tip
 ### Ignoring Nested Files
@@ -1355,7 +1470,7 @@ Additional exercises are available on the [Software Carpentry: Version Control w
 
 # Post-lecture materials
 
-### Preparation for next lesson
+## Preparation for next lesson
 
-In the next lesson, we will learn how to use git remotes and GitHub. As preparation, you can sign up for a GitHub account if you do not already have one.
+In the next lesson, we will learn how to use git remotes and GitHub. As preparation, you can sign up for a [GitHub](https://github.com/) account if you do not already have one.
 
