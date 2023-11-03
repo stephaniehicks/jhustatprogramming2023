@@ -7,7 +7,6 @@ author:
 description: "Introduction to S3, S4, or reference class with generics and methods"
 date: 2023-11-14
 categories: [module 2, week 4, R, functions, programming]
-draft: true
 ---
 
 
@@ -115,6 +114,7 @@ Before we go on I want to introduce the `sloop` package:
 ```{r}
 library(sloop)
 ```
+
 
 The `sloop` package (think "sail the seas of OOP") provides a number of helpers that fill in missing pieces in base R. The first of these is `sloop::otype()`. It makes it easy to figure out the OOP system used by a wild-caught object:
 
