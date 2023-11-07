@@ -8,7 +8,6 @@ author:
 description: "Building an R package and practicing with S3"
 date: 2023-11-07
 categories: [project 2, projects]
-draft: true
 ---
 
 # Background
