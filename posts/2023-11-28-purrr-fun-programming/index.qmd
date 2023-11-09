@@ -8,8 +8,9 @@ author:
 description: "Introduction to tools to work with functions and vectors in R"
 date: 2023-11-28
 categories: [module 3, week 6, functions, functional, programming, purrr]
-draft: true
+knitr: true
 ---
+
 
 <!-- Add interesting quote -->
 
@@ -25,7 +26,6 @@ draft: true
 1.  <https://adv-r.hadley.nz/functionals.html>
 2.  <https://raw.githubusercontent.com/rstudio/cheatsheets/main/purrr.pdf>
 :::
-
 
 ### Prerequisites
 Before starting you must install the additional package:
