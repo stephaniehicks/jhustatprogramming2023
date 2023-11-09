@@ -8,6 +8,7 @@ author:
 description: "Introduction to version control with git and GitHub (part 2)"
 date: 2023-11-09
 categories: [module 1, week 3, version control, git, GitHub]
+knitr: true
 ---
 
 # Pre-lecture materials
@@ -50,7 +51,6 @@ Material for this lecture was borrowed and adopted from
 -   Understand git remotes.
 -   Understand how to use GitHub.
 -   Understand collaborating and merge conflicts.
--   Know how to use Git in RStudio.
 :::
 
 
@@ -109,11 +109,11 @@ git init
 ```
 
 
-If you remember back to the earlier lesson where we added and committed our earlier work on `mars.txt`, we had a diagram of the local repository which looked like this:
+If you remember back to the previous lecture where we added and committed our earlier work on `mars.txt`, you can visualize that process in our local repository like this:
 
 ![](../../images/git/git-staging-area.svg)
 
-Now that we have two repositories, we need a diagram like this:
+Now that we have created the remote repository, we really have two repositories and this is the idea you should keep in mind:
 
 ![](../../images/git/git-freshly-made-github-repo.svg)
 
@@ -185,21 +185,20 @@ We'll discuss remotes in more detail in the next section, while talking about ho
 
 Before you can connect to a remote repository, you need to set up a way for your computer to authenticate with GitHub so it knows it's you trying to connect to your remote repository.
 
+These sections below will not be covered in class, but you are encouraged to set up your SSH key pairs to make your lives easier using git/GitHub! 
+
+::: {.callout-tip collapse="true"}
+
+### What are SSH key pairs?
+
+
 We are going to set up the method that is commonly used by many different services to authenticate access on the command line. This method is called Secure Shell Protocol (SSH). SSH is a cryptographic network protocol that allows secure communication between computers using an otherwise insecure network.
 
-SSH uses what is called a key pair. This is two keys that work together to validate access. One key is publicly known and called the public key, and the other key called the private key is kept private.
+SSH uses what is called a **key pair**. This is two keys that work together to validate access. One key is publicly known and called the public key, and the other key called the private key is kept private.
 
 What we will do now is the minimum required to set up the SSH keys and add the public key to a GitHub account.
 
-
-::: callout-tip
-### Advanced SSH
-
-A supplemental lesson in the Software Carpentry materials discusses SSH and key pairs in more depth and detail.
-:::
-
-
-The first thing we are going to do is check if this has already been done on the computer you're on. Because generally speaking, this setup only needs to happen once.
+The first thing we are going to do is check if this has already been done on the computer you are on. Because generally speaking, this setup only needs to happen once.
 
 We will run the list command to check what key pairs already exist on your computer.
 
@@ -216,7 +215,9 @@ ls: cannot access '/c/Users/<username>/.ssh': No such file or directory
 ```
 
 If SSH has been set up on the computer you're using, the public and private key pairs will be listed. The file names are either `id_ed25519` / `id_ed25519.pub` or `id_rsa` / `id_rsa.pub` depending on how the key pairs were set up. If they don't exist yet, we use this command to create them.
+:::
 
+::: {.callout-tip collapse="true"}
 
 ### Create an SSH key pair
 
@@ -286,6 +287,9 @@ drwxr-xr-x 1 <username> 197121   0 Jul 16 14:48 ../
 -rw-r--r-- 1 <username> 197121 106 Jul 16 14:48 id_ed25519.pub
 ```
 
+:::
+
+::: {.callout-tip collapse="true"}
 
 ### Copy the public key to GitHub
 
@@ -331,16 +335,24 @@ Hi stephaniehicks! You've successfully authenticated, but GitHub does not provid
 
 Good! This output confirms that the SSH key works as intended. We are now ready to push our work to the remote repository.
 
+:::
+
 
 ## Push local changes to a remote
 
-Now that authentication is setup, we can return to the remote. This command will push the changes from our local repository to the repository on GitHub:
+After your authentication is setup, we can uuse this command to push the changes from our local repository to the repository on GitHub:
 
 ```bash
 git push origin main
 ```
 
-If you set up a passphrase, it will prompt you for it. If you completed advanced settings for your authentication, it will not prompt for a passphrase.
+::: {.callout-warning}
+
+### Passphrases
+
+If you set up a passphrase when setting up your SSH key pairs, it will prompt you for it. If you completed advanced settings for your authentication, it will not prompt for a passphrase.
+
+:::
 
 ```default
 Enumerating objects: 16, done.
@@ -379,7 +391,7 @@ in the terminal, before you run `git push`.
 :::
 
 
-Our local and remote repositories are now in this state:
+OK, so now that have we  used `git push`, our local and remote repositories are now in this state:
 
 ![](../../images/git/github-repo-after-first-push.svg)
 
@@ -406,10 +418,19 @@ Already up-to-date.
 
 Pulling has no effect in this case because the two repositories are already synchronized. If someone else had pushed some changes to the repository on GitHub, though, this command would download them to our local repository.
 
+::: callout-important
+### Key Points
+
+-   A local Git repository can be connected to one or more remote repositories.
+-   Use the SSH protocol to connect to remote repositories.
+-   `git push` copies changes from a local repository to a remote repository.
+-   `git pull` copies changes from a remote repository to a local repository.
+:::
+
 
 ## Exercises
 
-::: callout-tip
+::: {.callout-tip collapse="true"}
 ### GitHub GUI
 
 Browse to your `planets` repository on GitHub. Under the Code tab, find and click on the text that says "XX commits" (where "XX" is some number). Hover over, and click on, the three buttons to the right of each commit. What information can you gather/explore from these buttons? How would you get that same information in the shell?
@@ -422,14 +443,14 @@ Browse to your `planets` repository on GitHub. Under the Code tab, find and clic
 :::
 
 
-::: callout-tip
+::: {.callout-tip collapse="true"}
 ### Uploading files directly in GitHub browser
 
 Github also allows you to skip the command line and upload files directly to your repository without having to leave the browser. There are two options. First you can click the "Upload files" button in the toolbar at the top of the file tree. Or, you can drag and drop files from your desktop onto the file tree. You can read more about this in the GitHub help pages.
 :::
 
 
-::: callout-tip
+::: {.callout-tip collapse="true"}
 ### GitHub Timestamp
 
 Create a remote repository on GitHub. Push the contents of your local repository to the remote. Make changes to your local repository and push these changes. Go to the repo you just created on GitHub and check the timestamps of the files. How does GitHub record times, and why?
@@ -438,7 +459,7 @@ Create a remote repository on GitHub. Push the contents of your local repository
 :::
 
 
-::: callout-tip
+::: {.callout-tip collapse="true"}
 ### Push vs. Commit
 
 In this lesson, we introduced the `git push` command. How is `git push` different from `git commit`?
@@ -447,7 +468,7 @@ In this lesson, we introduced the `git push` command. How is `git push` differen
 :::
 
 
-::: callout-tip
+::: {.callout-tip collapse="true"}
 ### GitHub License and README files
 
 In this lesson we learned about creating a remote repository on GitHub, but when you initialized your GitHub repo, you didn't add a README.md or a license file. If you had, what do you think would have happened when you tried to link your local and remote repositories?
@@ -487,14 +508,7 @@ create mode 100644 README.md
 :::
 
 
-::: callout-important
-### Key Points
 
--   A local Git repository can be connected to one or more remote repositories.
--   Use the SSH protocol to connect to remote repositories.
--   `git push` copies changes from a local repository to a remote repository.
--   `git pull` copies changes from a remote repository to a local repository.
-:::
 
 
 # Collaborating
@@ -544,8 +558,11 @@ git clone git@github.com:vlad/planets.git ~/Desktop/vlad-planets
 
 Replace 'vlad' with the Owner's username.
 
+::: {.callout-important}
+
 If you choose to clone without the clone path (`~/Desktop/vlad-planets`) specified at the end, you will clone inside your own `planets` folder! Make sure to navigate to the Desktop folder first. Alternatively, you can create a directory somewhere else, navigate to it, and run `git clone git@github.com:vlad/planets.git` (without the clone path).
 
+:::
 
 ![](../../images/git/github-collaboration.svg)
 
@@ -598,15 +615,15 @@ To https://github.com/vlad/planets.git
    9272da5..29aba7c  main -> main
 ```
 
-Note that we didn't have to create a remote called `origin`: Git uses this name by default when we clone a repository. (This is why `origin` was a sensible choice earlier when we were setting up remotes by hand.)
+Note that we **did not have to create a remote called `origin`**: Git uses this name by default when we clone a repository. (This is why `origin` was a sensible choice earlier when we were setting up remotes by hand.)
 
 Take a look at the Owner's repository on GitHub again, and you should be able to see the new commit made by the Collaborator. You may need to refresh your browser to see the new commit.
 
 
-::: callout-note
+::: {.callout-note collapse="true"}
 ## Some more about remotes
 
-In this episode and the previous one, our local repository has had a single "remote", called `origin.`
+Thus far, our local repository has had a single "remote", called `origin.`
 
 A remote is a copy of the repository that is hosted somewhere else, that we can push to and pull from, and there's no reason that you have to work with only one.
 
@@ -663,16 +680,23 @@ It is better to make many commits with smaller changes rather than one commit wi
 :::
 
 
+::: callout-important
+### Key Points
+
+-   `git clone` copies a remote repository to create a local repository with a remote called `origin` automatically set up.
+:::
+
+
 ## Exercises
 
-::: callout-tip
+::: {.callout-tip collapse="true"}
 ### Switch Roles and Repeat
 
 Switch roles and repeat the whole process.
 :::
 
 
-::: callout-tip
+::: {.callout-tip collapse="true"}
 ### Review Changes
 
 The Owner pushed commits to the repository without giving any information to the Collaborator. How can the Collaborator find out what has changed with command line? And on GitHub?
@@ -683,7 +707,7 @@ The Owner pushed commits to the repository without giving any information to the
 :::
 
 
-::: callout-tip
+::: {.callout-tip collapse="true"}
 ### Comment Changes in GitHub
 
 The Collaborator has some questions about one line change made by the Owner and has some suggestions to propose.
@@ -691,13 +715,6 @@ The Collaborator has some questions about one line change made by the Owner and 
 With GitHub, it is possible to comment on the diff of a commit. Over the line of code to comment, a blue comment icon appears to open a comment window.
 
 The Collaborator posts their comments and suggestions using the GitHub interface.
-:::
-
-
-::: callout-important
-### Key Points
-
--   `git clone` copies a remote repository to create a local repository with a remote called `origin` automatically set up.
 :::
 
 
@@ -719,7 +736,7 @@ The Collaborator posts their comments and suggestions using the GitHub interface
 :::
 
 
-As soon as people can work in parallel, they'll likely step on each other's toes. This will even happen with a single person: if we are working on a piece of software on both our laptop and a server in the lab, we could make different changes to each copy. Version control helps us manage these conflicts by giving us tools to resolve overlapping changes.
+As soon as people can work in parallel, they will likely step on each other's toes. This will even happen with a single person: if we are working on a piece of software on both our laptop and a server in the lab, we could make different changes to each copy. Version control helps us manage these conflicts by giving us tools to resolve overlapping changes.
 
 To see how we can resolve conflicts, we must first create one. The file `mars.txt` currently looks like this in both partners' copies of our `planets` repository:
 
@@ -774,7 +791,7 @@ To https://github.com/vlad/planets.git
    29aba7c..dabb4c8  main -> main
 ```
 
-Now let's have the owner make a different change to their copy _without_ updating from GitHub:
+Now let's have the owner make a different change to their copy _without_ updating from GitHub (i.e. without the Owner using `git pull origin main`):
 
 ```bash
 cat mars.txt
@@ -799,7 +816,7 @@ git commit -m "Add a line in my copy"
  1 file changed, 1 insertion(+)
 ```
 
-but Git won't let us push it to GitHub:
+but Git will not let us push it to GitHub:
 
 ```bash
 git push origin main
@@ -819,7 +836,11 @@ hint: See the 'Note about fast-forwards' in 'git push --help' for details.
 (See [illustration](https://swcarpentry.github.io/git-novice/09-conflict/index.html#overview) on the Software Carpentry website.)
 
 
-Git rejects the push because it detects that the remote repository has new updates that have not been incorporated into the local branch. What we have to do is pull the changes from GitHub, merge them into the copy we're currently working in, and then push that. Let’s start by pulling:
+Git **rejects the `git push`** because it detects that the remote repository has new updates that have not been incorporated into the local branch. 
+
+What we have to do is pull the changes from GitHub, merge them into the copy we are currently working in, and then push that. 
+
+Let’s start by pulling:
 
 ```bash
 git pull origin main
@@ -839,7 +860,11 @@ CONFLICT (content): Merge conflict in mars.txt
 Automatic merge failed; fix conflicts and then commit the result.
 ```
 
-The `git pull` command updates the local repository to include those changes already included in the remote repository. After the changes from remote branch have been fetched, Git detects that changes made to the local copy overlap with those made to the remote repository, and therefore refuses to merge the two versions to stop us from trampling on our previous work. The conflict is marked in in the affected file:
+The `git pull` command updates the local repository to include those changes already included in the remote repository. 
+
+After the changes from remote branch have been fetched, Git detects that changes made to the local copy overlap with those made to the remote repository, and therefore refuses to merge the two versions to stop us from trampling on our previous work. 
+
+The conflict is marked in in the affected file:
 
 ```bash
 cat mars.txt
@@ -856,7 +881,11 @@ This line added to Wolfman's copy
 >>>>>>> dabb4c8c450e8475aee9b14b4383acc99f42af1d
 ```
 
-Our change is preceded by `<<<<<<< HEAD`. Git has then inserted `=======` as a separator between the conflicting changes and marked the end of the content downloaded from GitHub with `>>>>>>>`. (The string of letters and digits after that marker identifies the commit we've just downloaded.)
+Our change is preceded by `<<<<<<< HEAD`. Git has then inserted `=======` as a separator between the conflicting changes and marked the end of the content downloaded from GitHub with `>>>>>>>`.
+
+::: .callout-note 
+The string of letters and digits after that marker identifies the commit we've just downloaded. 
+:::
 
 It is now up to us to edit this file to remove these markers and reconcile the changes. We can do anything we want: keep the change made in the local repository, keep the change made in the remote repository, write something new to replace both, or get rid of the change entirely. Let's replace both so that the file looks like this:
 
@@ -964,10 +993,16 @@ Conflicts can also be minimized with project management strategies:
 -   Discuss what order tasks should be carried out in with your collaborators so that tasks expected to change the same lines won't be worked on simultaneously
 -   If the conflicts are stylistic (e.g. tabs vs. spaces), establish a project convention that is governing and use code style tools to enforce, if necessary
 
+::: callout-important
+### Key Points
+
+-   Conflicts occur when two or more people change the same lines of the same file.
+-   The version control system does not allow people to overwrite each other's changes blindly, but highlights conflicts so that they can be resolved.
+:::
 
 ## Exercises
 
-::: callout-tip
+::: {.callout-tip collapse="true"}
 ### Conflicts on Non-textual files
 
 What does Git do when there is a conflict in an image or some other non-textual file that is stored in version control (e.g. `mars.jpg`)?
@@ -984,7 +1019,7 @@ We can also keep both images if we give them different filenames and then add an
 :::
 
 
-::: callout-tip
+::: {.callout-tip collapse="true"}
 ### A Typical Work Session
 
 A short example of a typical workflow in an order that will minimize merge conflicts:
@@ -997,62 +1032,16 @@ A short example of a typical workflow in an order that will minimize merge confl
 :::
 
 
-::: callout-important
-### Key Points
-
--   Conflicts occur when two or more people change the same lines of the same file.
--   The version control system does not allow people to overwrite each other's changes blindly, but highlights conflicts so that they can be resolved.
-:::
 
 
-# Open Science
-
-::: callout-tip
-### Questions
-
-How can version control help me make my work more open?
-:::
-
-::: callout-tip
-### Objectives
-
--   Explain how a version control system can be leveraged as an electronic lab notebook for computational work.
-:::
-
-::: callout-tip
-### Key Points
-
-Open scientific work is more useful and more highly cited than closed.
-:::
-
-See [Software Carpentry](https://swcarpentry.github.io/git-novice/10-open/index.html) materials online for more details.
 
 
-# Licensing
+# Post-lecture materials
 
-See [Software Carpentry](https://swcarpentry.github.io/git-novice/11-licensing/index.html) materials online.
+There are other resources available on the [Software Carpentry](https://swcarpentry.github.io/git-novice)'s website in particularly around: 
 
+- The importance of how version control can help your work more open and support [Open Science](https://swcarpentry.github.io/git-novice/10-open.html). Open scientific work is more useful and more highly cited than closed. 
+- What type of licensing should you consider to include with your work on [Licensing](https://swcarpentry.github.io/git-novice/11-licensing.html). 
+- How to make your work easier to cite with the less on [Citations](https://swcarpentry.github.io/git-novice/12-citation.html). 
 
-# Citation
-
-See [Software Carpentry](https://swcarpentry.github.io/git-novice/12-citation/index.html) materials online.
-
-
-# Using Git from RStudio
-
-::: callout-tip
-### Questions
-
-How can I use Git with RStudio?
-:::
-
-::: callout-tip
-### Objectives
-
-Understand how to use Git from RStudio.
-:::
-
-Version control can be very useful when developing data analysis scripts. For that reason, RStudio has built-in integration with Git. While some advanced Git features still require the command-line, RStudio has a nice interface for many common Git operations.
-
-For instructions and examples on how to use Git in an RStudio project, see the [Software Carpentry](https://swcarpentry.github.io/git-novice/14-supplemental-rstudio/index.html) materials online.
 
