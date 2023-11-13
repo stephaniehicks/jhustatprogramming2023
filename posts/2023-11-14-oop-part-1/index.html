@@ -1570,7 +1570,7 @@ Slot "brand":
 <div class="cell-output cell-output-stdout">
 <pre><code>Demographics - Age: 55, Gender: F
 Biomarkers - BMI: 25, HbA1c: 25
-CGM Metrics - Mean Glucose: 79.68, Std. Dev. Glucose: 2.37</code></pre>
+CGM Metrics - Mean Glucose: 80.05, Std. Dev. Glucose: 2.39</code></pre>
 </div>
 </div>
 <p>We may also wish to perform any range of standard operations upon the CGM time series data, like smoothing.</p>
@@ -1637,9 +1637,10 @@ attr(,"package")
 <span id="cb161-3"><a href="#cb161-3" aria-hidden="true" tabindex="-1"></a>          <span class="at">definition =</span> <span class="cf">function</span>(x){</span>
 <span id="cb161-4"><a href="#cb161-4" aria-hidden="true" tabindex="-1"></a>            <span class="fu">plot</span>(<span class="at">x =</span> x<span class="sc">@</span>Times, <span class="at">y =</span> x<span class="sc">@</span>Data, <span class="at">type =</span> <span class="st">"l"</span>, </span>
 <span id="cb161-5"><a href="#cb161-5" aria-hidden="true" tabindex="-1"></a>            <span class="at">xlab =</span> <span class="st">"Date-time"</span>, <span class="at">ylab =</span> <span class="st">"Glucose (mg/dL)"</span>)</span>
-<span id="cb161-6"><a href="#cb161-6" aria-hidden="true" tabindex="-1"></a>          })</span>
-<span id="cb161-7"><a href="#cb161-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb161-8"><a href="#cb161-8" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(cgm_profile)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb161-6"><a href="#cb161-6" aria-hidden="true" tabindex="-1"></a>            <span class="fu">invisible</span>(x)</span>
+<span id="cb161-7"><a href="#cb161-7" aria-hidden="true" tabindex="-1"></a>          })</span>
+<span id="cb161-8"><a href="#cb161-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb161-9"><a href="#cb161-9" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(cgm_profile)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <p><img src="index_files/figure-html/unnamed-chunk-57-1.png" class="img-fluid" width="672"></p>
 </div>
@@ -1654,31 +1655,28 @@ attr(,"package")
 <span id="cb162-7"><a href="#cb162-7" aria-hidden="true" tabindex="-1"></a>            demo_string <span class="ot">&lt;-</span> <span class="fu">paste0</span>(<span class="st">"Demographics - Age: "</span>, object<span class="sc">@</span>Age, <span class="st">", Gender: "</span>, object<span class="sc">@</span>Gender)</span>
 <span id="cb162-8"><a href="#cb162-8" aria-hidden="true" tabindex="-1"></a>            biomk_string <span class="ot">&lt;-</span> <span class="fu">paste0</span>(<span class="st">"Biomarkers - BMI: "</span>, object<span class="sc">@</span>BMI, <span class="st">", HbA1c: "</span>, object<span class="sc">@</span>HbA1c)</span>
 <span id="cb162-9"><a href="#cb162-9" aria-hidden="true" tabindex="-1"></a>            cgm_string <span class="ot">&lt;-</span> <span class="fu">paste0</span>(<span class="st">"CGM Metrics - Mean Glucose: "</span>, MG, <span class="st">", Std. Dev. Glucose: "</span>, SDG)</span>
-<span id="cb162-10"><a href="#cb162-10" aria-hidden="true" tabindex="-1"></a>            summary_out <span class="ot">=</span> <span class="fu">cat</span>(<span class="fu">paste</span>(demo_string, biomk_string, cgm_string, <span class="at">sep =</span> <span class="st">"</span><span class="sc">\n</span><span class="st">"</span>))</span>
-<span id="cb162-11"><a href="#cb162-11" aria-hidden="true" tabindex="-1"></a>            summary_out</span>
+<span id="cb162-10"><a href="#cb162-10" aria-hidden="true" tabindex="-1"></a>            <span class="fu">cat</span>(<span class="fu">paste</span>(demo_string, biomk_string, cgm_string, <span class="at">sep =</span> <span class="st">"</span><span class="sc">\n</span><span class="st">"</span>))</span>
+<span id="cb162-11"><a href="#cb162-11" aria-hidden="true" tabindex="-1"></a>            <span class="fu">invisible</span>(object)</span>
 <span id="cb162-12"><a href="#cb162-12" aria-hidden="true" tabindex="-1"></a>          })</span>
 <span id="cb162-13"><a href="#cb162-13" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb162-14"><a href="#cb162-14" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(cgm_profile)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Demographics - Age: 55, Gender: F
 Biomarkers - BMI: 25, HbA1c: 8.5
-CGM Metrics - Mean Glucose: 79.68, Std. Dev. Glucose: 2.37</code></pre>
-</div>
-<div class="cell-output cell-output-stdout">
-<pre><code>NULL</code></pre>
+CGM Metrics - Mean Glucose: 80.05, Std. Dev. Glucose: 2.39</code></pre>
 </div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb165"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb165-1"><a href="#cb165-1" aria-hidden="true" tabindex="-1"></a><span class="fu">setMethod</span>(<span class="at">f =</span> <span class="st">"smooth"</span>, </span>
-<span id="cb165-2"><a href="#cb165-2" aria-hidden="true" tabindex="-1"></a>          <span class="at">signature =</span> <span class="fu">c</span>(<span class="at">x =</span> <span class="st">"cgm_S4"</span>), </span>
-<span id="cb165-3"><a href="#cb165-3" aria-hidden="true" tabindex="-1"></a>          <span class="at">definition =</span> <span class="cf">function</span>(x){</span>
-<span id="cb165-4"><a href="#cb165-4" aria-hidden="true" tabindex="-1"></a>            smoothed_CGM <span class="ot">&lt;-</span> <span class="fu">fitted</span>(<span class="fu">lm</span>(x<span class="sc">@</span>Data <span class="sc">~</span> <span class="fu">bs</span>(x<span class="sc">@</span>Times, <span class="at">df =</span> <span class="dv">12</span><span class="sc">*</span><span class="dv">14</span>)))</span>
-<span id="cb165-5"><a href="#cb165-5" aria-hidden="true" tabindex="-1"></a>            x<span class="sc">@</span>Data <span class="ot">&lt;-</span> smoothed_CGM</span>
-<span id="cb165-6"><a href="#cb165-6" aria-hidden="true" tabindex="-1"></a>            x</span>
-<span id="cb165-7"><a href="#cb165-7" aria-hidden="true" tabindex="-1"></a>          })</span>
-<span id="cb165-8"><a href="#cb165-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb165-9"><a href="#cb165-9" aria-hidden="true" tabindex="-1"></a>smoothed_cgm_profile <span class="ot">=</span> <span class="fu">smooth</span>(cgm_profile)</span>
-<span id="cb165-10"><a href="#cb165-10" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(smoothed_cgm_profile)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb164"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb164-1"><a href="#cb164-1" aria-hidden="true" tabindex="-1"></a><span class="fu">setMethod</span>(<span class="at">f =</span> <span class="st">"smooth"</span>, </span>
+<span id="cb164-2"><a href="#cb164-2" aria-hidden="true" tabindex="-1"></a>          <span class="at">signature =</span> <span class="fu">c</span>(<span class="at">x =</span> <span class="st">"cgm_S4"</span>), </span>
+<span id="cb164-3"><a href="#cb164-3" aria-hidden="true" tabindex="-1"></a>          <span class="at">definition =</span> <span class="cf">function</span>(x){</span>
+<span id="cb164-4"><a href="#cb164-4" aria-hidden="true" tabindex="-1"></a>            smoothed_CGM <span class="ot">&lt;-</span> <span class="fu">fitted</span>(<span class="fu">lm</span>(x<span class="sc">@</span>Data <span class="sc">~</span> <span class="fu">bs</span>(x<span class="sc">@</span>Times, <span class="at">df =</span> <span class="dv">12</span><span class="sc">*</span><span class="dv">14</span>)))</span>
+<span id="cb164-5"><a href="#cb164-5" aria-hidden="true" tabindex="-1"></a>            x<span class="sc">@</span>Data <span class="ot">&lt;-</span> smoothed_CGM</span>
+<span id="cb164-6"><a href="#cb164-6" aria-hidden="true" tabindex="-1"></a>            x</span>
+<span id="cb164-7"><a href="#cb164-7" aria-hidden="true" tabindex="-1"></a>          })</span>
+<span id="cb164-8"><a href="#cb164-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb164-9"><a href="#cb164-9" aria-hidden="true" tabindex="-1"></a>smoothed_cgm_profile <span class="ot">=</span> <span class="fu">smooth</span>(cgm_profile)</span>
+<span id="cb164-10"><a href="#cb164-10" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(smoothed_cgm_profile)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <p><img src="index_files/figure-html/unnamed-chunk-59-1.png" class="img-fluid" width="672"></p>
 </div>
@@ -1688,56 +1686,56 @@ CGM Metrics - Mean Glucose: 79.68, Std. Dev. Glucose: 2.37</code></pre>
 <h2 class="anchored" data-anchor-id="rc-constructor-for-cgm-object-with-methods">RC Constructor for CGM Object with Methods</h2>
 <p>All of the same functionality can also be replicated using Reference Classes. This alternative framework might even be preferable for this application, as packaging methods with objects compartmentalizes functionality for easily-distributable and accessible software. The objects are also mutable, unlike S3 and S4, which is preferable for certain types of objects which should be fluid when used.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb166"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb166-1"><a href="#cb166-1" aria-hidden="true" tabindex="-1"></a>cgm_RC <span class="ot">&lt;-</span> <span class="fu">setRefClass</span>(<span class="st">"cgm_RC"</span>, </span>
-<span id="cb166-2"><a href="#cb166-2" aria-hidden="true" tabindex="-1"></a>                      <span class="at">fields =</span> <span class="fu">list</span>(<span class="at">Data =</span> <span class="st">"numeric"</span>, </span>
-<span id="cb166-3"><a href="#cb166-3" aria-hidden="true" tabindex="-1"></a>                                    <span class="at">Times =</span> <span class="st">"POSIXct"</span>, </span>
-<span id="cb166-4"><a href="#cb166-4" aria-hidden="true" tabindex="-1"></a>                                    <span class="at">Age =</span> <span class="st">"numeric"</span>, </span>
-<span id="cb166-5"><a href="#cb166-5" aria-hidden="true" tabindex="-1"></a>                                    <span class="at">Gender =</span> <span class="st">"character"</span>, </span>
-<span id="cb166-6"><a href="#cb166-6" aria-hidden="true" tabindex="-1"></a>                                    <span class="at">BMI =</span> <span class="st">"numeric"</span>, </span>
-<span id="cb166-7"><a href="#cb166-7" aria-hidden="true" tabindex="-1"></a>                                    <span class="at">HbA1c =</span> <span class="st">"numeric"</span>), </span>
-<span id="cb166-8"><a href="#cb166-8" aria-hidden="true" tabindex="-1"></a>              <span class="at">methods =</span> <span class="fu">list</span>(</span>
-<span id="cb166-9"><a href="#cb166-9" aria-hidden="true" tabindex="-1"></a>                  <span class="at">print =</span> <span class="cf">function</span>(){</span>
-<span id="cb166-10"><a href="#cb166-10" aria-hidden="true" tabindex="-1"></a>                    <span class="fu">plot</span>(<span class="at">x =</span> Times, <span class="at">y =</span> Data, <span class="at">type =</span> <span class="st">"l"</span>, </span>
-<span id="cb166-11"><a href="#cb166-11" aria-hidden="true" tabindex="-1"></a>                        <span class="at">xlab =</span> <span class="st">"Date-time"</span>, <span class="at">ylab =</span> <span class="st">"Glucose (mg/dL)"</span>)</span>
-<span id="cb166-12"><a href="#cb166-12" aria-hidden="true" tabindex="-1"></a>                    <span class="fu">invisible</span>(.self)</span>
-<span id="cb166-13"><a href="#cb166-13" aria-hidden="true" tabindex="-1"></a>                  },</span>
-<span id="cb166-14"><a href="#cb166-14" aria-hidden="true" tabindex="-1"></a>                  <span class="at">summmary =</span> <span class="cf">function</span>(){</span>
-<span id="cb166-15"><a href="#cb166-15" aria-hidden="true" tabindex="-1"></a>                    MG <span class="ot">=</span> <span class="fu">round</span>(<span class="fu">mean</span>(Data), <span class="dv">2</span>)</span>
-<span id="cb166-16"><a href="#cb166-16" aria-hidden="true" tabindex="-1"></a>                    SDG <span class="ot">=</span> <span class="fu">round</span>(<span class="fu">sd</span>(Data), <span class="dv">2</span>)</span>
-<span id="cb166-17"><a href="#cb166-17" aria-hidden="true" tabindex="-1"></a>            </span>
-<span id="cb166-18"><a href="#cb166-18" aria-hidden="true" tabindex="-1"></a>                    demo_string <span class="ot">&lt;-</span> <span class="fu">paste0</span>(<span class="st">"Demographics - Age: "</span>, Age, <span class="st">", Gender: "</span>, Gender)</span>
-<span id="cb166-19"><a href="#cb166-19" aria-hidden="true" tabindex="-1"></a>                    biomk_string <span class="ot">&lt;-</span> <span class="fu">paste0</span>(<span class="st">"Biomarkers - BMI: "</span>, BMI, <span class="st">", HbA1c: "</span>, HbA1c)</span>
-<span id="cb166-20"><a href="#cb166-20" aria-hidden="true" tabindex="-1"></a>                    cgm_string <span class="ot">&lt;-</span> <span class="fu">paste0</span>(<span class="st">"CGM Metrics - Mean Glucose: "</span>, MG, <span class="st">", Std. Dev. Glucose: "</span>, SDG)</span>
-<span id="cb166-21"><a href="#cb166-21" aria-hidden="true" tabindex="-1"></a>                    <span class="fu">cat</span>(<span class="fu">paste</span>(demo_string, biomk_string, cgm_string, <span class="at">sep =</span> <span class="st">"</span><span class="sc">\n</span><span class="st">"</span>))</span>
-<span id="cb166-22"><a href="#cb166-22" aria-hidden="true" tabindex="-1"></a>                    <span class="fu">invisible</span>(.self)</span>
-<span id="cb166-23"><a href="#cb166-23" aria-hidden="true" tabindex="-1"></a>                  },</span>
-<span id="cb166-24"><a href="#cb166-24" aria-hidden="true" tabindex="-1"></a>                  <span class="at">smooth =</span> <span class="cf">function</span>(){</span>
-<span id="cb166-25"><a href="#cb166-25" aria-hidden="true" tabindex="-1"></a>                    smoothed_CGM <span class="ot">&lt;-</span> <span class="fu">fitted</span>(<span class="fu">lm</span>(Data <span class="sc">~</span> <span class="fu">bs</span>(Times, <span class="at">df =</span> <span class="dv">12</span><span class="sc">*</span><span class="dv">14</span>)))</span>
-<span id="cb166-26"><a href="#cb166-26" aria-hidden="true" tabindex="-1"></a>                    Data <span class="ot">&lt;&lt;-</span> smoothed_CGM</span>
-<span id="cb166-27"><a href="#cb166-27" aria-hidden="true" tabindex="-1"></a>                  }</span>
-<span id="cb166-28"><a href="#cb166-28" aria-hidden="true" tabindex="-1"></a>                ))</span>
-<span id="cb166-29"><a href="#cb166-29" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb166-30"><a href="#cb166-30" aria-hidden="true" tabindex="-1"></a>cgm_profile <span class="ot">&lt;-</span> cgm_RC<span class="sc">$</span><span class="fu">new</span>(<span class="at">Data =</span> simulated_CGM, <span class="at">Times =</span> simulated_TS,</span>
-<span id="cb166-31"><a href="#cb166-31" aria-hidden="true" tabindex="-1"></a>                   <span class="at">Age =</span> demo<span class="sc">$</span>Age, <span class="at">Gender =</span> demo<span class="sc">$</span>Gender, <span class="at">BMI =</span> biomk<span class="sc">$</span>BMI, </span>
-<span id="cb166-32"><a href="#cb166-32" aria-hidden="true" tabindex="-1"></a>                   <span class="at">HbA1c =</span> biomk<span class="sc">$</span>HbA1c)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb165"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb165-1"><a href="#cb165-1" aria-hidden="true" tabindex="-1"></a>cgm_RC <span class="ot">&lt;-</span> <span class="fu">setRefClass</span>(<span class="st">"cgm_RC"</span>, </span>
+<span id="cb165-2"><a href="#cb165-2" aria-hidden="true" tabindex="-1"></a>                      <span class="at">fields =</span> <span class="fu">list</span>(<span class="at">Data =</span> <span class="st">"numeric"</span>, </span>
+<span id="cb165-3"><a href="#cb165-3" aria-hidden="true" tabindex="-1"></a>                                    <span class="at">Times =</span> <span class="st">"POSIXct"</span>, </span>
+<span id="cb165-4"><a href="#cb165-4" aria-hidden="true" tabindex="-1"></a>                                    <span class="at">Age =</span> <span class="st">"numeric"</span>, </span>
+<span id="cb165-5"><a href="#cb165-5" aria-hidden="true" tabindex="-1"></a>                                    <span class="at">Gender =</span> <span class="st">"character"</span>, </span>
+<span id="cb165-6"><a href="#cb165-6" aria-hidden="true" tabindex="-1"></a>                                    <span class="at">BMI =</span> <span class="st">"numeric"</span>, </span>
+<span id="cb165-7"><a href="#cb165-7" aria-hidden="true" tabindex="-1"></a>                                    <span class="at">HbA1c =</span> <span class="st">"numeric"</span>), </span>
+<span id="cb165-8"><a href="#cb165-8" aria-hidden="true" tabindex="-1"></a>              <span class="at">methods =</span> <span class="fu">list</span>(</span>
+<span id="cb165-9"><a href="#cb165-9" aria-hidden="true" tabindex="-1"></a>                  <span class="at">print =</span> <span class="cf">function</span>(){</span>
+<span id="cb165-10"><a href="#cb165-10" aria-hidden="true" tabindex="-1"></a>                    <span class="fu">plot</span>(<span class="at">x =</span> Times, <span class="at">y =</span> Data, <span class="at">type =</span> <span class="st">"l"</span>, </span>
+<span id="cb165-11"><a href="#cb165-11" aria-hidden="true" tabindex="-1"></a>                        <span class="at">xlab =</span> <span class="st">"Date-time"</span>, <span class="at">ylab =</span> <span class="st">"Glucose (mg/dL)"</span>)</span>
+<span id="cb165-12"><a href="#cb165-12" aria-hidden="true" tabindex="-1"></a>                    <span class="fu">invisible</span>(.self)</span>
+<span id="cb165-13"><a href="#cb165-13" aria-hidden="true" tabindex="-1"></a>                  },</span>
+<span id="cb165-14"><a href="#cb165-14" aria-hidden="true" tabindex="-1"></a>                  <span class="at">summmary =</span> <span class="cf">function</span>(){</span>
+<span id="cb165-15"><a href="#cb165-15" aria-hidden="true" tabindex="-1"></a>                    MG <span class="ot">=</span> <span class="fu">round</span>(<span class="fu">mean</span>(Data), <span class="dv">2</span>)</span>
+<span id="cb165-16"><a href="#cb165-16" aria-hidden="true" tabindex="-1"></a>                    SDG <span class="ot">=</span> <span class="fu">round</span>(<span class="fu">sd</span>(Data), <span class="dv">2</span>)</span>
+<span id="cb165-17"><a href="#cb165-17" aria-hidden="true" tabindex="-1"></a>            </span>
+<span id="cb165-18"><a href="#cb165-18" aria-hidden="true" tabindex="-1"></a>                    demo_string <span class="ot">&lt;-</span> <span class="fu">paste0</span>(<span class="st">"Demographics - Age: "</span>, Age, <span class="st">", Gender: "</span>, Gender)</span>
+<span id="cb165-19"><a href="#cb165-19" aria-hidden="true" tabindex="-1"></a>                    biomk_string <span class="ot">&lt;-</span> <span class="fu">paste0</span>(<span class="st">"Biomarkers - BMI: "</span>, BMI, <span class="st">", HbA1c: "</span>, HbA1c)</span>
+<span id="cb165-20"><a href="#cb165-20" aria-hidden="true" tabindex="-1"></a>                    cgm_string <span class="ot">&lt;-</span> <span class="fu">paste0</span>(<span class="st">"CGM Metrics - Mean Glucose: "</span>, MG, <span class="st">", Std. Dev. Glucose: "</span>, SDG)</span>
+<span id="cb165-21"><a href="#cb165-21" aria-hidden="true" tabindex="-1"></a>                    <span class="fu">cat</span>(<span class="fu">paste</span>(demo_string, biomk_string, cgm_string, <span class="at">sep =</span> <span class="st">"</span><span class="sc">\n</span><span class="st">"</span>))</span>
+<span id="cb165-22"><a href="#cb165-22" aria-hidden="true" tabindex="-1"></a>                    <span class="fu">invisible</span>(.self)</span>
+<span id="cb165-23"><a href="#cb165-23" aria-hidden="true" tabindex="-1"></a>                  },</span>
+<span id="cb165-24"><a href="#cb165-24" aria-hidden="true" tabindex="-1"></a>                  <span class="at">smooth =</span> <span class="cf">function</span>(){</span>
+<span id="cb165-25"><a href="#cb165-25" aria-hidden="true" tabindex="-1"></a>                    smoothed_CGM <span class="ot">&lt;-</span> <span class="fu">fitted</span>(<span class="fu">lm</span>(Data <span class="sc">~</span> <span class="fu">bs</span>(Times, <span class="at">df =</span> <span class="dv">12</span><span class="sc">*</span><span class="dv">14</span>)))</span>
+<span id="cb165-26"><a href="#cb165-26" aria-hidden="true" tabindex="-1"></a>                    Data <span class="ot">&lt;&lt;-</span> smoothed_CGM</span>
+<span id="cb165-27"><a href="#cb165-27" aria-hidden="true" tabindex="-1"></a>                  }</span>
+<span id="cb165-28"><a href="#cb165-28" aria-hidden="true" tabindex="-1"></a>                ))</span>
+<span id="cb165-29"><a href="#cb165-29" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb165-30"><a href="#cb165-30" aria-hidden="true" tabindex="-1"></a>cgm_profile <span class="ot">&lt;-</span> cgm_RC<span class="sc">$</span><span class="fu">new</span>(<span class="at">Data =</span> simulated_CGM, <span class="at">Times =</span> simulated_TS,</span>
+<span id="cb165-31"><a href="#cb165-31" aria-hidden="true" tabindex="-1"></a>                   <span class="at">Age =</span> demo<span class="sc">$</span>Age, <span class="at">Gender =</span> demo<span class="sc">$</span>Gender, <span class="at">BMI =</span> biomk<span class="sc">$</span>BMI, </span>
+<span id="cb165-32"><a href="#cb165-32" aria-hidden="true" tabindex="-1"></a>                   <span class="at">HbA1c =</span> biomk<span class="sc">$</span>HbA1c)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb167"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb167-1"><a href="#cb167-1" aria-hidden="true" tabindex="-1"></a>cgm_profile<span class="sc">$</span><span class="fu">print</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb166"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb166-1"><a href="#cb166-1" aria-hidden="true" tabindex="-1"></a>cgm_profile<span class="sc">$</span><span class="fu">print</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <p><img src="index_files/figure-html/unnamed-chunk-61-1.png" class="img-fluid" width="672"></p>
 </div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb168"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb168-1"><a href="#cb168-1" aria-hidden="true" tabindex="-1"></a>cgm_profile<span class="sc">$</span><span class="fu">summmary</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb167"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb167-1"><a href="#cb167-1" aria-hidden="true" tabindex="-1"></a>cgm_profile<span class="sc">$</span><span class="fu">summmary</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Demographics - Age: 55, Gender: F
 Biomarkers - BMI: 25, HbA1c: 8.5
-CGM Metrics - Mean Glucose: 79.68, Std. Dev. Glucose: 2.37</code></pre>
+CGM Metrics - Mean Glucose: 80.05, Std. Dev. Glucose: 2.39</code></pre>
 </div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb170"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb170-1"><a href="#cb170-1" aria-hidden="true" tabindex="-1"></a>cgm_profile<span class="sc">$</span><span class="fu">smooth</span>()</span>
-<span id="cb170-2"><a href="#cb170-2" aria-hidden="true" tabindex="-1"></a>cgm_profile<span class="sc">$</span><span class="fu">print</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb169"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb169-1"><a href="#cb169-1" aria-hidden="true" tabindex="-1"></a>cgm_profile<span class="sc">$</span><span class="fu">smooth</span>()</span>
+<span id="cb169-2"><a href="#cb169-2" aria-hidden="true" tabindex="-1"></a>cgm_profile<span class="sc">$</span><span class="fu">print</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <p><img src="index_files/figure-html/unnamed-chunk-63-1.png" class="img-fluid" width="672"></p>
 </div>
