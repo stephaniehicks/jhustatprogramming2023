@@ -939,8 +939,6 @@ print(my_party_bus)
 
 # Reference Classes
 
-<details> <summary> Click here to learn about reference classes (RC).</summary>
-
 With reference classes we leave the world of R's old object oriented systems
 and enter the philosophies of other prominent object oriented programming
 languages. We can use the `setRefClass()` function to define a class' fields,
@@ -1023,7 +1021,219 @@ jeff <- Grad_Student$new(name = "Jeff", grad_year = 2021, credits = 8,
 jeff$defend()
 ```
 
-</details>
+# Real-World Examples
+
+```{r}
+#| echo: false
+
+library(splines)
+```
+
+## Background
+
+Continuous glucose monitoring (CGM) is novel sensor modality which estimates blood glucose quasi-continuously over 2 weeks in free-living conditions. This facilitates real-time management and comprehensive characterization of glucose for persons with diabetes.
+
+![CGM Device (Abbott Libre Pro)](images/Sensor.png){width="4in"}
+
+![Example CGM Time-Series](images/JS_CGM.jpeg){width="4in"}
+
+## OOP For CGM Data
+
+CGM is often collected with other biomarkers, demographic information, and follow-up indicators when used in epidemiological studies. OOP makes it possible to store these different data modalities together in an Object for each person and to standardize operations upon a person's data.
+
+```{r}
+simulated_CGM <- as.numeric(arima.sim(model = list(ar = 0.8, ma = 0.5), n = 1440) + 80)
+simulated_TS <- seq(from = Sys.time(), length.out = 1440, by = 15*60)
+demo <- list(Age = 55, Gender = "F")
+biomk <- list(BMI = 25, HbA1c = 8.5)
+```
+
+## S3 Constructor for CGM Object
+
+```{r}
+cgm_s3 <- function(CGM_data, CGM_datetimes, demographics, biomarkers){
+  structure(list(Data = CGM_data, Times = CGM_datetimes,
+                 Age = demographics$Age, Gender = demographics$Gender, 
+                 BMI = biomarkers$BMI, HbA1c = biomarkers$BMI), class = "cgm_S3")
+}
+
+cgm_profile <- cgm_s3(simulated_CGM, simulated_TS, demo, biomk)
+class(cgm_profile)
+```
+
+## S3 Methods for CGM Object
+
+We may want to overwrite the generic "print" and "summary" methods, outputting a plot of the CGM data in the former case or returning a subset of pertinent information in the latter.
+
+```{r}
+print.cgm_S3 <- function(x, ...){
+  plot(x = x$Times, y = x$Data, type = "l", 
+       xlab = "Date-time", ylab = "Glucose (mg/dL)")
+  invisible(x)
+}
+
+print(cgm_profile)
+```
+
+```{r}
+summary.cgm_S3 <- function(x, ...){
+  demo_string <- paste0("Age: ", x$Age, ", Gender: ", x$Gender)
+  biomk_string <- paste0("BMI: ", x$BMI, ", HbA1c: ", x$HbA1c)
+  cgm_string <- paste0("Mean Glucose: ", round(mean(x$Data), 2), ", Std. Dev. Glucose: ", round(sd(x$Data), 2))
+  object <- list(demographics = demo_string, 
+                 biomarkers = biomk_string, 
+                 cgm = cgm_string)
+  class(object) <- "summary_CGM"
+  object
+}
+
+print.summary_CGM <- function(x, ...){
+  cat(paste(paste0("Demographics - ", x$demographics), 
+            paste0("Biomarkers - ", x$biomarkers), 
+            paste0("CGM Metrics - ", x$cgm), sep = "\n"))
+  invisible(x)
+}
+
+summary(cgm_profile)
+```
+
+We may also wish to perform any range of standard operations upon the CGM time series data, like smoothing.
+
+```{r}
+smooth <- function(x) UseMethod("smooth")
+smooth.cgm_S3 <- function(x){
+  smoothed_CGM <- fitted(lm(x$Data ~ bs(x$Times, df = 12*14)))
+  x$Data <- smoothed_CGM
+  return(x)
+}
+
+smoothed_cgm_profile = smooth(cgm_profile)
+print(smoothed_cgm_profile)
+
+```
+
+## S4 Constructor for CGM Object
+
+```{r}
+setClass(Class = "cgm_S4", 
+         slots = list(Data = "numeric", 
+                      Times = "POSIXct", 
+                      Age = "numeric", 
+                      Gender = "character", 
+                      BMI = "numeric", 
+                      HbA1c = "numeric"))
+
+cgm_profile <- new("cgm_S4", Data = simulated_CGM, Times = simulated_TS,
+                   Age = demo$Age, Gender = demo$Gender, BMI = biomk$BMI, 
+                   HbA1c = biomk$HbA1c)
+
+class(cgm_profile)
+```
+
+## S4 Methods for CGM Object
+
+We can overwrite the generic "print" and "summary" methods to achieve the same functionality in S4.
+
+```{r}
+setGeneric("print")
+setGeneric("summary")
+setGeneric("smooth", function(x){
+  standardGeneric("smooth")
+})
+```
+
+```{r}
+setMethod(f = "print", 
+          signature = c(x = "cgm_S4"), 
+          definition = function(x){
+            plot(x = x@Times, y = x@Data, type = "l", 
+            xlab = "Date-time", ylab = "Glucose (mg/dL)")
+          })
+
+print(cgm_profile)
+```
+
+```{r}
+setMethod(f = "summary", 
+          signature = c(object = "cgm_S4"), 
+          definition = function(object){
+            MG = round(mean(object@Data), 2)
+            SDG = round(sd(object@Data), 2)
+            
+            demo_string <- paste0("Demographics - Age: ", object@Age, ", Gender: ", object@Gender)
+            biomk_string <- paste0("Biomarkers - BMI: ", object@BMI, ", HbA1c: ", object@HbA1c)
+            cgm_string <- paste0("CGM Metrics - Mean Glucose: ", MG, ", Std. Dev. Glucose: ", SDG)
+            summary_out = cat(paste(demo_string, biomk_string, cgm_string, sep = "\n"))
+            summary_out
+          })
+
+summary(cgm_profile)
+```
+
+```{r}
+setMethod(f = "smooth", 
+          signature = c(x = "cgm_S4"), 
+          definition = function(x){
+            smoothed_CGM <- fitted(lm(x@Data ~ bs(x@Times, df = 12*14)))
+            x@Data <- smoothed_CGM
+            x
+          })
+
+smoothed_cgm_profile = smooth(cgm_profile)
+print(smoothed_cgm_profile)
+
+```
+
+## RC Constructor for CGM Object with Methods
+
+All of the same functionality can also be replicated using Reference Classes. This alternative framework might even be preferable for this application, as packaging methods with objects compartmentalizes functionality for easily-distributable and accessible software. The objects are also mutable, unlike S3 and S4, which is preferable for certain types of objects which should be fluid when used.
+
+```{r}
+cgm_RC <- setRefClass("cgm_RC", 
+                      fields = list(Data = "numeric", 
+                                    Times = "POSIXct", 
+                                    Age = "numeric", 
+                                    Gender = "character", 
+                                    BMI = "numeric", 
+                                    HbA1c = "numeric"), 
+              methods = list(
+                  print = function(){
+                    plot(x = Times, y = Data, type = "l", 
+                        xlab = "Date-time", ylab = "Glucose (mg/dL)")
+                  },
+                  summmary = function(){
+                    MG = round(mean(Data), 2)
+                    SDG = round(sd(Data), 2)
+            
+                    demo_string <- paste0("Demographics - Age: ", Age, ", Gender: ", Gender)
+                    biomk_string <- paste0("Biomarkers - BMI: ", BMI, ", HbA1c: ", HbA1c)
+                    cgm_string <- paste0("CGM Metrics - Mean Glucose: ", MG, ", Std. Dev. Glucose: ", SDG)
+                    summary_out = cat(paste(demo_string, biomk_string, cgm_string, sep = "\n"))
+                    summary_out
+                  },
+                  smooth = function(){
+                    smoothed_CGM <- fitted(lm(Data ~ bs(Times, df = 12*14)))
+                    Data <<- smoothed_CGM
+                  }
+                ))
+
+cgm_profile <- cgm_RC$new(Data = simulated_CGM, Times = simulated_TS,
+                   Age = demo$Age, Gender = demo$Gender, BMI = biomk$BMI, 
+                   HbA1c = biomk$HbA1c)
+```
+
+```{r}
+cgm_profile$print()
+```
+
+```{r}
+cgm_profile$summmary()
+```
+
+```{r}
+cgm_profile$smooth()
+cgm_profile$print()
+```
 
 # Summary
 
