@@ -1200,6 +1200,7 @@ cgm_RC <- setRefClass("cgm_RC",
                   print = function(){
                     plot(x = Times, y = Data, type = "l", 
                         xlab = "Date-time", ylab = "Glucose (mg/dL)")
+                    invisible(.self)
                   },
                   summmary = function(){
                     MG = round(mean(Data), 2)
@@ -1208,8 +1209,8 @@ cgm_RC <- setRefClass("cgm_RC",
                     demo_string <- paste0("Demographics - Age: ", Age, ", Gender: ", Gender)
                     biomk_string <- paste0("Biomarkers - BMI: ", BMI, ", HbA1c: ", HbA1c)
                     cgm_string <- paste0("CGM Metrics - Mean Glucose: ", MG, ", Std. Dev. Glucose: ", SDG)
-                    summary_out = cat(paste(demo_string, biomk_string, cgm_string, sep = "\n"))
-                    summary_out
+                    cat(paste(demo_string, biomk_string, cgm_string, sep = "\n"))
+                    invisible(.self)
                   },
                   smooth = function(){
                     smoothed_CGM <- fitted(lm(Data ~ bs(Times, df = 12*14)))
