@@ -1148,6 +1148,7 @@ setMethod(f = "print",
           definition = function(x){
             plot(x = x@Times, y = x@Data, type = "l", 
             xlab = "Date-time", ylab = "Glucose (mg/dL)")
+            invisible(x)
           })
 
 print(cgm_profile)
@@ -1163,8 +1164,8 @@ setMethod(f = "summary",
             demo_string <- paste0("Demographics - Age: ", object@Age, ", Gender: ", object@Gender)
             biomk_string <- paste0("Biomarkers - BMI: ", object@BMI, ", HbA1c: ", object@HbA1c)
             cgm_string <- paste0("CGM Metrics - Mean Glucose: ", MG, ", Std. Dev. Glucose: ", SDG)
-            summary_out = cat(paste(demo_string, biomk_string, cgm_string, sep = "\n"))
-            summary_out
+            cat(paste(demo_string, biomk_string, cgm_string, sep = "\n"))
+            invisible(object)
           })
 
 summary(cgm_profile)
