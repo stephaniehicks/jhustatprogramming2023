@@ -1570,7 +1570,7 @@ Slot "brand":
 <div class="cell-output cell-output-stdout">
 <pre><code>Demographics - Age: 55, Gender: F
 Biomarkers - BMI: 25, HbA1c: 25
-CGM Metrics - Mean Glucose: 79.69, Std. Dev. Glucose: 2.5</code></pre>
+CGM Metrics - Mean Glucose: 79.68, Std. Dev. Glucose: 2.37</code></pre>
 </div>
 </div>
 <p>We may also wish to perform any range of standard operations upon the CGM time series data, like smoothing.</p>
@@ -1662,7 +1662,7 @@ attr(,"package")
 <div class="cell-output cell-output-stdout">
 <pre><code>Demographics - Age: 55, Gender: F
 Biomarkers - BMI: 25, HbA1c: 8.5
-CGM Metrics - Mean Glucose: 79.69, Std. Dev. Glucose: 2.5</code></pre>
+CGM Metrics - Mean Glucose: 79.68, Std. Dev. Glucose: 2.37</code></pre>
 </div>
 <div class="cell-output cell-output-stdout">
 <pre><code>NULL</code></pre>
@@ -1699,26 +1699,27 @@ CGM Metrics - Mean Glucose: 79.69, Std. Dev. Glucose: 2.5</code></pre>
 <span id="cb166-9"><a href="#cb166-9" aria-hidden="true" tabindex="-1"></a>                  <span class="at">print =</span> <span class="cf">function</span>(){</span>
 <span id="cb166-10"><a href="#cb166-10" aria-hidden="true" tabindex="-1"></a>                    <span class="fu">plot</span>(<span class="at">x =</span> Times, <span class="at">y =</span> Data, <span class="at">type =</span> <span class="st">"l"</span>, </span>
 <span id="cb166-11"><a href="#cb166-11" aria-hidden="true" tabindex="-1"></a>                        <span class="at">xlab =</span> <span class="st">"Date-time"</span>, <span class="at">ylab =</span> <span class="st">"Glucose (mg/dL)"</span>)</span>
-<span id="cb166-12"><a href="#cb166-12" aria-hidden="true" tabindex="-1"></a>                  },</span>
-<span id="cb166-13"><a href="#cb166-13" aria-hidden="true" tabindex="-1"></a>                  <span class="at">summmary =</span> <span class="cf">function</span>(){</span>
-<span id="cb166-14"><a href="#cb166-14" aria-hidden="true" tabindex="-1"></a>                    MG <span class="ot">=</span> <span class="fu">round</span>(<span class="fu">mean</span>(Data), <span class="dv">2</span>)</span>
-<span id="cb166-15"><a href="#cb166-15" aria-hidden="true" tabindex="-1"></a>                    SDG <span class="ot">=</span> <span class="fu">round</span>(<span class="fu">sd</span>(Data), <span class="dv">2</span>)</span>
-<span id="cb166-16"><a href="#cb166-16" aria-hidden="true" tabindex="-1"></a>            </span>
-<span id="cb166-17"><a href="#cb166-17" aria-hidden="true" tabindex="-1"></a>                    demo_string <span class="ot">&lt;-</span> <span class="fu">paste0</span>(<span class="st">"Demographics - Age: "</span>, Age, <span class="st">", Gender: "</span>, Gender)</span>
-<span id="cb166-18"><a href="#cb166-18" aria-hidden="true" tabindex="-1"></a>                    biomk_string <span class="ot">&lt;-</span> <span class="fu">paste0</span>(<span class="st">"Biomarkers - BMI: "</span>, BMI, <span class="st">", HbA1c: "</span>, HbA1c)</span>
-<span id="cb166-19"><a href="#cb166-19" aria-hidden="true" tabindex="-1"></a>                    cgm_string <span class="ot">&lt;-</span> <span class="fu">paste0</span>(<span class="st">"CGM Metrics - Mean Glucose: "</span>, MG, <span class="st">", Std. Dev. Glucose: "</span>, SDG)</span>
-<span id="cb166-20"><a href="#cb166-20" aria-hidden="true" tabindex="-1"></a>                    summary_out <span class="ot">=</span> <span class="fu">cat</span>(<span class="fu">paste</span>(demo_string, biomk_string, cgm_string, <span class="at">sep =</span> <span class="st">"</span><span class="sc">\n</span><span class="st">"</span>))</span>
-<span id="cb166-21"><a href="#cb166-21" aria-hidden="true" tabindex="-1"></a>                    summary_out</span>
-<span id="cb166-22"><a href="#cb166-22" aria-hidden="true" tabindex="-1"></a>                  },</span>
-<span id="cb166-23"><a href="#cb166-23" aria-hidden="true" tabindex="-1"></a>                  <span class="at">smooth =</span> <span class="cf">function</span>(){</span>
-<span id="cb166-24"><a href="#cb166-24" aria-hidden="true" tabindex="-1"></a>                    smoothed_CGM <span class="ot">&lt;-</span> <span class="fu">fitted</span>(<span class="fu">lm</span>(Data <span class="sc">~</span> <span class="fu">bs</span>(Times, <span class="at">df =</span> <span class="dv">12</span><span class="sc">*</span><span class="dv">14</span>)))</span>
-<span id="cb166-25"><a href="#cb166-25" aria-hidden="true" tabindex="-1"></a>                    Data <span class="ot">&lt;&lt;-</span> smoothed_CGM</span>
-<span id="cb166-26"><a href="#cb166-26" aria-hidden="true" tabindex="-1"></a>                  }</span>
-<span id="cb166-27"><a href="#cb166-27" aria-hidden="true" tabindex="-1"></a>                ))</span>
-<span id="cb166-28"><a href="#cb166-28" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb166-29"><a href="#cb166-29" aria-hidden="true" tabindex="-1"></a>cgm_profile <span class="ot">&lt;-</span> cgm_RC<span class="sc">$</span><span class="fu">new</span>(<span class="at">Data =</span> simulated_CGM, <span class="at">Times =</span> simulated_TS,</span>
-<span id="cb166-30"><a href="#cb166-30" aria-hidden="true" tabindex="-1"></a>                   <span class="at">Age =</span> demo<span class="sc">$</span>Age, <span class="at">Gender =</span> demo<span class="sc">$</span>Gender, <span class="at">BMI =</span> biomk<span class="sc">$</span>BMI, </span>
-<span id="cb166-31"><a href="#cb166-31" aria-hidden="true" tabindex="-1"></a>                   <span class="at">HbA1c =</span> biomk<span class="sc">$</span>HbA1c)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb166-12"><a href="#cb166-12" aria-hidden="true" tabindex="-1"></a>                    <span class="fu">invisible</span>(.self)</span>
+<span id="cb166-13"><a href="#cb166-13" aria-hidden="true" tabindex="-1"></a>                  },</span>
+<span id="cb166-14"><a href="#cb166-14" aria-hidden="true" tabindex="-1"></a>                  <span class="at">summmary =</span> <span class="cf">function</span>(){</span>
+<span id="cb166-15"><a href="#cb166-15" aria-hidden="true" tabindex="-1"></a>                    MG <span class="ot">=</span> <span class="fu">round</span>(<span class="fu">mean</span>(Data), <span class="dv">2</span>)</span>
+<span id="cb166-16"><a href="#cb166-16" aria-hidden="true" tabindex="-1"></a>                    SDG <span class="ot">=</span> <span class="fu">round</span>(<span class="fu">sd</span>(Data), <span class="dv">2</span>)</span>
+<span id="cb166-17"><a href="#cb166-17" aria-hidden="true" tabindex="-1"></a>            </span>
+<span id="cb166-18"><a href="#cb166-18" aria-hidden="true" tabindex="-1"></a>                    demo_string <span class="ot">&lt;-</span> <span class="fu">paste0</span>(<span class="st">"Demographics - Age: "</span>, Age, <span class="st">", Gender: "</span>, Gender)</span>
+<span id="cb166-19"><a href="#cb166-19" aria-hidden="true" tabindex="-1"></a>                    biomk_string <span class="ot">&lt;-</span> <span class="fu">paste0</span>(<span class="st">"Biomarkers - BMI: "</span>, BMI, <span class="st">", HbA1c: "</span>, HbA1c)</span>
+<span id="cb166-20"><a href="#cb166-20" aria-hidden="true" tabindex="-1"></a>                    cgm_string <span class="ot">&lt;-</span> <span class="fu">paste0</span>(<span class="st">"CGM Metrics - Mean Glucose: "</span>, MG, <span class="st">", Std. Dev. Glucose: "</span>, SDG)</span>
+<span id="cb166-21"><a href="#cb166-21" aria-hidden="true" tabindex="-1"></a>                    <span class="fu">cat</span>(<span class="fu">paste</span>(demo_string, biomk_string, cgm_string, <span class="at">sep =</span> <span class="st">"</span><span class="sc">\n</span><span class="st">"</span>))</span>
+<span id="cb166-22"><a href="#cb166-22" aria-hidden="true" tabindex="-1"></a>                    <span class="fu">invisible</span>(.self)</span>
+<span id="cb166-23"><a href="#cb166-23" aria-hidden="true" tabindex="-1"></a>                  },</span>
+<span id="cb166-24"><a href="#cb166-24" aria-hidden="true" tabindex="-1"></a>                  <span class="at">smooth =</span> <span class="cf">function</span>(){</span>
+<span id="cb166-25"><a href="#cb166-25" aria-hidden="true" tabindex="-1"></a>                    smoothed_CGM <span class="ot">&lt;-</span> <span class="fu">fitted</span>(<span class="fu">lm</span>(Data <span class="sc">~</span> <span class="fu">bs</span>(Times, <span class="at">df =</span> <span class="dv">12</span><span class="sc">*</span><span class="dv">14</span>)))</span>
+<span id="cb166-26"><a href="#cb166-26" aria-hidden="true" tabindex="-1"></a>                    Data <span class="ot">&lt;&lt;-</span> smoothed_CGM</span>
+<span id="cb166-27"><a href="#cb166-27" aria-hidden="true" tabindex="-1"></a>                  }</span>
+<span id="cb166-28"><a href="#cb166-28" aria-hidden="true" tabindex="-1"></a>                ))</span>
+<span id="cb166-29"><a href="#cb166-29" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb166-30"><a href="#cb166-30" aria-hidden="true" tabindex="-1"></a>cgm_profile <span class="ot">&lt;-</span> cgm_RC<span class="sc">$</span><span class="fu">new</span>(<span class="at">Data =</span> simulated_CGM, <span class="at">Times =</span> simulated_TS,</span>
+<span id="cb166-31"><a href="#cb166-31" aria-hidden="true" tabindex="-1"></a>                   <span class="at">Age =</span> demo<span class="sc">$</span>Age, <span class="at">Gender =</span> demo<span class="sc">$</span>Gender, <span class="at">BMI =</span> biomk<span class="sc">$</span>BMI, </span>
+<span id="cb166-32"><a href="#cb166-32" aria-hidden="true" tabindex="-1"></a>                   <span class="at">HbA1c =</span> biomk<span class="sc">$</span>HbA1c)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb167"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb167-1"><a href="#cb167-1" aria-hidden="true" tabindex="-1"></a>cgm_profile<span class="sc">$</span><span class="fu">print</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -1731,15 +1732,12 @@ CGM Metrics - Mean Glucose: 79.69, Std. Dev. Glucose: 2.5</code></pre>
 <div class="cell-output cell-output-stdout">
 <pre><code>Demographics - Age: 55, Gender: F
 Biomarkers - BMI: 25, HbA1c: 8.5
-CGM Metrics - Mean Glucose: 79.69, Std. Dev. Glucose: 2.5</code></pre>
-</div>
-<div class="cell-output cell-output-stdout">
-<pre><code>NULL</code></pre>
+CGM Metrics - Mean Glucose: 79.68, Std. Dev. Glucose: 2.37</code></pre>
 </div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb171"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb171-1"><a href="#cb171-1" aria-hidden="true" tabindex="-1"></a>cgm_profile<span class="sc">$</span><span class="fu">smooth</span>()</span>
-<span id="cb171-2"><a href="#cb171-2" aria-hidden="true" tabindex="-1"></a>cgm_profile<span class="sc">$</span><span class="fu">print</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb170"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb170-1"><a href="#cb170-1" aria-hidden="true" tabindex="-1"></a>cgm_profile<span class="sc">$</span><span class="fu">smooth</span>()</span>
+<span id="cb170-2"><a href="#cb170-2" aria-hidden="true" tabindex="-1"></a>cgm_profile<span class="sc">$</span><span class="fu">print</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <p><img src="index_files/figure-html/unnamed-chunk-63-1.png" class="img-fluid" width="672"></p>
 </div>
