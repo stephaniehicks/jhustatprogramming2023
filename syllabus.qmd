@@ -23,9 +23,11 @@ My research focuses on developing fast, scalable, statistical methodology and op
 
 If you want, you can find me on [Twitter](https://twitter.com/stephaniehicks). I'm also a co-host of the [The Corresponding Author](https://twitter.com/CorrespondAuth) podcast, member of the [Editorial Board for *Genome Biology*](https://genomebiology.biomedcentral.com/about/editorial-board), an Associate Editor for [Reproducibility](https://jasa-acs.github.io/repro-guide/) at the [Journal of the American Statistical Association](https://www.tandfonline.com/toc/uasa20/current), and co-founder of [R-Ladies Baltimore](https://www.meetup.com/rladies-baltimore/).
 
-## Teaching Assistant
+## Teaching Assistants
 
 Joe Sartini ([jsartin1\@jhu.edu](jsartin1@jhu.edu)) is a third year Ph.D. student in Biostatistics, with interest in models for precision medicine applications. Currently, the focus of his work is extracting meaningful insights from time-series produced by Continuous Glucose Monitoring and other devices worn by Type 2 diabetics. Outside of research, he enjoys participating in endurance sports and weightlifting.
+
+Angela Zhao ([azhao29\@jh.edu](azhao29@jh.edu)) is a second year ScM student in Biostatistics interested in functional data analysis and stochastic models. Her main projects involve using physical activity data derived from wearable devices to predict time-to-event outcomes. For leisure, she enjoys bouldering and stand-up comedy.
 
 Instructor and TA office hours are announced on CoursePlus. If there are conflicts and/or need to cancel office hours, announcements will be made on CoursePlus.
 
