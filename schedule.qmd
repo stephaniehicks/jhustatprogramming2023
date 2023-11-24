@@ -51,7 +51,7 @@ For Qmd files, go to the [course GitHub repository](https://github.com/stephanie
 | Week 7 | Dec 5  | Retrieving data from APIs \[[html](posts/2023-12-05-gettingdata-api/index.qmd)\] \[[Qmd](https://github.com/stephaniehicks/jhustatprogramming2023/blob/main/posts/2023-12-05-gettingdata-api/index.qmd)\]  | | 
 | |  |  | |
 | | | |
-| | Dec 7 | Relational databases and SQL basics | | 
+| | Dec 7 | Relational databases and SQL basics \[[html](posts/2023-12-07-relational-databases/index.qmd)\] \[[Qmd](https://github.com/stephaniehicks/jhustatprogramming2023/blob/main/posts/2023-12-07-relational-databases/index.qmd)\] | | 
 | | | |
 | **Module 4** |  | **Interactive web apps and dashboards**  | | 
 | | | |
