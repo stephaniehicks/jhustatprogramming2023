@@ -2,74 +2,82 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://github.com/stephaniehicks/jhustatprogramming2023/syllabus.html</loc>
-    <lastmod>2023-11-20T23:57:01.380Z</lastmod>
+    <lastmod>2023-11-24T12:32:42.793Z</lastmod>
   </url>
   <url>
     <loc>https://github.com/stephaniehicks/jhustatprogramming2023/resources.html</loc>
-    <lastmod>2023-11-20T23:57:00.248Z</lastmod>
-  </url>
-  <url>
-    <loc>https://github.com/stephaniehicks/jhustatprogramming2023/projects/2023-10-26-project-1/index.html</loc>
-    <lastmod>2023-11-20T23:56:59.244Z</lastmod>
-  </url>
-  <url>
-    <loc>https://github.com/stephaniehicks/jhustatprogramming2023/posts/2023-11-30-targets-proj-workflows/index.html</loc>
-    <lastmod>2023-11-20T23:56:55.512Z</lastmod>
-  </url>
-  <url>
-    <loc>https://github.com/stephaniehicks/jhustatprogramming2023/posts/2023-11-28-purrr-fun-programming/index.html</loc>
-    <lastmod>2023-11-20T23:56:54.320Z</lastmod>
-  </url>
-  <url>
-    <loc>https://github.com/stephaniehicks/jhustatprogramming2023/posts/2023-11-09-version-control-part-2/index.html</loc>
-    <lastmod>2023-11-20T23:56:50.568Z</lastmod>
-  </url>
-  <url>
-    <loc>https://github.com/stephaniehicks/jhustatprogramming2023/posts/2023-11-02-command-line-part-2/index.html</loc>
-    <lastmod>2023-11-20T23:56:47.464Z</lastmod>
-  </url>
-  <url>
-    <loc>https://github.com/stephaniehicks/jhustatprogramming2023/posts/2023-10-26-build-website/index.html</loc>
-    <lastmod>2023-11-20T23:56:44.296Z</lastmod>
-  </url>
-  <url>
-    <loc>https://github.com/stephaniehicks/jhustatprogramming2023/lectures.html</loc>
-    <lastmod>2023-11-20T23:56:42.760Z</lastmod>
-  </url>
-  <url>
-    <loc>https://github.com/stephaniehicks/jhustatprogramming2023/index.html</loc>
-    <lastmod>2023-11-20T23:56:41.284Z</lastmod>
-  </url>
-  <url>
-    <loc>https://github.com/stephaniehicks/jhustatprogramming2023/posts/2023-10-31-command-line-part-1/index.html</loc>
-    <lastmod>2023-11-20T23:56:46.584Z</lastmod>
-  </url>
-  <url>
-    <loc>https://github.com/stephaniehicks/jhustatprogramming2023/posts/2023-11-07-version-control-part-1/index.html</loc>
-    <lastmod>2023-11-20T23:56:49.192Z</lastmod>
-  </url>
-  <url>
-    <loc>https://github.com/stephaniehicks/jhustatprogramming2023/posts/2023-11-14-oop-part-1/index.html</loc>
-    <lastmod>2023-11-20T23:56:52.404Z</lastmod>
-  </url>
-  <url>
-    <loc>https://github.com/stephaniehicks/jhustatprogramming2023/posts/2023-11-21-r-pkg-dev/index.html</loc>
-    <lastmod>2023-11-20T23:56:53.544Z</lastmod>
-  </url>
-  <url>
-    <loc>https://github.com/stephaniehicks/jhustatprogramming2023/posts/2023-11-30-pkgdown-pkg-website/index.html</loc>
-    <lastmod>2023-11-20T23:56:54.888Z</lastmod>
-  </url>
-  <url>
-    <loc>https://github.com/stephaniehicks/jhustatprogramming2023/projects.html</loc>
-    <lastmod>2023-11-20T23:56:58.772Z</lastmod>
+    <lastmod>2023-11-24T12:32:41.629Z</lastmod>
   </url>
   <url>
     <loc>https://github.com/stephaniehicks/jhustatprogramming2023/projects/2023-11-07-project-2/index.html</loc>
-    <lastmod>2023-11-20T23:57:00.012Z</lastmod>
+    <lastmod>2023-11-24T12:32:40.677Z</lastmod>
+  </url>
+  <url>
+    <loc>https://github.com/stephaniehicks/jhustatprogramming2023/projects.html</loc>
+    <lastmod>2023-11-24T12:32:39.477Z</lastmod>
+  </url>
+  <url>
+    <loc>https://github.com/stephaniehicks/jhustatprogramming2023/posts/2023-12-05-gettingdata-api/index.html</loc>
+    <lastmod>2023-11-24T12:32:37.521Z</lastmod>
+  </url>
+  <url>
+    <loc>https://github.com/stephaniehicks/jhustatprogramming2023/posts/2023-11-30-pkgdown-pkg-website/index.html</loc>
+    <lastmod>2023-11-24T12:32:35.589Z</lastmod>
+  </url>
+  <url>
+    <loc>https://github.com/stephaniehicks/jhustatprogramming2023/posts/2023-11-21-r-pkg-dev/index.html</loc>
+    <lastmod>2023-11-24T12:32:34.233Z</lastmod>
+  </url>
+  <url>
+    <loc>https://github.com/stephaniehicks/jhustatprogramming2023/posts/2023-11-14-oop-part-1/index.html</loc>
+    <lastmod>2023-11-24T12:32:33.105Z</lastmod>
+  </url>
+  <url>
+    <loc>https://github.com/stephaniehicks/jhustatprogramming2023/posts/2023-11-07-version-control-part-1/index.html</loc>
+    <lastmod>2023-11-24T12:32:29.901Z</lastmod>
+  </url>
+  <url>
+    <loc>https://github.com/stephaniehicks/jhustatprogramming2023/posts/2023-10-31-command-line-part-1/index.html</loc>
+    <lastmod>2023-11-24T12:32:27.345Z</lastmod>
+  </url>
+  <url>
+    <loc>https://github.com/stephaniehicks/jhustatprogramming2023/index.html</loc>
+    <lastmod>2023-11-24T12:32:21.973Z</lastmod>
+  </url>
+  <url>
+    <loc>https://github.com/stephaniehicks/jhustatprogramming2023/lectures.html</loc>
+    <lastmod>2023-11-24T12:32:23.537Z</lastmod>
+  </url>
+  <url>
+    <loc>https://github.com/stephaniehicks/jhustatprogramming2023/posts/2023-10-26-build-website/index.html</loc>
+    <lastmod>2023-11-24T12:32:25.081Z</lastmod>
+  </url>
+  <url>
+    <loc>https://github.com/stephaniehicks/jhustatprogramming2023/posts/2023-11-02-command-line-part-2/index.html</loc>
+    <lastmod>2023-11-24T12:32:28.205Z</lastmod>
+  </url>
+  <url>
+    <loc>https://github.com/stephaniehicks/jhustatprogramming2023/posts/2023-11-09-version-control-part-2/index.html</loc>
+    <lastmod>2023-11-24T12:32:31.281Z</lastmod>
+  </url>
+  <url>
+    <loc>https://github.com/stephaniehicks/jhustatprogramming2023/posts/2023-11-28-purrr-fun-programming/index.html</loc>
+    <lastmod>2023-11-24T12:32:35.029Z</lastmod>
+  </url>
+  <url>
+    <loc>https://github.com/stephaniehicks/jhustatprogramming2023/posts/2023-11-30-targets-proj-workflows/index.html</loc>
+    <lastmod>2023-11-24T12:32:36.217Z</lastmod>
+  </url>
+  <url>
+    <loc>https://github.com/stephaniehicks/jhustatprogramming2023/projects/2023-10-26-project-1/index.html</loc>
+    <lastmod>2023-11-24T12:32:39.953Z</lastmod>
+  </url>
+  <url>
+    <loc>https://github.com/stephaniehicks/jhustatprogramming2023/projects/2023-11-28-project-3/index.html</loc>
+    <lastmod>2023-11-24T12:32:41.389Z</lastmod>
   </url>
   <url>
     <loc>https://github.com/stephaniehicks/jhustatprogramming2023/schedule.html</loc>
-    <lastmod>2023-11-20T23:57:00.652Z</lastmod>
+    <lastmod>2023-11-24T12:32:42.061Z</lastmod>
   </url>
 </urlset>

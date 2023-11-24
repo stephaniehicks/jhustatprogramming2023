@@ -261,13 +261,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#a-bit-of-eda-fun" id="toc-a-bit-of-eda-fun" class="nav-link" data-scroll-target="#a-bit-of-eda-fun">A bit of EDA fun</a></li>
   <li><a href="#other-examples-with-github-api" id="toc-other-examples-with-github-api" class="nav-link" data-scroll-target="#other-examples-with-github-api">Other examples with GitHub API</a></li>
   </ul></li>
-  <li><a href="#covid-act-now-api" id="toc-covid-act-now-api" class="nav-link" data-scroll-target="#covid-act-now-api">COVID Act Now API</a>
+  <li><a href="#openfda-api" id="toc-openfda-api" class="nav-link" data-scroll-target="#openfda-api">openFDA API</a>
   <ul class="collapse">
   <li><a href="#register-for-an-api-key" id="toc-register-for-an-api-key" class="nav-link" data-scroll-target="#register-for-an-api-key">Register for an API Key</a></li>
   <li><a href="#building-the-url-for-get" id="toc-building-the-url-for-get" class="nav-link" data-scroll-target="#building-the-url-for-get">Building the URL for <code>GET</code></a></li>
   <li><a href="#calling-an-api-with-get" id="toc-calling-an-api-with-get" class="nav-link" data-scroll-target="#calling-an-api-with-get">Calling an API with <code>GET</code></a></li>
   <li><a href="#converting-json-to-a-data.frame" id="toc-converting-json-to-a-data.frame" class="nav-link" data-scroll-target="#converting-json-to-a-data.frame">Converting JSON to a <code>data.frame</code></a></li>
-  <li><a href="#looping-multiple-api-calls" id="toc-looping-multiple-api-calls" class="nav-link" data-scroll-target="#looping-multiple-api-calls">Looping multiple API calls</a></li>
   </ul></li>
   <li><a href="#post-lecture-materials" id="toc-post-lecture-materials" class="nav-link" data-scroll-target="#post-lecture-materials">Post-lecture materials</a>
   <ul class="collapse">
@@ -353,7 +352,7 @@ Note
 <li>Learn about what are JSON files and how we can convert them into data frames in R</li>
 <li>Describe some best practices on sharing data with collaborators</li>
 <li>Know what does API mean and state four types of API architectures</li>
-<li>Practice with two APIs: the GitHub API and the COVID Act Now API</li>
+<li>Practice with two APIs: the GitHub API and the openFDA API</li>
 </ul>
 </div>
 </div>
@@ -477,15 +476,16 @@ Note
 <p>JSON (or JavaScript Object Notation) is a file format that stores information in human-readable, organized, logical, easy-to-access manner.</p>
 <p>For example, here is what a JSON file looks like:</p>
 <div class="sourceCode" id="cb3"><pre class="sourceCode md code-with-copy"><code class="sourceCode markdown"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>var stephanie = {</span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>    "age" : "33",</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>    "job-title" : "Associate Professor",</span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>    "hometown" : "Baltimore, MD",</span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>    "gender" : "female", </span>
-<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>  "cars" : {</span>
-<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>    "car1" : "Hyundai Elantra",</span>
-<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>    "car2" : "Toyota Rav4",</span>
-<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>    "car3" : "Honda CR-V"</span>
-<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>  }</span>
-<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>    "pronouns": "she/her",</span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>  "states-lived" : {</span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>    "state1" : "Louisiana",</span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>    "state2" : "Texas",</span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>    "state3" : "Massachusetts",</span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>    "state4" : "Maryland"</span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>Some features about <code>JSON</code> objects:</p>
 <ul>
 <li>JSON objects are surrounded by curly braces <code>{}</code></li>
@@ -648,7 +648,7 @@ $ ssh_url                     &lt;chr&gt; "git@github.com:stephaniehicks/2018-bi
 $ clone_url                   &lt;chr&gt; "https://github.com/stephaniehicks/2018-bi…
 $ svn_url                     &lt;chr&gt; "https://github.com/stephaniehicks/2018-bi…
 $ homepage                    &lt;chr&gt; NA, NA, NA, NA, NA, "", NA, NA, NA, NA, NA…
-$ size                        &lt;int&gt; 60296, 172353, 8851, 121, 675, 26688, 20, …
+$ size                        &lt;int&gt; 60296, 172353, 8858, 121, 675, 26688, 20, …
 $ stargazers_count            &lt;int&gt; 4, 0, 1, 1, 0, 0, 1, 8, 0, 1, 0, 14, 3, 0,…
 $ watchers_count              &lt;int&gt; 4, 0, 1, 1, 0, 0, 1, 8, 0, 1, 0, 14, 3, 0,…
 $ language                    &lt;chr&gt; "TeX", "HTML", "R", NA, NA, "R", "R", "Jup…
@@ -680,7 +680,6 @@ $ default_branch              &lt;chr&gt; "master", "master", "main", "master", 
 <ul>
 <li><a href="https://github.com/stephaniehicks?tab=repositories" class="uri">https://github.com/stephaniehicks?tab=repositories</a></li>
 </ul>
-<p>I have 85 public repositories as of today!</p>
 <div class="callout callout-style-default callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -701,7 +700,7 @@ APIs limit info from users
 <p><code>?page=1&amp;per_page=&lt;numberOfItemsYouSpecify&gt;"</code></p>
 <p>You can read more about pagination here:</p>
 <ul>
-<li><a href="https://docs.github.com/en/enterprise-server@3.6/rest/guides/traversing-with-pagination" class="uri">https://docs.github.com/en/enterprise-server@3.6/rest/guides/traversing-with-pagination</a></li>
+<li><a href="https://docs.github.com/en/rest/guides/using-pagination-in-the-rest-api" class="uri">https://docs.github.com/en/rest/guides/using-pagination-in-the-rest-api</a></li>
 </ul>
 <div class="callout callout-style-default callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center">
@@ -724,10 +723,10 @@ Example
 <span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>jsonDataAll <span class="ot">&lt;-</span> <span class="fu">as_tibble</span>(<span class="fu">fromJSON</span>(github_url))</span>
 <span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a><span class="fu">dim</span>(jsonDataAll)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 89 79</code></pre>
+<pre><code>[1] 90 79</code></pre>
 </div>
 </div>
-<p>We now get all 85 repositories! yay!</p>
+<p>We now get all the public repositories! yay!</p>
 </div>
 </div>
 </section>
@@ -752,9 +751,9 @@ Where to store API keys
 </ul>
 <p>Personally, I keep mine in my <code>.Renviron</code> file which looks something like this on the inside:</p>
 <pre><code>GITHUB_API_KEY = &lt;add my GitHub API key here&gt; 
-COVID_ACT_NOW_API_KEY = &lt;add my COVID Act Now API key here&gt; 
-CENSUS_API_KEY = &lt;add my tidycensus API key here&gt; </code></pre>
-<p>If you don’t have an <code>.Renviron</code> file in your home directory, you can make one:</p>
+CENSUS_API_KEY = &lt;add my tidycensus API key here&gt; 
+OPENFDA_API_KEY = &lt;add my openFDA API key here&gt; </code></pre>
+<p>If you do not have an <code>.Renviron</code> file in your home directory, you can make one:</p>
 <div class="sourceCode" id="cb9"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> ~</span>
 <span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="fu">touch</span> .Renviron</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
@@ -797,14 +796,21 @@ Example
 <span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a>response</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Response [https://api.github.com/user]
-  Date: 2023-10-24 23:10
-  Status: 401
+  Date: 2023-11-24 10:21
+  Status: 200
   Content-Type: application/json; charset=utf-8
-  Size: 90 B
+  Size: 1.76 kB
 {
-  "message": "Bad credentials",
-  "documentation_url": "https://docs.github.com/rest"
-}</code></pre>
+  "login": "stephaniehicks",
+  "id": 1452065,
+  "node_id": "MDQ6VXNlcjE0NTIwNjU=",
+  "avatar_url": "https://avatars.githubusercontent.com/u/1452065?v=4",
+  "gravatar_id": "",
+  "url": "https://api.github.com/users/stephaniehicks",
+  "html_url": "https://github.com/stephaniehicks",
+  "followers_url": "https://api.github.com/users/stephaniehicks/followers",
+  "following_url": "https://api.github.com/users/stephaniehicks/following{/ot...
+...</code></pre>
 </div>
 </div>
 <p>We see the response we got is a JSON file.</p>
@@ -813,13 +819,97 @@ Example
 <p>Next we extract / retrieve the contents from the raw JSON output using the <code>content()</code> function from the <code>httr</code> package. If you use the argument <code>as = 'text'</code>, it extracts the contents as a character vector.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>account_details <span class="ot">&lt;-</span> <span class="fu">fromJSON</span>(httr<span class="sc">::</span><span class="fu">content</span>(response, <span class="at">as =</span> <span class="st">'text'</span>))</span>
-<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>account_details</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>account_details[<span class="dv">1</span><span class="sc">:</span><span class="dv">30</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>$message
-[1] "Bad credentials"
+<pre><code>$login
+[1] "stephaniehicks"
 
-$documentation_url
-[1] "https://docs.github.com/rest"</code></pre>
+$id
+[1] 1452065
+
+$node_id
+[1] "MDQ6VXNlcjE0NTIwNjU="
+
+$avatar_url
+[1] "https://avatars.githubusercontent.com/u/1452065?v=4"
+
+$gravatar_id
+[1] ""
+
+$url
+[1] "https://api.github.com/users/stephaniehicks"
+
+$html_url
+[1] "https://github.com/stephaniehicks"
+
+$followers_url
+[1] "https://api.github.com/users/stephaniehicks/followers"
+
+$following_url
+[1] "https://api.github.com/users/stephaniehicks/following{/other_user}"
+
+$gists_url
+[1] "https://api.github.com/users/stephaniehicks/gists{/gist_id}"
+
+$starred_url
+[1] "https://api.github.com/users/stephaniehicks/starred{/owner}{/repo}"
+
+$subscriptions_url
+[1] "https://api.github.com/users/stephaniehicks/subscriptions"
+
+$organizations_url
+[1] "https://api.github.com/users/stephaniehicks/orgs"
+
+$repos_url
+[1] "https://api.github.com/users/stephaniehicks/repos"
+
+$events_url
+[1] "https://api.github.com/users/stephaniehicks/events{/privacy}"
+
+$received_events_url
+[1] "https://api.github.com/users/stephaniehicks/received_events"
+
+$type
+[1] "User"
+
+$site_admin
+[1] FALSE
+
+$name
+[1] "Stephanie Hicks"
+
+$company
+[1] "Johns Hopkins"
+
+$blog
+[1] "http://www.stephaniehicks.com"
+
+$location
+[1] "Baltimore, MD"
+
+$email
+NULL
+
+$hireable
+NULL
+
+$bio
+[1] "Associate Prof at Johns Hopkins Biostatistics"
+
+$twitter_username
+[1] "stephaniehicks"
+
+$public_repos
+[1] 90
+
+$public_gists
+[1] 8
+
+$followers
+[1] 275
+
+$following
+[1] 18</code></pre>
 </div>
 </div>
 <p>Next, let’s perform the same request we did above about my 85 repositories, but instead of reading in the JSON file from the web, we use an authenticated <code>GET()</code> response:</p>
@@ -829,10 +919,26 @@ $documentation_url
 <span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>repo_details <span class="ot">&lt;-</span> <span class="fu">as_tibble</span>(<span class="fu">fromJSON</span>(httr<span class="sc">::</span><span class="fu">content</span>(response, <span class="at">as =</span> <span class="st">'text'</span>)))</span>
 <span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a>repo_details</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 1 × 2
-  message         documentation_url           
-  &lt;chr&gt;           &lt;chr&gt;                       
-1 Bad credentials https://docs.github.com/rest</code></pre>
+<pre><code># A tibble: 90 × 80
+       id node_id name  full_name private owner$login html_url description fork 
+    &lt;int&gt; &lt;chr&gt;   &lt;chr&gt; &lt;chr&gt;     &lt;lgl&gt;   &lt;chr&gt;       &lt;chr&gt;    &lt;chr&gt;       &lt;lgl&gt;
+ 1 1.60e8 MDEwOl… 2018… stephani… FALSE   stephanieh… https:/… &lt;NA&gt;        FALSE
+ 2 1.33e8 MDEwOl… advd… stephani… FALSE   stephanieh… https:/… &lt;NA&gt;        TRUE 
+ 3 6.48e8 R_kgDO… atla… stephani… FALSE   stephanieh… https:/… Repo to sh… FALSE
+ 4 2.26e8 MDEwOl… Awes… stephani… FALSE   stephanieh… https:/… A curated … TRUE 
+ 5 6.38e7 MDEwOl… awes… stephani… FALSE   stephanieh… https:/… List of so… TRUE 
+ 6 1.66e7 MDEwOl… Back… stephani… FALSE   stephanieh… https:/… Gene expre… FALSE
+ 7 2.88e8 MDEwOl… benc… stephani… FALSE   stephanieh… https:/… &lt;NA&gt;        FALSE
+ 8 1.69e8 MDEwOl… benc… stephani… FALSE   stephanieh… https:/… Benchmarki… FALSE
+ 9 1.40e8 MDEwOl… benc… stephani… FALSE   stephanieh… https:/… Repository… FALSE
+10 1.78e8 MDEwOl… benc… stephani… FALSE   stephanieh… https:/… Data and B… FALSE
+# ℹ 80 more rows
+# ℹ 88 more variables: owner$id &lt;int&gt;, $node_id &lt;chr&gt;, $avatar_url &lt;chr&gt;,
+#   $gravatar_id &lt;chr&gt;, $url &lt;chr&gt;, $html_url &lt;chr&gt;, $followers_url &lt;chr&gt;,
+#   $following_url &lt;chr&gt;, $gists_url &lt;chr&gt;, $starred_url &lt;chr&gt;,
+#   $subscriptions_url &lt;chr&gt;, $organizations_url &lt;chr&gt;, $repos_url &lt;chr&gt;,
+#   $events_url &lt;chr&gt;, $received_events_url &lt;chr&gt;, $type &lt;chr&gt;,
+#   $site_admin &lt;lgl&gt;, url &lt;chr&gt;, forks_url &lt;chr&gt;, keys_url &lt;chr&gt;, …</code></pre>
 </div>
 </div>
 </section>
@@ -840,44 +946,37 @@ $documentation_url
 <h2 class="anchored" data-anchor-id="a-bit-of-eda-fun">A bit of EDA fun</h2>
 <p>Let’s have a bit of fun and explore some questions:</p>
 <ul>
-<li>How many are private repos?</li>
 <li>How many have forks? How many forks?</li>
 </ul>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(repo_details<span class="sc">$</span>private)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Warning: Unknown or uninitialised column: `private`.</code></pre>
-</div>
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(repo_details<span class="sc">$</span>forks)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>&lt; table of extent 0 &gt;</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(repo_details<span class="sc">$</span>forks)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Warning: Unknown or uninitialised column: `forks`.</code></pre>
-</div>
-<div class="cell-output cell-output-stdout">
-<pre><code>&lt; table of extent 0 &gt;</code></pre>
+<pre><code>
+ 0  1  2  3  4  5  6  7  8  9 11 22 
+61 10  4  2  6  1  1  1  1  1  1  1 </code></pre>
 </div>
 </div>
 <p>What’s the most popular language?</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(repo_details<span class="sc">$</span>language)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Warning: Unknown or uninitialised column: `language`.</code></pre>
-</div>
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(repo_details<span class="sc">$</span>language)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>&lt; table of extent 0 &gt;</code></pre>
+<pre><code>
+             CSS             HTML       JavaScript Jupyter Notebook 
+               1               20                7                1 
+        Makefile             Perl                R             Ruby 
+               1                1               29                3 
+           Shell              TeX 
+               2                5 </code></pre>
 </div>
 </div>
 <p>To find out how many repos that I have with open issues, we can just create a table:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="co"># how many repos have open issues? </span></span>
-<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(repo_details<span class="sc">$</span>open_issues_count)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Warning: Unknown or uninitialised column: `open_issues_count`.</code></pre>
-</div>
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="co"># how many repos have open issues? </span></span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(repo_details<span class="sc">$</span>open_issues_count)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>&lt; table of extent 0 &gt;</code></pre>
+<pre><code>
+ 0  1  2 
+83  6  1 </code></pre>
 </div>
 </div>
 <p>Whew! Not as many as I thought.</p>
@@ -894,31 +993,31 @@ More about <code>GET</code>
 <p>You can use the <code>query</code> argument to specify details about the response.</p>
 <p>Let’s look how many open issues there are in the <code>dplyr</code> package in the <code>tidyverse</code></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a>req <span class="ot">&lt;-</span> <span class="fu">GET</span>(<span class="st">"https://api.github.com/repos/tidyverse/dplyr/issues"</span>, </span>
-<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a>           <span class="at">query =</span> <span class="fu">list</span>(<span class="at">state =</span> <span class="st">"open"</span>, <span class="at">per_page =</span> <span class="dv">100</span>, <span class="at">page =</span> <span class="dv">1</span>))</span>
-<span id="cb29-3"><a href="#cb29-3" aria-hidden="true" tabindex="-1"></a>dplyr_details <span class="ot">&lt;-</span> <span class="fu">as_tibble</span>(<span class="fu">fromJSON</span>(httr<span class="sc">::</span><span class="fu">content</span>(req, <span class="at">as =</span> <span class="st">'text'</span>)))</span>
-<span id="cb29-4"><a href="#cb29-4" aria-hidden="true" tabindex="-1"></a>dplyr_details</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>req <span class="ot">&lt;-</span> <span class="fu">GET</span>(<span class="st">"https://api.github.com/repos/tidyverse/dplyr/issues"</span>, </span>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>           <span class="at">query =</span> <span class="fu">list</span>(<span class="at">state =</span> <span class="st">"open"</span>, <span class="at">per_page =</span> <span class="dv">100</span>, <span class="at">page =</span> <span class="dv">1</span>))</span>
+<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a>dplyr_details <span class="ot">&lt;-</span> <span class="fu">as_tibble</span>(<span class="fu">fromJSON</span>(httr<span class="sc">::</span><span class="fu">content</span>(req, <span class="at">as =</span> <span class="st">'text'</span>)))</span>
+<span id="cb23-4"><a href="#cb23-4" aria-hidden="true" tabindex="-1"></a>dplyr_details</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 66 × 30
+<pre><code># A tibble: 50 × 30
    url         repository_url labels_url comments_url events_url html_url     id
    &lt;chr&gt;       &lt;chr&gt;          &lt;chr&gt;      &lt;chr&gt;        &lt;chr&gt;      &lt;chr&gt;     &lt;int&gt;
- 1 https://ap… https://api.g… https://a… https://api… https://a… https:/… 1.95e9
- 2 https://ap… https://api.g… https://a… https://api… https://a… https:/… 1.94e9
- 3 https://ap… https://api.g… https://a… https://api… https://a… https:/… 1.94e9
- 4 https://ap… https://api.g… https://a… https://api… https://a… https:/… 1.93e9
- 5 https://ap… https://api.g… https://a… https://api… https://a… https:/… 1.93e9
- 6 https://ap… https://api.g… https://a… https://api… https://a… https:/… 1.92e9
- 7 https://ap… https://api.g… https://a… https://api… https://a… https:/… 1.91e9
- 8 https://ap… https://api.g… https://a… https://api… https://a… https:/… 1.89e9
- 9 https://ap… https://api.g… https://a… https://api… https://a… https:/… 1.88e9
-10 https://ap… https://api.g… https://a… https://api… https://a… https:/… 1.88e9
-# ℹ 56 more rows
+ 1 https://ap… https://api.g… https://a… https://api… https://a… https:/… 2.01e9
+ 2 https://ap… https://api.g… https://a… https://api… https://a… https:/… 2.00e9
+ 3 https://ap… https://api.g… https://a… https://api… https://a… https:/… 1.99e9
+ 4 https://ap… https://api.g… https://a… https://api… https://a… https:/… 1.98e9
+ 5 https://ap… https://api.g… https://a… https://api… https://a… https:/… 1.98e9
+ 6 https://ap… https://api.g… https://a… https://api… https://a… https:/… 1.96e9
+ 7 https://ap… https://api.g… https://a… https://api… https://a… https:/… 1.95e9
+ 8 https://ap… https://api.g… https://a… https://api… https://a… https:/… 1.94e9
+ 9 https://ap… https://api.g… https://a… https://api… https://a… https:/… 1.92e9
+10 https://ap… https://api.g… https://a… https://api… https://a… https:/… 1.87e9
+# ℹ 40 more rows
 # ℹ 23 more variables: node_id &lt;chr&gt;, number &lt;int&gt;, title &lt;chr&gt;,
 #   user &lt;df[,18]&gt;, labels &lt;list&gt;, state &lt;chr&gt;, locked &lt;lgl&gt;,
 #   assignee &lt;df[,18]&gt;, assignees &lt;list&gt;, milestone &lt;lgl&gt;, comments &lt;int&gt;,
 #   created_at &lt;chr&gt;, updated_at &lt;chr&gt;, closed_at &lt;lgl&gt;,
-#   author_association &lt;chr&gt;, active_lock_reason &lt;lgl&gt;, draft &lt;lgl&gt;,
-#   pull_request &lt;df[,5]&gt;, body &lt;chr&gt;, reactions &lt;df[,10]&gt;, …</code></pre>
+#   author_association &lt;chr&gt;, active_lock_reason &lt;chr&gt;, body &lt;chr&gt;,
+#   reactions &lt;df[,10]&gt;, timeline_url &lt;chr&gt;, performed_via_github_app &lt;lgl&gt;, …</code></pre>
 </div>
 </div>
 </div>
@@ -934,76 +1033,68 @@ More about <code>GET</code>
 </ul>
 </section>
 </section>
-<section id="covid-act-now-api" class="level1">
-<h1>COVID Act Now API</h1>
-<p>Next, we will demonstrate how to request data from the API at <a href="https://covidactnow.org/data-api">COVID Act Now</a>, which returns CSV or JSON files.</p>
-<p>This API provides access to COVID data tracking US states, counties, and metros, including data and metrics for cases, vaccinations, tests, hospitalizations, and deaths. See <a href="https://apidocs.covidactnow.org/data-definitions/">data definitions</a> for all included data.</p>
+<section id="openfda-api" class="level1">
+<h1>openFDA API</h1>
+<p>Next, we will demonstrate how to request data from the API at <a href="https://open.fda.gov">openFDA API</a>, which returns JSON files.</p>
+<p>This API provides create easy access to public data, to create a new level of openness and accountability, to ensure the privacy and security of public FDA data, and ultimately to educate the public and save lives. See <a href="https://open.fda.gov/data/datadictionary">data definitions</a> for all included data.</p>
 <section id="register-for-an-api-key" class="level2">
 <h2 class="anchored" data-anchor-id="register-for-an-api-key">Register for an API Key</h2>
 <p>First, you need to register for an API key here</p>
 <ul>
-<li><a href="https://apidocs.covidactnow.org/#register" class="uri">https://apidocs.covidactnow.org/#register</a></li>
+<li><a href="https://open.fda.gov/apis/authentication/" class="uri">https://open.fda.gov/apis/authentication/</a></li>
 </ul>
 <p>You should also store the API key in your <code>.Renviron</code> like above for the GitHub API key.</p>
 </section>
 <section id="building-the-url-for-get" class="level2">
 <h2 class="anchored" data-anchor-id="building-the-url-for-get">Building the URL for <code>GET</code></h2>
-<p>First, we will request time series COVID data for one county in the US (Baltimore City) defined by it FIPS code (24510).</p>
+<p>First, we will request a summarized set of counts around food recalls either voluntary by a firm or mandated by the FDA.</p>
 <p>The URL we want is the following</p>
-<pre><code>https://api.covidactnow.org/v2/county/24510.timeseries.json?apiKey=&lt;your_API_key_here&gt;</code></pre>
-<div class="callout callout-style-default callout-tip callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Note
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>You cannot use this API without an API key</p>
-<p>e.g.&nbsp;if we click here <a href="https://api.covidactnow.org/v2/county/24510.timeseries.json" class="uri">https://api.covidactnow.org/v2/county/24510.timeseries.json</a> it says</p>
-<pre><code>{"error": "API key required. Visit https://apidocs.covidactnow.org/#register to get an API key"}</code></pre>
-</div>
-</div>
+<pre><code>https://api.fda.gov/food/enforcement.json?api_key=&lt;your_API_key_here&gt;&amp;count=voluntary_mandated.exact</code></pre>
 <p>Let’s build up the URL.</p>
 <ul>
-<li>The first is the base URL: <code>https://api.covidactnow.org/v2/</code>. This part of the URL <strong>will be the same for all our calls</strong> to this API.</li>
-<li>The county/portion of the URL indicates that we only want COVID data for a single county. By looking at the COVID Act Now API documentation, I can see that states is an alternative option for this part of the URL.</li>
-<li>24510 is the unique identifier for Baltimore City. If I want to get the same data but for a different county, I just have to change this number.</li>
-<li><code>.timeseries</code> provides the API with more information about the data I am requesting, and</li>
-<li><code>.json</code> tells the API to format the data as a JSON (which we will convert to a data frame).</li>
-<li>Everything after <code>apiKey=</code> is my authorization token, which tells the COVID Act Now servers that I am allowed to ask for this data.</li>
+<li>The first is the base URL: <code>https://api.fda.gov/food/enforcement.json</code>. This part of the URL <strong>will be the same for all our calls</strong> to the food enforcement API (but is different if you want to investigate e.g.&nbsp;patient responses from drugs).</li>
+<li>Next, <code>?apiKey=&lt;your_API_key_here&gt;</code> is how I use my authorization token, which tells the openFDA servers that I am allowed to ask for this data.</li>
+<li>Finally, we want to return a set of summarized counts for a specific field (<code>&amp;count=voluntary_mandated.exact</code>)</li>
 </ul>
 <p>Now that we have dissected the anatomy of an API, you can see how easy it is to build them!</p>
 <p>Basically anybody with an internet connection, an authorization token, and who knows the grammar of the API can access it. Most APIs are published with extensive documentation to help you understand the available options and parameters.</p>
 </section>
 <section id="calling-an-api-with-get" class="level2">
 <h2 class="anchored" data-anchor-id="calling-an-api-with-get">Calling an API with <code>GET</code></h2>
-<p>Let’s join the URL together for one county (later I will show how to loop through multiple counties)</p>
+<p>Let’s join the URL together:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="do">## extract my API from `.Renviron`</span></span>
-<span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a>covid_key <span class="ot">&lt;-</span> <span class="fu">Sys.getenv</span>(<span class="st">"COVID_ACT_NOW_API_KEY"</span>)</span>
-<span id="cb33-3"><a href="#cb33-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb33-4"><a href="#cb33-4" aria-hidden="true" tabindex="-1"></a><span class="do">## build the URL</span></span>
-<span id="cb33-5"><a href="#cb33-5" aria-hidden="true" tabindex="-1"></a>base <span class="ot">&lt;-</span> <span class="st">'https://api.covidactnow.org/v2/county/'</span></span>
-<span id="cb33-6"><a href="#cb33-6" aria-hidden="true" tabindex="-1"></a>county <span class="ot">&lt;-</span> <span class="st">'24510'</span></span>
-<span id="cb33-7"><a href="#cb33-7" aria-hidden="true" tabindex="-1"></a>info_key <span class="ot">&lt;-</span> <span class="st">'.timeseries.json?apiKey='</span></span>
-<span id="cb33-8"><a href="#cb33-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb33-9"><a href="#cb33-9" aria-hidden="true" tabindex="-1"></a><span class="do">## put it all together</span></span>
-<span id="cb33-10"><a href="#cb33-10" aria-hidden="true" tabindex="-1"></a>API_URL <span class="ot">&lt;-</span> <span class="fu">paste0</span>(base, county, info_key, covid_key)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="do">## extract my API from `.Renviron`</span></span>
+<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a>openFDA_key <span class="ot">&lt;-</span> <span class="fu">Sys.getenv</span>(<span class="st">"OPENFDA_API_KEY"</span>)</span>
+<span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-4"><a href="#cb26-4" aria-hidden="true" tabindex="-1"></a><span class="do">## build the URL</span></span>
+<span id="cb26-5"><a href="#cb26-5" aria-hidden="true" tabindex="-1"></a>base <span class="ot">&lt;-</span> <span class="st">'https://api.fda.gov/food/enforcement.json?api_key='</span></span>
+<span id="cb26-6"><a href="#cb26-6" aria-hidden="true" tabindex="-1"></a>query <span class="ot">&lt;-</span> <span class="st">'&amp;count=voluntary_mandated.exact'</span></span>
+<span id="cb26-7"><a href="#cb26-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-8"><a href="#cb26-8" aria-hidden="true" tabindex="-1"></a><span class="do">## put it all together</span></span>
+<span id="cb26-9"><a href="#cb26-9" aria-hidden="true" tabindex="-1"></a>API_URL <span class="ot">&lt;-</span> <span class="fu">paste0</span>(base, openFDA_key, query)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Now we have the entire URL stored in a simple R object called <code>API_URL</code>.</p>
 <p>We can now use the URL to call the API, and we will store the returned data in an object called <code>raw_data</code>:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a>raw_data <span class="ot">&lt;-</span> <span class="fu">GET</span>(API_URL)</span>
-<span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a>raw_data</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a>raw_data <span class="ot">&lt;-</span> <span class="fu">GET</span>(API_URL)</span>
+<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a>raw_data</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>Response [https://api.covidactnow.org/v2/county/24510.timeseries.json?apiKey=b228d58133a04e3186e5ce081f73bbf5]
-  Date: 2023-10-24 15:05
+<pre><code>Response [https://api.fda.gov/food/enforcement.json?api_key=6cz2JMCPEw0gxiI8GtZeZXDD6wt1J3aM3Mp9rDDE&amp;count=voluntary_mandated.exact]
+  Date: 2023-11-24 10:21
   Status: 200
-  Content-Type: application/json
-  Size: 1.7 MB</code></pre>
+  Content-Type: application/json; charset=utf-8
+  Size: 711 B
+{
+  "meta": {
+    "disclaimer": "Do not rely on openFDA to make decisions regarding medical...
+    "terms": "https://open.fda.gov/terms/",
+    "license": "https://open.fda.gov/license/",
+    "last_updated": "2023-11-22"
+  },
+  "results": [
+    {
+      "term": "Voluntary: Firm initiated",
+...</code></pre>
 </div>
 </div>
 <div class="callout callout-style-default callout-tip callout-titled">
@@ -1021,54 +1112,62 @@ Pro-tip
 </div>
 <p>Next, we can inspect the object and we see that it is a list.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(raw_data)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(raw_data)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>List of 10
- $ url        : chr "https://api.covidactnow.org/v2/county/24510.timeseries.json?apiKey=b228d58133a04e3186e5ce081f73bbf5"
+ $ url        : chr "https://api.fda.gov/food/enforcement.json?api_key=6cz2JMCPEw0gxiI8GtZeZXDD6wt1J3aM3Mp9rDDE&amp;count=voluntary_mandated.exact"
  $ status_code: int 200
- $ headers    :List of 18
-  ..$ content-type                : chr "application/json"
-  ..$ x-amz-id-2                  : chr "+m3W2FOXduP+2tyLhpnMNknCTPuR5py2py3h4fZm/elYdEXlD/TtaOwpv3PvmjGgw0ofJ+Ok044="
-  ..$ x-amz-request-id            : chr "HY9QKNKCGRDPZ9VW"
-  ..$ date                        : chr "Tue, 24 Oct 2023 15:05:02 GMT"
-  ..$ access-control-allow-origin : chr "*"
-  ..$ access-control-allow-methods: chr "GET"
-  ..$ last-modified               : chr "Tue, 24 Oct 2023 10:22:48 GMT"
-  ..$ etag                        : chr "W/\"d0ce9a40303985c56da621176aca69b3\""
-  ..$ x-amz-server-side-encryption: chr "AES256"
-  ..$ x-amz-version-id            : chr "pIY_HO2lpwy22v9S7M824zzo.XIgO0NH"
-  ..$ server                      : chr "AmazonS3"
-  ..$ content-encoding            : chr "gzip"
-  ..$ vary                        : chr "Accept-Encoding"
-  ..$ x-cache                     : chr "Hit from cloudfront"
-  ..$ via                         : chr "1.1 3fad6888361bd8bcd9c5b458635f78d0.cloudfront.net (CloudFront)"
-  ..$ x-amz-cf-pop                : chr "IAD61-P1"
-  ..$ x-amz-cf-id                 : chr "5eDWIfGEXsoNyqu-7iojesU0iBJpd6Qw5whvtG73Qtei3Z0VOf72Xw=="
-  ..$ age                         : chr "29123"
+ $ headers    :List of 22
+  ..$ date                            : chr "Fri, 24 Nov 2023 10:21:51 GMT"
+  ..$ content-type                    : chr "application/json; charset=utf-8"
+  ..$ vary                            : chr "Accept-Encoding"
+  ..$ access-control-allow-credentials: chr "true"
+  ..$ access-control-allow-origin     : chr "*"
+  ..$ age                             : chr "0"
+  ..$ cache-control                   : chr "no-cache, no-store, must-revalidate"
+  ..$ content-security-policy         : chr "default-src 'none'"
+  ..$ etag                            : chr "W/\"2c7-D4yYChONTPyF2qQYL1Qita83Uu4\""
+  ..$ strict-transport-security       : chr "max-age=31536000;"
+  ..$ strict-transport-security       : chr "max-age=31536000; preload"
+  ..$ vary                            : chr "Accept-Encoding"
+  ..$ via                             : chr "https/1.1 api-umbrella (ApacheTrafficServer [cMsSf ])"
+  ..$ x-api-umbrella-request-id       : chr "cc03cq16o9mdgfjlqf30"
+  ..$ x-cache                         : chr "MISS"
+  ..$ x-content-type-options          : chr "nosniff"
+  ..$ x-ratelimit-limit               : chr "240"
+  ..$ x-ratelimit-remaining           : chr "239"
+  ..$ x-vcap-request-id               : chr "d6a63001-2511-441a-4dab-58c1ab363d6d"
+  ..$ x-xss-protection                : chr "1; mode=block"
+  ..$ x-frame-options                 : chr "deny"
+  ..$ content-encoding                : chr "gzip"
   ..- attr(*, "class")= chr [1:2] "insensitive" "list"
  $ all_headers:List of 1
   ..$ :List of 3
   .. ..$ status : int 200
   .. ..$ version: chr "HTTP/2"
-  .. ..$ headers:List of 18
-  .. .. ..$ content-type                : chr "application/json"
-  .. .. ..$ x-amz-id-2                  : chr "+m3W2FOXduP+2tyLhpnMNknCTPuR5py2py3h4fZm/elYdEXlD/TtaOwpv3PvmjGgw0ofJ+Ok044="
-  .. .. ..$ x-amz-request-id            : chr "HY9QKNKCGRDPZ9VW"
-  .. .. ..$ date                        : chr "Tue, 24 Oct 2023 15:05:02 GMT"
-  .. .. ..$ access-control-allow-origin : chr "*"
-  .. .. ..$ access-control-allow-methods: chr "GET"
-  .. .. ..$ last-modified               : chr "Tue, 24 Oct 2023 10:22:48 GMT"
-  .. .. ..$ etag                        : chr "W/\"d0ce9a40303985c56da621176aca69b3\""
-  .. .. ..$ x-amz-server-side-encryption: chr "AES256"
-  .. .. ..$ x-amz-version-id            : chr "pIY_HO2lpwy22v9S7M824zzo.XIgO0NH"
-  .. .. ..$ server                      : chr "AmazonS3"
-  .. .. ..$ content-encoding            : chr "gzip"
-  .. .. ..$ vary                        : chr "Accept-Encoding"
-  .. .. ..$ x-cache                     : chr "Hit from cloudfront"
-  .. .. ..$ via                         : chr "1.1 3fad6888361bd8bcd9c5b458635f78d0.cloudfront.net (CloudFront)"
-  .. .. ..$ x-amz-cf-pop                : chr "IAD61-P1"
-  .. .. ..$ x-amz-cf-id                 : chr "5eDWIfGEXsoNyqu-7iojesU0iBJpd6Qw5whvtG73Qtei3Z0VOf72Xw=="
-  .. .. ..$ age                         : chr "29123"
+  .. ..$ headers:List of 22
+  .. .. ..$ date                            : chr "Fri, 24 Nov 2023 10:21:51 GMT"
+  .. .. ..$ content-type                    : chr "application/json; charset=utf-8"
+  .. .. ..$ vary                            : chr "Accept-Encoding"
+  .. .. ..$ access-control-allow-credentials: chr "true"
+  .. .. ..$ access-control-allow-origin     : chr "*"
+  .. .. ..$ age                             : chr "0"
+  .. .. ..$ cache-control                   : chr "no-cache, no-store, must-revalidate"
+  .. .. ..$ content-security-policy         : chr "default-src 'none'"
+  .. .. ..$ etag                            : chr "W/\"2c7-D4yYChONTPyF2qQYL1Qita83Uu4\""
+  .. .. ..$ strict-transport-security       : chr "max-age=31536000;"
+  .. .. ..$ strict-transport-security       : chr "max-age=31536000; preload"
+  .. .. ..$ vary                            : chr "Accept-Encoding"
+  .. .. ..$ via                             : chr "https/1.1 api-umbrella (ApacheTrafficServer [cMsSf ])"
+  .. .. ..$ x-api-umbrella-request-id       : chr "cc03cq16o9mdgfjlqf30"
+  .. .. ..$ x-cache                         : chr "MISS"
+  .. .. ..$ x-content-type-options          : chr "nosniff"
+  .. .. ..$ x-ratelimit-limit               : chr "240"
+  .. .. ..$ x-ratelimit-remaining           : chr "239"
+  .. .. ..$ x-vcap-request-id               : chr "d6a63001-2511-441a-4dab-58c1ab363d6d"
+  .. .. ..$ x-xss-protection                : chr "1; mode=block"
+  .. .. ..$ x-frame-options                 : chr "deny"
+  .. .. ..$ content-encoding                : chr "gzip"
   .. .. ..- attr(*, "class")= chr [1:2] "insensitive" "list"
  $ cookies    :'data.frame':    0 obs. of  7 variables:
   ..$ domain    : logi(0) 
@@ -1078,13 +1177,13 @@ Pro-tip
   ..$ expiration: 'POSIXct' num(0) 
   ..$ name      : logi(0) 
   ..$ value     : logi(0) 
- $ content    : raw [1:1703646] 7b 22 66 69 ...
- $ date       : POSIXct[1:1], format: "2023-10-24 15:05:02"
- $ times      : Named num [1:6] 0 0.0177 0.0279 0.0457 0.3001 ...
+ $ content    : raw [1:711] 7b 0a 20 20 ...
+ $ date       : POSIXct[1:1], format: "2023-11-24 10:21:51"
+ $ times      : Named num [1:6] 0 0.062 0.137 0.218 0.386 ...
   ..- attr(*, "names")= chr [1:6] "redirect" "namelookup" "connect" "pretransfer" ...
  $ request    :List of 7
   ..$ method    : chr "GET"
-  ..$ url       : chr "https://api.covidactnow.org/v2/county/24510.timeseries.json?apiKey=b228d58133a04e3186e5ce081f73bbf5"
+  ..$ url       : chr "https://api.fda.gov/food/enforcement.json?api_key=6cz2JMCPEw0gxiI8GtZeZXDD6wt1J3aM3Mp9rDDE&amp;count=voluntary_mandated.exact"
   ..$ headers   : Named chr "application/json, text/xml, application/xml, */*"
   .. ..- attr(*, "names")= chr "Accept"
   ..$ fields    : NULL
@@ -1101,9 +1200,9 @@ Pro-tip
 </div>
 <p>One of the elements is <code>content</code> and we can inspect that</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(raw_data<span class="sc">$</span>content)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(raw_data<span class="sc">$</span>content)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code> raw [1:1703646] 7b 22 66 69 ...</code></pre>
+<pre><code> raw [1:711] 7b 0a 20 20 ...</code></pre>
 </div>
 </div>
 <p>We see the actual data have been stored as raw vectors (or raw bytes), which need to be converted to character vectors. This is not in a useable format yet.</p>
@@ -1112,7 +1211,7 @@ Pro-tip
 <h2 class="anchored" data-anchor-id="converting-json-to-a-data.frame">Converting JSON to a <code>data.frame</code></h2>
 <p>There is a function in base R <code>rawTo_Char()</code> that converts raw bytes to characters</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb40"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a>covid_data <span class="ot">&lt;-</span> <span class="fu">fromJSON</span>(<span class="fu">rawToChar</span>(raw_data<span class="sc">$</span>content), <span class="at">flatten =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a>openFDA_data <span class="ot">&lt;-</span> <span class="fu">fromJSON</span>(<span class="fu">rawToChar</span>(raw_data<span class="sc">$</span>content), <span class="at">flatten =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>This converts the raw data into a list.</p>
 <div class="callout callout-style-default callout-note callout-titled">
@@ -1127,265 +1226,20 @@ Note
 <div class="callout-body-container callout-body">
 <p>We can also do this with <code>httr::content</code> (as above) and just define the encoding for the character set.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb41"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a>covid_data <span class="ot">&lt;-</span> <span class="fu">fromJSON</span>(httr<span class="sc">::</span><span class="fu">content</span>(raw_data, </span>
-<span id="cb41-2"><a href="#cb41-2" aria-hidden="true" tabindex="-1"></a>                                     <span class="at">as =</span> <span class="st">'text'</span>, </span>
-<span id="cb41-3"><a href="#cb41-3" aria-hidden="true" tabindex="-1"></a>                                     <span class="at">encoding =</span>  <span class="st">"UTF-8"</span>))</span>
-<span id="cb41-4"><a href="#cb41-4" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(covid_data)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a>openFDA_data <span class="ot">&lt;-</span> <span class="fu">fromJSON</span>(httr<span class="sc">::</span><span class="fu">content</span>(raw_data, </span>
+<span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a>                                       <span class="at">as =</span> <span class="st">'text'</span>, </span>
+<span id="cb34-3"><a href="#cb34-3" aria-hidden="true" tabindex="-1"></a>                                       <span class="at">encoding =</span>  <span class="st">"UTF-8"</span>))</span>
+<span id="cb34-4"><a href="#cb34-4" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(openFDA_data)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>List of 25
- $ fips                          : chr "24510"
- $ country                       : chr "US"
- $ state                         : chr "MD"
- $ county                        : chr "Baltimore city"
- $ hsa                           : chr "016"
- $ hsaName                       : chr "Baltimore, MD - Baltimore City, MD"
- $ level                         : chr "county"
- $ lat                           : NULL
- $ locationId                    : chr "iso1:us#iso2:us-md#fips:24510"
- $ long                          : NULL
- $ population                    : int 593490
- $ hsaPopulation                 : int 2586756
- $ metrics                       :List of 14
-  ..$ testPositivityRatio                     : NULL
-  ..$ testPositivityRatioDetails              :List of 1
-  .. ..$ source: chr "other"
-  ..$ caseDensity                             : NULL
-  ..$ weeklyNewCasesPer100k                   : NULL
-  ..$ contactTracerCapacityRatio              : NULL
-  ..$ infectionRate                           : NULL
-  ..$ infectionRateCI90                       : NULL
-  ..$ icuCapacityRatio                        : num 0.86
-  ..$ bedsWithCovidPatientsRatio              : num 0.025
-  ..$ weeklyCovidAdmissionsPer100k            : num 4.6
-  ..$ vaccinationsInitiatedRatio              : num 0.78
-  ..$ vaccinationsCompletedRatio              : num 0.682
-  ..$ vaccinationsAdditionalDoseRatio         : num 0.377
-  ..$ vaccinationsFall2022BivalentBoosterRatio: num 0.206
- $ riskLevels                    :List of 6
-  ..$ overall                   : int 4
-  ..$ testPositivityRatio       : int 4
-  ..$ caseDensity               : int 4
-  ..$ contactTracerCapacityRatio: int 4
-  ..$ infectionRate             : int 4
-  ..$ icuCapacityRatio          : int 3
- $ cdcTransmissionLevel          : int 4
- $ communityLevels               :List of 2
-  ..$ cdcCommunityLevel: int 0
-  ..$ canCommunityLevel: int 0
- $ actuals                       :List of 19
-  ..$ cases                              : int 150776
-  ..$ deaths                             : int 1575
-  ..$ positiveTests                      : NULL
-  ..$ negativeTests                      : NULL
-  ..$ contactTracers                     : NULL
-  ..$ hospitalBeds                       :List of 4
-  .. ..$ capacity             : int 3415
-  .. ..$ currentUsageTotal    : int 2937
-  .. ..$ currentUsageCovid    : int 67
-  .. ..$ weeklyCovidAdmissions: int 48
-  ..$ hsaHospitalBeds                    :List of 4
-  .. ..$ capacity             : int 5665
-  .. ..$ currentUsageTotal    : int 4780
-  .. ..$ currentUsageCovid    : int 140
-  .. ..$ weeklyCovidAdmissions: int 118
-  ..$ icuBeds                            :List of 3
-  .. ..$ capacity         : int 415
-  .. ..$ currentUsageTotal: int 357
-  .. ..$ currentUsageCovid: int 9
-  ..$ hsaIcuBeds                         :List of 3
-  .. ..$ capacity         : int 610
-  .. ..$ currentUsageTotal: int 510
-  .. ..$ currentUsageCovid: int 13
-  ..$ newCases                           : int 0
-  ..$ newDeaths                          : int 0
-  ..$ vaccinesDistributed                : NULL
-  ..$ vaccinationsInitiated              : int 463147
-  ..$ vaccinationsCompleted              : int 404962
-  ..$ vaccinationsAdditionalDose         : int 223902
-  ..$ vaccinationsFall2022BivalentBooster: int 122048
-  ..$ vaccinesAdministered               : NULL
-  ..$ vaccinesAdministeredDemographics   : NULL
-  ..$ vaccinationsInitiatedDemographics  : NULL
- $ annotations                   :List of 30
-  ..$ cases                                   :List of 2
-  .. ..$ sources  :'data.frame':    1 obs. of  3 variables:
-  .. .. ..$ type: chr "other"
-  .. .. ..$ url :List of 1
-  .. .. .. ..$ : chr [1:2] "https://github.com/nytimes/covid-19-data" "https://covid.cdc.gov/covid-data-tracker/#datatracker-home"
-  .. .. ..$ name: chr "Daily-resolution NYT data before 2023-03-23, weekly-resolution CDC data afterwards."
-  .. ..$ anomalies: list()
-  ..$ deaths                                  :List of 2
-  .. ..$ sources  :'data.frame':    1 obs. of  3 variables:
-  .. .. ..$ type: chr "other"
-  .. .. ..$ url :List of 1
-  .. .. .. ..$ : chr [1:2] "https://github.com/nytimes/covid-19-data" "https://covid.cdc.gov/covid-data-tracker/#datatracker-home"
-  .. .. ..$ name: chr "Daily-resolution NYT data before 2023-03-23, weekly-resolution CDC data afterwards."
-  .. ..$ anomalies: list()
-  ..$ positiveTests                           : NULL
-  ..$ negativeTests                           : NULL
-  ..$ contactTracers                          : NULL
-  ..$ hospitalBeds                            :List of 2
-  .. ..$ sources  :'data.frame':    1 obs. of  3 variables:
-  .. .. ..$ type: chr "other"
-  .. .. ..$ url : chr "https://healthdata.gov/Hospital/COVID-19-Reported-Patient-Impact-and-Hospital-Capa/anag-cw7u"
-  .. .. ..$ name: chr "Department of Health and Human Services"
-  .. ..$ anomalies: list()
-  ..$ hsaHospitalBeds                         : NULL
-  ..$ icuBeds                                 :List of 2
-  .. ..$ sources  :'data.frame':    1 obs. of  3 variables:
-  .. .. ..$ type: chr "other"
-  .. .. ..$ url : chr "https://healthdata.gov/Hospital/COVID-19-Reported-Patient-Impact-and-Hospital-Capa/anag-cw7u"
-  .. .. ..$ name: chr "Department of Health and Human Services"
-  .. ..$ anomalies: list()
-  ..$ hsaIcuBeds                              : NULL
-  ..$ newCases                                :List of 2
-  .. ..$ sources  : list()
-  .. ..$ anomalies:'data.frame':    2 obs. of  3 variables:
-  .. .. ..$ date                : chr [1:2] "2020-10-01" "2021-12-30"
-  .. .. ..$ type                : chr [1:2] "zscore_outlier" "zscore_outlier"
-  .. .. ..$ original_observation: num [1:2] 164 1664
-  ..$ newDeaths                               : NULL
-  ..$ vaccinesDistributed                     : NULL
-  ..$ vaccinationsInitiated                   :List of 2
-  .. ..$ sources  :'data.frame':    1 obs. of  3 variables:
-  .. .. ..$ type: chr "other"
-  .. .. ..$ url : chr "https://data.cdc.gov/Vaccinations/COVID-19-Vaccinations-in-the-United-States-County/8xkx-amqh"
-  .. .. ..$ name: chr "Centers for Disease Control and Prevention"
-  .. ..$ anomalies: list()
-  ..$ vaccinationsCompleted                   :List of 2
-  .. ..$ sources  :'data.frame':    1 obs. of  3 variables:
-  .. .. ..$ type: chr "other"
-  .. .. ..$ url : chr "https://data.cdc.gov/Vaccinations/COVID-19-Vaccinations-in-the-United-States-County/8xkx-amqh"
-  .. .. ..$ name: chr "Centers for Disease Control and Prevention"
-  .. ..$ anomalies: list()
-  ..$ vaccinationsAdditionalDose              :List of 2
-  .. ..$ sources  :'data.frame':    1 obs. of  3 variables:
-  .. .. ..$ type: chr "other"
-  .. .. ..$ url : chr "https://data.cdc.gov/Vaccinations/COVID-19-Vaccinations-in-the-United-States-County/8xkx-amqh"
-  .. .. ..$ name: chr "Centers for Disease Control and Prevention"
-  .. ..$ anomalies: list()
-  ..$ vaccinationsFall2022BivalentBooster     :List of 2
-  .. ..$ sources  :'data.frame':    1 obs. of  3 variables:
-  .. .. ..$ type: chr "other"
-  .. .. ..$ url : chr "https://data.cdc.gov/Vaccinations/COVID-19-Vaccinations-in-the-United-States-County/8xkx-amqh"
-  .. .. ..$ name: chr "Centers for Disease Control and Prevention"
-  .. ..$ anomalies: list()
-  ..$ vaccinesAdministered                    : NULL
-  ..$ testPositivityRatio                     : NULL
-  ..$ caseDensity                             :List of 2
-  .. ..$ sources  :'data.frame':    1 obs. of  3 variables:
-  .. .. ..$ type: chr "other"
-  .. .. ..$ url :List of 1
-  .. .. .. ..$ : chr [1:2] "https://github.com/nytimes/covid-19-data" "https://covid.cdc.gov/covid-data-tracker/#datatracker-home"
-  .. .. ..$ name: chr "Daily-resolution NYT data before 2023-03-23, weekly-resolution CDC data afterwards."
-  .. ..$ anomalies: list()
-  ..$ weeklyNewCasesPer100k                   :List of 2
-  .. ..$ sources  :'data.frame':    1 obs. of  3 variables:
-  .. .. ..$ type: chr "other"
-  .. .. ..$ url :List of 1
-  .. .. .. ..$ : chr [1:2] "https://github.com/nytimes/covid-19-data" "https://covid.cdc.gov/covid-data-tracker/#datatracker-home"
-  .. .. ..$ name: chr "Daily-resolution NYT data before 2023-03-23, weekly-resolution CDC data afterwards."
-  .. ..$ anomalies: list()
-  ..$ contactTracerCapacityRatio              : NULL
-  ..$ infectionRate                           :List of 2
-  .. ..$ sources  :'data.frame':    1 obs. of  3 variables:
-  .. .. ..$ type: chr "other"
-  .. .. ..$ url :List of 1
-  .. .. .. ..$ : chr [1:2] "https://github.com/nytimes/covid-19-data" "https://covid.cdc.gov/covid-data-tracker/#datatracker-home"
-  .. .. ..$ name: chr "Daily-resolution NYT data before 2023-03-23, weekly-resolution CDC data afterwards."
-  .. ..$ anomalies: list()
-  ..$ infectionRateCI90                       :List of 2
-  .. ..$ sources  :'data.frame':    1 obs. of  3 variables:
-  .. .. ..$ type: chr "other"
-  .. .. ..$ url :List of 1
-  .. .. .. ..$ : chr [1:2] "https://github.com/nytimes/covid-19-data" "https://covid.cdc.gov/covid-data-tracker/#datatracker-home"
-  .. .. ..$ name: chr "Daily-resolution NYT data before 2023-03-23, weekly-resolution CDC data afterwards."
-  .. ..$ anomalies: list()
-  ..$ icuCapacityRatio                        :List of 2
-  .. ..$ sources  :'data.frame':    1 obs. of  3 variables:
-  .. .. ..$ type: chr "other"
-  .. .. ..$ url : chr "https://healthdata.gov/Hospital/COVID-19-Reported-Patient-Impact-and-Hospital-Capa/anag-cw7u"
-  .. .. ..$ name: chr "Department of Health and Human Services"
-  .. ..$ anomalies: list()
-  ..$ bedsWithCovidPatientsRatio              :List of 2
-  .. ..$ sources  :'data.frame':    1 obs. of  3 variables:
-  .. .. ..$ type: chr "other"
-  .. .. ..$ url : chr "https://healthdata.gov/Hospital/COVID-19-Reported-Patient-Impact-and-Hospital-Capa/anag-cw7u"
-  .. .. ..$ name: chr "Department of Health and Human Services"
-  .. ..$ anomalies: list()
-  ..$ weeklyCovidAdmissionsPer100k            :List of 2
-  .. ..$ sources  :'data.frame':    1 obs. of  3 variables:
-  .. .. ..$ type: chr "other"
-  .. .. ..$ url : chr "https://healthdata.gov/Hospital/COVID-19-Reported-Patient-Impact-and-Hospital-Capa/anag-cw7u"
-  .. .. ..$ name: chr "Department of Health and Human Services"
-  .. ..$ anomalies: list()
-  ..$ vaccinationsInitiatedRatio              : NULL
-  ..$ vaccinationsCompletedRatio              : NULL
-  ..$ vaccinationsAdditionalDoseRatio         : NULL
-  ..$ vaccinationsFall2022BivalentBoosterRatio: NULL
- $ lastUpdatedDate               : chr "2023-10-24"
- $ url                           : chr "https://covidactnow.org/us/maryland-md/county/baltimore_city"
- $ metricsTimeseries             :'data.frame': 1313 obs. of  14 variables:
-  ..$ testPositivityRatio                     : logi [1:1313] NA NA NA NA NA NA ...
-  ..$ caseDensity                             : num [1:1313] 0 0 0 0 0 0 0 0.1 0.2 0.2 ...
-  ..$ weeklyNewCasesPer100k                   : num [1:1313] 0 0 0 0 0 0 0.3 1 1.3 1.7 ...
-  ..$ contactTracerCapacityRatio              : logi [1:1313] NA NA NA NA NA NA ...
-  ..$ infectionRate                           : num [1:1313] NA NA NA NA NA NA 1.4 1.42 1.44 1.45 ...
-  ..$ infectionRateCI90                       : num [1:1313] NA NA NA NA NA NA 0.96 0.7 0.6 0.56 ...
-  ..$ icuCapacityRatio                        : num [1:1313] NA NA NA NA NA NA NA NA NA NA ...
-  ..$ bedsWithCovidPatientsRatio              : num [1:1313] NA NA NA NA NA NA NA NA NA NA ...
-  ..$ weeklyCovidAdmissionsPer100k            : num [1:1313] NA NA NA NA NA NA NA NA NA NA ...
-  ..$ date                                    : chr [1:1313] "2020-03-11" "2020-03-12" "2020-03-13" "2020-03-14" ...
-  ..$ vaccinationsInitiatedRatio              : num [1:1313] NA NA NA NA NA NA NA NA NA NA ...
-  ..$ vaccinationsCompletedRatio              : num [1:1313] NA NA NA NA NA NA NA NA NA NA ...
-  ..$ vaccinationsAdditionalDoseRatio         : num [1:1313] NA NA NA NA NA NA NA NA NA NA ...
-  ..$ vaccinationsFall2022BivalentBoosterRatio: num [1:1313] NA NA NA NA NA NA NA NA NA NA ...
- $ actualsTimeseries             :'data.frame': 1185 obs. of  20 variables:
-  ..$ cases                              : int [1:1185] NA NA NA NA 1 1 3 7 7 11 ...
-  ..$ deaths                             : int [1:1185] NA NA NA NA 0 0 0 0 0 0 ...
-  ..$ positiveTests                      : logi [1:1185] NA NA NA NA NA NA ...
-  ..$ negativeTests                      : logi [1:1185] NA NA NA NA NA NA ...
-  ..$ contactTracers                     : logi [1:1185] NA NA NA NA NA NA ...
-  ..$ hospitalBeds                       :'data.frame': 1185 obs. of  4 variables:
-  .. ..$ capacity             : int [1:1185] NA NA NA NA NA NA NA NA NA NA ...
-  .. ..$ currentUsageTotal    : int [1:1185] NA NA NA NA NA NA NA NA NA NA ...
-  .. ..$ currentUsageCovid    : int [1:1185] NA NA NA NA NA NA NA NA NA NA ...
-  .. ..$ weeklyCovidAdmissions: int [1:1185] NA NA NA NA NA NA NA NA NA NA ...
-  ..$ hsaHospitalBeds                    :'data.frame': 1185 obs. of  4 variables:
-  .. ..$ capacity             : int [1:1185] NA NA NA NA NA NA NA NA NA NA ...
-  .. ..$ currentUsageTotal    : int [1:1185] NA NA NA NA NA NA NA NA NA NA ...
-  .. ..$ currentUsageCovid    : int [1:1185] NA NA NA NA NA NA NA NA NA NA ...
-  .. ..$ weeklyCovidAdmissions: int [1:1185] NA NA NA NA NA NA NA NA NA NA ...
-  ..$ icuBeds                            :'data.frame': 1185 obs. of  3 variables:
-  .. ..$ capacity         : int [1:1185] NA NA NA NA NA NA NA NA NA NA ...
-  .. ..$ currentUsageTotal: int [1:1185] NA NA NA NA NA NA NA NA NA NA ...
-  .. ..$ currentUsageCovid: int [1:1185] NA NA NA NA NA NA NA NA NA NA ...
-  ..$ hsaIcuBeds                         :'data.frame': 1185 obs. of  3 variables:
-  .. ..$ capacity         : int [1:1185] NA NA NA NA NA NA NA NA NA NA ...
-  .. ..$ currentUsageTotal: int [1:1185] NA NA NA NA NA NA NA NA NA NA ...
-  .. ..$ currentUsageCovid: int [1:1185] NA NA NA NA NA NA NA NA NA NA ...
-  ..$ newCases                           : int [1:1185] NA NA NA NA NA 0 2 4 0 4 ...
-  ..$ newDeaths                          : int [1:1185] NA NA NA NA NA 0 0 0 0 0 ...
-  ..$ vaccinesAdministeredDemographics   : logi [1:1185] NA NA NA NA NA NA ...
-  ..$ vaccinationsInitiatedDemographics  : logi [1:1185] NA NA NA NA NA NA ...
-  ..$ date                               : chr [1:1185] "2020-03-11" "2020-03-12" "2020-03-13" "2020-03-14" ...
-  ..$ vaccinesDistributed                : logi [1:1185] NA NA NA NA NA NA ...
-  ..$ vaccinationsInitiated              : int [1:1185] NA NA NA NA NA NA NA NA NA NA ...
-  ..$ vaccinationsCompleted              : int [1:1185] NA NA NA NA NA NA NA NA NA NA ...
-  ..$ vaccinationsAdditionalDose         : int [1:1185] NA NA NA NA NA NA NA NA NA NA ...
-  ..$ vaccinesAdministered               : logi [1:1185] NA NA NA NA NA NA ...
-  ..$ vaccinationsFall2022BivalentBooster: int [1:1185] NA NA NA NA NA NA NA NA NA NA ...
- $ riskLevelsTimeseries          :'data.frame': 1313 obs. of  3 variables:
-  ..$ overall    : int [1:1313] 0 0 0 0 0 0 0 0 0 0 ...
-  ..$ caseDensity: int [1:1313] 0 0 0 0 0 0 0 0 0 0 ...
-  ..$ date       : chr [1:1313] "2020-03-11" "2020-03-12" "2020-03-13" "2020-03-14" ...
- $ cdcTransmissionLevelTimeseries:'data.frame': 1313 obs. of  2 variables:
-  ..$ date                : chr [1:1313] "2020-03-11" "2020-03-12" "2020-03-13" "2020-03-14" ...
-  ..$ cdcTransmissionLevel: int [1:1313] 0 0 0 0 0 0 0 0 0 0 ...
- $ communityLevelsTimeseries     :'data.frame': 1313 obs. of  3 variables:
-  ..$ cdcCommunityLevel: int [1:1313] NA NA NA NA NA NA NA NA NA NA ...
-  ..$ canCommunityLevel: int [1:1313] NA NA NA NA NA NA NA NA NA NA ...
-  ..$ date             : chr [1:1313] "2020-03-11" "2020-03-12" "2020-03-13" "2020-03-14" ...</code></pre>
+<pre><code>List of 2
+ $ meta   :List of 4
+  ..$ disclaimer  : chr "Do not rely on openFDA to make decisions regarding medical care. While we make every effort to ensure that data"| __truncated__
+  ..$ terms       : chr "https://open.fda.gov/terms/"
+  ..$ license     : chr "https://open.fda.gov/license/"
+  ..$ last_updated: chr "2023-11-22"
+ $ results:'data.frame':    4 obs. of  2 variables:
+  ..$ term : chr [1:4] "Voluntary: Firm initiated" "Voluntary: Firm Initiated" "FDA Mandated" ""
+  ..$ count: int [1:4] 24217 563 397 6</code></pre>
 </div>
 </div>
 </div>
@@ -1393,59 +1247,17 @@ Note
 <p>Now that it is in a list format, you can see that it actually contains several data frames!</p>
 <p>You can use this data right away if you are already familiar with lists in R, or you can extract the data frames into separate objects, like this:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb43"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a>ts_df <span class="ot">&lt;-</span> covid_data<span class="sc">$</span>actualsTimeseries</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<p>The data frame that we have just created contains many different variables and a lot of information. Below, you can see the first six rows of a selection of some interesting variables in our data:</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb44"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(ts_df[ , <span class="fu">c</span>(<span class="st">"cases"</span>, <span class="st">"deaths"</span>, <span class="st">"newCases"</span>, <span class="st">"newDeaths"</span>, <span class="st">"date"</span>)], <span class="at">n=</span><span class="dv">10</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a>ts_df <span class="ot">&lt;-</span> openFDA_data<span class="sc">$</span>results</span>
+<span id="cb36-2"><a href="#cb36-2" aria-hidden="true" tabindex="-1"></a>ts_df</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>   cases deaths newCases newDeaths       date
-1     NA     NA       NA        NA 2020-03-11
-2     NA     NA       NA        NA 2020-03-12
-3     NA     NA       NA        NA 2020-03-13
-4     NA     NA       NA        NA 2020-03-14
-5      1      0       NA        NA 2020-03-15
-6      1      0        0         0 2020-03-16
-7      3      0        2         0 2020-03-17
-8      7      0        4         0 2020-03-18
-9      7      0        0         0 2020-03-19
-10    11      0        4         0 2020-03-20</code></pre>
+<pre><code>                       term count
+1 Voluntary: Firm initiated 24217
+2 Voluntary: Firm Initiated   563
+3              FDA Mandated   397
+4                               6</code></pre>
 </div>
 </div>
-</section>
-<section id="looping-multiple-api-calls" class="level2">
-<h2 class="anchored" data-anchor-id="looping-multiple-api-calls">Looping multiple API calls</h2>
-<p>Next, let’s create a loop to make several requests to the API</p>
-<p>Now that we’ve seen how to make an API call for one county, let’s create a simple loop to make several calls at a time. We’ll use a for loop, which you can read more about here.</p>
-<p>First, we’ll create a vector with the ID code for each county we want to get data for:</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb46"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Baltimore City County, Montgomery County, Baltimore County</span></span>
-<span id="cb46-2"><a href="#cb46-2" aria-hidden="true" tabindex="-1"></a>counties <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">'24510'</span>, <span class="st">'24031'</span>, <span class="st">'24005'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<p>We will loop through each element and adjust the <code>API_URL</code> accordingly.</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb47"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb47-1"><a href="#cb47-1" aria-hidden="true" tabindex="-1"></a>temp_list <span class="ot">&lt;-</span> <span class="fu">vector</span>(<span class="st">"list"</span>, <span class="at">length =</span> <span class="dv">3</span>)</span>
-<span id="cb47-2"><a href="#cb47-2" aria-hidden="true" tabindex="-1"></a>ts_df <span class="ot">&lt;-</span> <span class="cn">NULL</span></span>
-<span id="cb47-3"><a href="#cb47-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb47-4"><a href="#cb47-4" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span>(i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="fu">length</span>(counties)) {</span>
-<span id="cb47-5"><a href="#cb47-5" aria-hidden="true" tabindex="-1"></a> </span>
-<span id="cb47-6"><a href="#cb47-6" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Build the API URL with the new county code</span></span>
-<span id="cb47-7"><a href="#cb47-7" aria-hidden="true" tabindex="-1"></a>  API_URL <span class="ot">&lt;-</span> <span class="fu">paste0</span>(base, counties[i], info_key, covid_key)</span>
-<span id="cb47-8"><a href="#cb47-8" aria-hidden="true" tabindex="-1"></a> </span>
-<span id="cb47-9"><a href="#cb47-9" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Store the raw and processed API results in temporary objects</span></span>
-<span id="cb47-10"><a href="#cb47-10" aria-hidden="true" tabindex="-1"></a>  temp_raw <span class="ot">&lt;-</span> <span class="fu">GET</span>(API_URL)</span>
-<span id="cb47-11"><a href="#cb47-11" aria-hidden="true" tabindex="-1"></a>  temp_list <span class="ot">&lt;-</span> <span class="fu">fromJSON</span>(<span class="fu">rawToChar</span>(temp_raw<span class="sc">$</span>content), <span class="at">flatten =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb47-12"><a href="#cb47-12" aria-hidden="true" tabindex="-1"></a> </span>
-<span id="cb47-13"><a href="#cb47-13" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Add the most recent results to your data frame</span></span>
-<span id="cb47-14"><a href="#cb47-14" aria-hidden="true" tabindex="-1"></a>  ts_df <span class="ot">&lt;-</span> <span class="fu">rbind</span>(ts_df, temp_list<span class="sc">$</span>actualsTimeseries)</span>
-<span id="cb47-15"><a href="#cb47-15" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb48"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb48-1"><a href="#cb48-1" aria-hidden="true" tabindex="-1"></a><span class="fu">dim</span>(ts_df)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 3690   30</code></pre>
-</div>
-</div>
+<p>We could wrangle and visualize the data from here.</p>
 </section>
 </section>
 <section id="post-lecture-materials" class="level1">

@@ -1,7 +1,16 @@
 [
   {
+    "listing": "/projects.html",
+    "items": [
+      "/projects/2023-11-28-project-3/index.html",
+      "/projects/2023-11-07-project-2/index.html",
+      "/projects/2023-10-26-project-1/index.html"
+    ]
+  },
+  {
     "listing": "/lectures.html",
     "items": [
+      "/posts/2023-12-05-gettingdata-api/index.html",
       "/posts/2023-11-30-pkgdown-pkg-website/index.html",
       "/posts/2023-11-30-targets-proj-workflows/index.html",
       "/posts/2023-11-28-purrr-fun-programming/index.html",
@@ -12,13 +21,6 @@
       "/posts/2023-11-02-command-line-part-2/index.html",
       "/posts/2023-10-31-command-line-part-1/index.html",
       "/posts/2023-10-26-build-website/index.html"
-    ]
-  },
-  {
-    "listing": "/projects.html",
-    "items": [
-      "/projects/2023-11-07-project-2/index.html",
-      "/projects/2023-10-26-project-1/index.html"
     ]
   }
 ]
