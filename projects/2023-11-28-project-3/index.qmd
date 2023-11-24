@@ -8,7 +8,6 @@ author:
 description: "Building websites for R packages; practice functional programming and APIs"
 date: 2023-11-28
 categories: [project 3, projects]
-draft: true
 ---
 
 # Background
@@ -31,7 +30,7 @@ In both parts below, you will need to create two separate github repositories fo
 
 The first one (Part 1) will be a public repository to build a website for an R package. It is public because you will need to deploy the website. 
 
-The second one (Part 2) will be a private repository to practice using two different APIs, practice functional programming, and building data analyses. 
+The second one (Part 2) will be a private repository to practice using an APIs, practice functional programming, and building data analyses. 
 
 # Part 1
 
@@ -144,11 +143,19 @@ Most APIs have limits on the number of times you can ping it in a given hour and
 
 :::
 
-## Part 2A
 
-The first API we will use is `tidycensus` (<https://walker-data.com/tidycensus>), which is an R package that allows users to interface with a select number of the US Census Bureau’s data APIs and return tidyverse-ready data frames, optionally with simple feature geometry included.
 
-The goal of this part is to create a data analysis (or a case study) using the US Census Bureau’s data. 
+The API we will use is `tidycensus` (<https://walker-data.com/tidycensus>), which is an R package that allows users to interface with a select number of the US Census Bureau’s data APIs and return tidyverse-ready data frames, optionally with simple feature geometry included.
+
+The goal of this part is to create a data analysis (or a case study) using the US Census Bureau's data. 
+
+:::{.callout-important}
+
+To use this API, you must obtain and API key, which can be found at the top of this page: 
+
+- https://walker-data.com/tidycensus/articles/basic-usage.html
+
+:::
 
 Other requirements for this part are the following: 
 
@@ -166,26 +173,3 @@ Other requirements for this part are the following:
     - At least one plot should using a type of faceting (`facet_grid()` or `facet_wrap()`). 
 4. Summarize and interpret the results in 1-2 sentences.
 5. At the end of the data analysis, list out each of the functions you used from each of the packages (`dplyr`, `tidyr`, `ggplot2`, etc) to help the TA with respect to making sure you met all the requirements described above. 
-
-## Part 2B 
-
-The second API we will use is the [Covid Act Now Data API](https://covidactnow.org/data-api). 
-
-The goal of this part is to create a data analysis (or a case study) using the Covid Act Now Data API. 
-
-Other requirements for this part are the following: 
-
-1. You must describe what is the question you aim to answer with the data and data analysis. 
-2. You must use at least three different calls to the Covid Act Now Data API to extract out different datasets. For example, these could be across counties, etc. 
-  - In this step, you must test if a directory named `data` exists locally. If it does not, write an R function that creates it programmatically.  
-  - Saves the data only once (not each time you knit/render the document). 
-  - Read in the data locally each time you knit/render. 
-3. Your analysis must include some form of data wrangling and data visualization. 
-  - You must use at least six different functions from `dplyr`, `tidyr`, `lubridate`, `stringr`, or `forcats`. 
-  - You **must use at least two functions from `purrr`**. 
-  - Your analysis should include at least three plots with you using at least three different `geom_*()` functions from `ggplot2` (or another package with `geom_*()` functions). 
-    - Plots should have titles, subtitles, captions, and human-understandable axis labels. 
-    - At least one plot should using a type of faceting (`facet_grid()` or `facet_wrap()`). 
-4. Summarize and interpret the results in 1-2 sentences.
-5. At the end of the data analysis, list out each of the functions you used from each of the packages (`dplyr`, `tidyr`, `ggplot2`, etc) to help the TA with respect to making sure you met all the requirements described above. 
-6. Push your code and rendered HTML to the private repository that you created for yourself. 

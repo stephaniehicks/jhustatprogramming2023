@@ -7,11 +7,9 @@ author:
 description: "Introduction to JSON files and interacting with APIs with `httr`"
 date: 2023-12-05
 categories: [module 3, week 7, JSON, APIs, httr]
-draft: true
 ---
 
 # Pre-lecture materials
-
 
 ### Read ahead
 
@@ -66,7 +64,7 @@ library(httr)
 - Learn about what are JSON files and how we can convert them into data frames in R 
 - Describe some best practices on sharing data with collaborators
 - Know what does API mean and state four types of API architectures
-- Practice with two APIs: the GitHub API and the COVID Act Now API
+- Practice with two APIs: the GitHub API and the openFDA API
 
 :::
 
@@ -230,13 +228,14 @@ like:
 
 ``` md
 var stephanie = {
-	"age" : "33",
+	"job-title" : "Associate Professor",
 	"hometown" : "Baltimore, MD",
-	"gender" : "female", 
-  "cars" : {
-    "car1" : "Hyundai Elantra",
-    "car2" : "Toyota Rav4",
-    "car3" : "Honda CR-V"
+	"pronouns": "she/her",
+  "states-lived" : {
+    "state1" : "Louisiana",
+    "state2" : "Texas",
+    "state3" : "Massachusetts",
+    "state4" : "Maryland"
   }
 }
 ```
@@ -365,8 +364,6 @@ If you look on my github page, you can see there are more than 30 repositories.
 
 - <https://github.com/stephaniehicks?tab=repositories> 
 
-I have 85 public repositories as of today! 
-
 
 :::{.callout-tip}
 
@@ -390,7 +387,7 @@ In this use case Github api splits the result into 30 items per resonse, depends
 
 You can read more about pagination here: 
 
-- <https://docs.github.com/en/enterprise-server@3.6/rest/guides/traversing-with-pagination>
+- <https://docs.github.com/en/rest/guides/using-pagination-in-the-rest-api>
 
 
 
@@ -411,7 +408,7 @@ jsonDataAll <- as_tibble(fromJSON(github_url))
 dim(jsonDataAll)
 ```
 
-We now get all 85 repositories! yay! 
+We now get all the public repositories! yay! 
 
 :::
 
@@ -436,11 +433,11 @@ Personally, I keep mine in my `.Renviron` file which looks something like this o
 
 ```
 GITHUB_API_KEY = <add my GitHub API key here> 
-COVID_ACT_NOW_API_KEY = <add my COVID Act Now API key here> 
 CENSUS_API_KEY = <add my tidycensus API key here> 
+OPENFDA_API_KEY = <add my openFDA API key here> 
 ```
 
-If you don't have an `.Renviron` file in your home directory, you can make one: 
+If you do not have an `.Renviron` file in your home directory, you can make one: 
 
 ``` bash
 cd ~
@@ -499,7 +496,7 @@ Next we extract / retrieve the contents from the raw JSON output using the `cont
 
 ```{r}
 account_details <- fromJSON(httr::content(response, as = 'text'))
-account_details
+account_details[1:30]
 ```
 
 Next, let's perform the same request we did above about my 85 repositories, but instead of reading in the JSON file from the web, we use an authenticated `GET()` response: 
@@ -515,11 +512,9 @@ repo_details
 
 Let's have a bit of fun and explore some questions:  
 
-- How many are private repos? 
 - How many have forks? How many forks? 
 
 ```{r}
-table(repo_details$private)
 table(repo_details$forks)
 ```
 
@@ -566,52 +561,35 @@ Finally, I will leave you with a few other examples of using GitHub API:
 * [Getting my GitHub Activity](https://masalmon.eu/2017/12/21/wherehaveyoubeen/)
 
 
-# COVID Act Now API
+# openFDA API
 
-Next, we will demonstrate how to request data from the API at [COVID Act Now](https://covidactnow.org/data-api), which returns CSV or JSON files.  
+Next, we will demonstrate how to request data from the API at [openFDA API](https://open.fda.gov), which returns JSON files.  
 
-This API provides access to COVID data tracking US states, counties, and metros, including data and metrics for cases, vaccinations, tests, hospitalizations, and deaths. See [data definitions](https://apidocs.covidactnow.org/data-definitions/) for all included data.
+This API provides create easy access to public data, to create a new level of openness and accountability, to ensure the privacy and security of public FDA data, and ultimately to educate the public and save lives. See [data definitions](https://open.fda.gov/data/datadictionary) for all included data.
 
 ## Register for an API Key
 
 First, you need to register for an API key here
 
-- <https://apidocs.covidactnow.org/#register>
+- <https://open.fda.gov/apis/authentication/>
 
 You should also store the API key in your `.Renviron` like above for the GitHub API key. 
 
 ## Building the URL for `GET`
 
-First, we will request time series COVID data for one county in the US (Baltimore City) defined by it FIPS code (24510). 
+First, we will request a summarized set of counts around food recalls either voluntary by a firm or mandated by the FDA. 
 
 The URL we want is the following
 
 ```
-https://api.covidactnow.org/v2/county/24510.timeseries.json?apiKey=<your_API_key_here>
+https://api.fda.gov/food/enforcement.json?api_key=<your_API_key_here>&count=voluntary_mandated.exact
 ```
-
-:::{.callout-tip}
-
-### Note
-
-You cannot use this API without an API key
-
-e.g. if we click here <https://api.covidactnow.org/v2/county/24510.timeseries.json> it says 
-
-```
-{"error": "API key required. Visit https://apidocs.covidactnow.org/#register to get an API key"}
-```
-
-:::
 
 Let's build up the URL. 
 
-- The first is the base URL: `https://api.covidactnow.org/v2/`. This part of the URL **will be the same for all our calls** to this API.
-- The county/portion of the URL indicates that we only want COVID data for a single county. By looking at the COVID Act Now API documentation, I can see that states is an alternative option for this part of the URL.
-- 24510 is the unique identifier for Baltimore City. If I want to get the same data but for a different county, I just have to change this number.
-- `.timeseries` provides the API with more information about the data I am requesting, and 
-- `.json` tells the API to format the data as a JSON (which we will convert to a data frame).
-- Everything after `apiKey=` is my authorization token, which tells the COVID Act Now servers that I am allowed to ask for this data. 
+- The first is the base URL: `https://api.fda.gov/food/enforcement.json`. This part of the URL **will be the same for all our calls** to the food enforcement API (but is different if you want to investigate e.g. patient responses from drugs).
+- Next, `?apiKey=<your_API_key_here>` is how I use my authorization token, which tells the openFDA servers that I am allowed to ask for this data.
+- Finally, we want to return a set of summarized counts for a specific field (`&count=voluntary_mandated.exact`)
 
 Now that we have dissected the anatomy of an API, you can see how easy it is to build them!
 
@@ -620,19 +598,18 @@ Basically anybody with an internet connection, an authorization token, and who k
 
 ## Calling an API with `GET`
 
-Let's join the URL together for one county (later I will show how to loop through multiple counties)
+Let's join the URL together: 
 
 ```{r}
 ## extract my API from `.Renviron`
-covid_key <- Sys.getenv("COVID_ACT_NOW_API_KEY")
+openFDA_key <- Sys.getenv("OPENFDA_API_KEY")
 
 ## build the URL
-base <- 'https://api.covidactnow.org/v2/county/'
-county <- '24510'
-info_key <- '.timeseries.json?apiKey='
+base <- 'https://api.fda.gov/food/enforcement.json?api_key='
+query <- '&count=voluntary_mandated.exact'
 
 ## put it all together
-API_URL <- paste0(base, county, info_key, covid_key)
+API_URL <- paste0(base, openFDA_key, query)
 ```
 
 Now we have the entire URL stored in a simple R object called `API_URL`.
@@ -672,7 +649,7 @@ There is a function in base R `rawTo_Char()` that converts raw bytes to characte
 
 ```{r}
 #| eval: false
-covid_data <- fromJSON(rawToChar(raw_data$content), flatten = TRUE)
+openFDA_data <- fromJSON(rawToChar(raw_data$content), flatten = TRUE)
 ```
 
 This converts the raw data into a list. 
@@ -682,10 +659,10 @@ This converts the raw data into a list.
 We can also do this with `httr::content` (as above) and just define the encoding for the character set. 
 
 ```{r}
-covid_data <- fromJSON(httr::content(raw_data, 
-                                     as = 'text', 
-                                     encoding =  "UTF-8"))
-str(covid_data)
+openFDA_data <- fromJSON(httr::content(raw_data, 
+                                       as = 'text', 
+                                       encoding =  "UTF-8"))
+str(openFDA_data)
 ```
 
 :::
@@ -695,53 +672,12 @@ Now that it is in a list format, you can see that it actually contains several d
 You can use this data right away if you are already familiar with lists in R, or you can extract the data frames into separate objects, like this:
 
 ```{r}
-ts_df <- covid_data$actualsTimeseries
+ts_df <- openFDA_data$results
+ts_df
 ```
 
-The data frame that we have just created contains many different variables and a lot of information. Below, you can see the first six rows of a selection of some interesting variables in our data:
+We could wrangle and visualize the data from here. 
 
-```{r}
-head(ts_df[ , c("cases", "deaths", "newCases", "newDeaths", "date")], n=10)
-```
-
-## Looping multiple API calls 
-
-Next, let's create a loop to make several requests to the API 
-
-
-Now that we’ve seen how to make an API call for one county, let’s create a simple loop to make several calls at a time. We’ll use a for loop, which you can read more about here.
-
-First, we’ll create a vector with the ID code for each county we want to get data for:
-
-```{r}
-# Baltimore City County, Montgomery County, Baltimore County
-counties <- c('24510', '24031', '24005')
-```
-
-We will loop through each element and adjust the `API_URL` accordingly. 
-
-```{r}
-temp_list <- vector("list", length = 3)
-ts_df <- NULL
-
-for(i in 1:length(counties)) {
- 
-  # Build the API URL with the new county code
-  API_URL <- paste0(base, counties[i], info_key, covid_key)
- 
-  # Store the raw and processed API results in temporary objects
-  temp_raw <- GET(API_URL)
-  temp_list <- fromJSON(rawToChar(temp_raw$content), flatten = TRUE)
- 
-  # Add the most recent results to your data frame
-  ts_df <- rbind(ts_df, temp_list$actualsTimeseries)
-}
-
-```
-
-```{r}
-dim(ts_df)
-```
 
 # Post-lecture materials
 
