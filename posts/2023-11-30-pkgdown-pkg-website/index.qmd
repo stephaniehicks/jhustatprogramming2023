@@ -1,8 +1,8 @@
 ---
 title: "Package development with `pkgdown`"
 author: 
-  - name: Boyi Guo
-    url: https://boyiguo1.github.io
+  - name: Stephanie Hicks
+    url: https://www.stephaniehicks.com
     affiliation: Department of Biostatistics, Johns Hopkins
     affiliation_url: https://publichealth.jhu.edu
 description: "Building a website for R software packages"

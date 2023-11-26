@@ -1,8 +1,8 @@
 ---
 title: "Reproducibile Workflows with `targets`"
 author: 
-  - name: Boyi Guo
-    url: https://boyiguo1.github.io
+  - name: Stephanie Hicks
+    url: https://www.stephaniehicks.com
     affiliation: Department of Biostatistics, Johns Hopkins
     affiliation_url: https://publichealth.jhu.edu
 description: "A Make-line pipeline tool for creating reproducible workflows in R"

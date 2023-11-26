@@ -1,8 +1,8 @@
 ---
 title: "Functional Programming with `purrr`"
 author: 
-  - name: Boyi Guo
-    url: https://boyiguo1.github.io
+  - name: Stephanie Hicks
+    url: https://www.stephaniehicks.com
     affiliation: Department of Biostatistics, Johns Hopkins
     affiliation_url: https://publichealth.jhu.edu
 description: "Introduction to tools to work with functions and vectors in R"
@@ -10,7 +10,6 @@ date: 2023-11-28
 categories: [module 3, week 6, functions, functional, programming, purrr]
 knitr: true
 ---
-
 
 <!-- Add interesting quote -->
 
@@ -40,7 +39,6 @@ install.packages("purrr")
 ```
 
 or use the “Install Packages…” option from the “Tools” menu in RStudio.
-
 
 
 ### Acknowledgements
