@@ -38,8 +38,6 @@ You can do this by calling
 install.packages("purrr")
 ```
 
-or use the “Install Packages…” option from the “Tools” menu in RStudio.
-
 
 ### Acknowledgements
 
@@ -56,28 +54,71 @@ Material for this lecture was borrowed and adopted from
 
 **At the end of this lesson you will:**
 
--   Be familiar with the concept of _functional programming_
--   Get comfortable with the major functions in  `purrr`, e.g. the `map` family, `reduce`
+-   Be familiar with the concept of _functional languages_ and _functional styles_ of programming
+-   Get comfortable with the major functions in  `purrr` (e.g. the `map` family of functions, `reduce`)
 -   Write your loops with `map` functions instead of the `for` loop
 :::
 
-# Functional Programming
-## The characteristics
-At it is core, functional programming treats functions equally as other data structures, namely **first class functions**. 
+# Motivation 
+
+If you have ever heard the phrase 
+
+> "R is a __functional__ language."
+
+you might have asked yourself what does this means exactly? Generally, this means that R lends itself nice to a particular __style__ of programming, namely a **functional style** of programming (will explain more below), which is often very helpful to the types of problems you encounter when doing a data analysis. 
+
+## Functional programming language
+
+A **functional style** of programming is contrast to a the formal definition of a **functional language** (or **functional programming**, which can be complementary to object-oriented programming), which are languages that use functions to create conditional expressions to perform specific computations. 
+
+:::{.callout-note}
+
+### Differences between functional and object-oriented programming
+
+From [this resource](https://www.indeed.com/career-advice/career-development/functional-programming-languages) some differences are: 
+
+- **Basic elements**: The fundamental elements of object-oriented languages are objects and methods, while the elements of functional programming are functions and variables. 
+
+- **States**: Object-oriented languages can change objects within the program, which means it has states or current modifications that affect the result of inputs. Functional languages do not use imperative programming, so they do not keep track of current states.
+
+- **Parallel programming**: This type of programming involves multiple computational processes occurring at the same time. Object-oriented languages have little support for parallel programming, but functional languages have extensive support for it.
+
+- **Order**: In object-oriented programming, computations occur in a specific order. In functional programming, computations can occur in any order.
+
+- **Iterative data**: Object-oriented programming uses loops, meaning repeated execution, for iterative data. Functional programming uses recursion for iterative data, meaning it attempts to solve problems using simpler versions of the same problem.
+
+:::
+
+A traditional weakness of functional languages are poorer performance and sometimes unpredictable memory usage, but these have been much reduced in recent years.
+
+
+## Characteristics of a functional language
+
+There are many definitions for precisely what makes a language functional, but there are two common threads and/or characteristics. 
+
+### 1. First-class functions
+
+At it is core, functional programming treats functions equally as other data structures, called **first class functions**. 
 
 > In R, this means that you can do many of the things with a function that you can do with a vector: you can assign them to variables, store them in lists, pass them as arguments to other functions, create them inside functions, and even return them as the result of a function.
 
-## What do you mean?
+:::{.callout-tip}
 
-* Assign a function to a variable
+### Examples of cool things you can do with functions in R
+
+1. Assign a function to a variable (`foo`):
+
 ```{r}
 foo <- function(){
   return("This is foo.")
 }
 class(foo)
+foo
+foo()
 ```
 
-* Store functions in a list
+2. You can store functions in a `list`:
+
 ```{r}
 foo_list <- list( 
   fun_1 = function() return("foo_1"),
@@ -85,16 +126,19 @@ foo_list <- list(
 )
 
 str(foo_list)
+foo_list$fun_1()
+foo_list$fun_2()
 ```
 
-* Pass functions as arguments to other functions
+3. You can pass functions as arguments to other functions:
+
 ```{r}
-shell <- function(f) f()
-shell(foo_list$fun_1)
-shell(foo_list$fun_2)
+shell_fn <- function(f) f()
+shell_fn(foo_list$fun_1)
+shell_fn(foo_list$fun_2)
 ```
 
-* Create functions inside of functions & return them as the result of a function
+4. You can **create functions inside of functions** and return them as the result of a function
 ```{r}
 foo_wrap <- function(){
   foo_2 <- function(){
@@ -109,12 +153,40 @@ foo_wrap()
 
 The bottom line, you can manipulate functions as the same way as you can to a vector or a matrix. 
 
-## Why is functional programming important?
-Functional programming introduces a new style of programming, namely **functional style**. Broadly speaking, this programming style encourages programmers to write a big function as many smaller isolated functions, where each function addresses one specific task.
+:::
 
-<iframe src='https://gfycat.com/ifr/NeedyRipeKingbird' frameborder='0' scrolling='no' allowfullscreen width='640' height='404'></iframe>
+### 2. Pure functions
 
-As a by-product, **funcitonal style** motivates more humanly readable code, and recyclable code.
+A function is **pure**, if it satisfies two properties:
+
+* The output only depends on the inputs, i.e. if you call it again with the 
+  same inputs, you get the same outputs. This excludes functions like `runif()`,
+  `read.csv()`, or `Sys.time()` that can return different values.
+
+* The function has no side-effects, like changing the value of a global 
+  variable, writing to disk, or displaying to the screen. This excludes 
+  functions like `print()`, `write.csv()` and `<-`.
+ 
+Pure functions are much easier to reason about, but obviously have significant downsides: imagine doing a data analysis where you could not generate random numbers or read files from disk. 
+
+:::{.callout-important}
+
+To be clear, **R is not formally a functional programming language** as it does not require pure functions to be used when writing code. 
+
+:::
+
+So you might be asking yourself, why are we talking about this then? 
+
+The formal definition of a functional programming language introduces a new style of programming, namely a **functional style** of programming. 
+
+:::{.callout-note}
+
+The key idea of a **functional style** is this programming style encourages programmers to write a big function as many smaller isolated functions, where each function addresses one specific task.
+
+:::
+
+You can always adopt a **functional style** for certain parts of your code! For example, this style of writing code motivates more humanly readable code, and recyclable code.
+
 ```{r}
 #| eval: false
 
@@ -133,24 +205,33 @@ As a by-product, **funcitonal style** motivates more humanly readable code, and 
   model_visualization()
 ```
 
-::: callout-tip
-### Pipe operators
-R provides some pipe operators to make code readable, e.g. `|>` from the base R, `%>%` from the package `magrittr`. These pipe operators operate like a pipe, piping the output from the previous function (left hand side of the pipe operator)  to the following function (right hand side of the pipe operator). The pipe operator `|>` was introduced in R 4.1.0 and requires no loading of additional packages, unlike `%>%`.
 
-A keyboard shortcut to type a pipe operator in RStudio is `shift+cmd+m` for Mac or `shift+ctrl+m` in Windows.
-:::
+## Functional style
+
+At a high-level, a **functional style** is the concept of decomposing a big problem into smaller components, then solving each piece with a function or combination of functions. 
+
+- When using a functional style, you strive to decompose components of the problem into isolated functions that operate independently. 
+- Each function taken by itself is simple and straightforward to understand; complexity is handled by composing functions in various ways.
+
+In this lecture, we will focus on one type of functional technique, namely **functionals** which are functions (like `lapply()`) that take another function as an argument. Functionals allow you to take a function that solves the problem for a single input and generalize it to handle any number of inputs. 
+
+Functionals are by far and away the most important technique and you will use them all the time in data analysis.
+
+
 
 # `purrr`: the functional programming toolkit
 
-<iframe src='https://gfycat.com/ifr/SadYoungKawala' frameborder='0' scrolling='no' allowfullscreen width='640' height='415'></iframe>
-
 The R package `purrr`, as one important component of the [`tidyverse`](https://www.tidyverse.org/), provides a interface to manipulate vectors in the _functional style_.
 
-> `purrr` enhances R’s functional programming (FP) toolkit by providing a complete and consistent set of tools for working with functions and vectors.
+> `purrr` enhances R's functional programming (FP) toolkit by providing a complete and consistent set of tools for working with functions and vectors.
 
 ::: callout-tip
 ### `purrr` cheatsheet
-It is very difficulty, if not impossible, to remember all functions that a package offers as well as their use cases. Hence, `purrr` developers offer a nice compact cheatsheet with visualizations at <https://github.com/rstudio/cheatsheets/blob/main/purrr.pdf>. Similar cheatsheets are available for other `tidyverse` packages.
+It is very difficult, if not impossible, to remember all functions that a package offers as well as their use cases. 
+
+Hence, `purrr` developers offer a nice compact cheatsheet with visualizations at <https://github.com/rstudio/cheatsheets/blob/main/purrr.pdf>. 
+
+Similar cheatsheets are available for other `tidyverse` packages.
 :::
 
 The most popular function in `purrr` is `map()` which iterates over the supplied data structure and apply a function during the iterations. Beside the `map` function,`purrr` also offers a series of useful functions to manipulate `list` the data structure.
