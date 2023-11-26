@@ -1,6 +1,6 @@
 # Statistical Programming Paradigms and Workflows
 
-This repo is for the Johns Hopkins BSPH course titled 'Statistical Programming Paradigms and Workflows' (BSPH 140.777.01) in Fall 2023.
+This repo is for the Johns Hopkins BSPH course titled 'Statistical Programming Paradigms and Workflows' (BSPH 140.777.01) in term 2 for Fall 2023.
 
 ## Instructor
 
@@ -9,6 +9,7 @@ This repo is for the Johns Hopkins BSPH course titled 'Statistical Programming P
 ## Teaching Assistants
 
 -   Joe Sartini
+-   Angela Zhao
 
 # Bugs
 
