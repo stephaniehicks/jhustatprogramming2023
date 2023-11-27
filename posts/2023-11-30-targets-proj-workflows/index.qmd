@@ -10,6 +10,7 @@ date: 2023-11-30
 categories: [module 3, week 6, project management, targets]
 execute:
   eval: false
+draft: true
 ---
 
 ```{r, setup, include=FALSE}
@@ -17,6 +18,7 @@ knitr::opts_chunk$set(
   eval = FALSE
 )
 ```
+
 
 <!-- Add interesting quote -->
 
@@ -48,21 +50,12 @@ You can do this by calling
 install.packages( c("usethis", "targets", "renv"))
 ```
 
-or use the “Install Packages…” option from the “Tools” menu in RStudio.
-
 ### Acknowledgements
 
 Material for this lecture was borrowed and adopted from
 
 -   https://books.ropensci.org/targets/walkthrough.html
 
-
-### Special Message from Boyi
-To students attending online: 
-
-<div style="width:100%;height:0;padding-bottom:56%;position:relative;"><iframe src="https://giphy.com/embed/l3q2JK6OLbteDy3zq" width="100%" height="100%" style="position:absolute" frameBorder="0" class="giphy-embed" allowFullScreen></iframe></div>
-
-I apologize for the scraping sound I made during last lecture.
 
 # Learning objectives
 
@@ -76,28 +69,28 @@ I apologize for the scraping sound I made during last lecture.
 -  replicate and retrieve analysis results from a `targets` workflow
 :::
 
-# What is `targets`?
-<div style="width:100%;height:0;padding-bottom:100%;position:relative;"><iframe src="https://giphy.com/embed/l0He7QpY9OzTyEAjm" width="100%" height="100%" style="position:absolute" frameBorder="0" class="giphy-embed" allowFullScreen></iframe></div>
+# Overview of `targets`
 
-`targets` is not the grocery store. Instead, it is a R package that helps you to manage your analysis. You can think of `targets` as a butler who helps you to manage your analytics. These services include
+`targets` is an R package that helps you to manage your analysis. You can think of `targets` as a butler who helps you to manage your analytics. These services include:
 
-* to manage the ordering of your analysis so you won't confuse about the steps when reproducing an analysis
-* to save the output of each analytic procedures so you don't have to wait for repetitive runs of static results
+* to manage the ordering of your analysis so you will not confuse the steps when reproducing an analysis
+* to save the output of each analytic procedures so you do not have to wait for repetitive runs of static results
 * to monitor the change in your code so you can update the only analytic tasks that changes are made
-* to reproduce the whole analysis with a click so you don't have to run multiple scripts
+* to reproduce the whole analysis with a click so you do not have to run multiple scripts
 
-# Why do we use `targets`?
-<iframe src='https://gfycat.com/ifr/NeedyRipeKingbird' frameborder='0' scrolling='no' allowfullscreen width='640' height='404'></iframe>
+## Why do we use `targets`?
 
 `targets` helps us be more efficient at managing analytic workflows, and hence improve productivity with bare minimum efforts. Let me simply put this way, managing file names for your code or saved objects can be very painful. But `targets` can help you handle that when use in combination with other version control system `git`.  
 
-<div style="width:100%;height:0;padding-bottom:100%;position:relative;"><iframe src="https://giphy.com/embed/jtFOBTQhSUmR5STTZx" width="100%" height="100%" style="position:absolute" frameBorder="0" class="giphy-embed" allowFullScreen></iframe></div>
 
-# How to use `targets`
+## How to use `targets`
 
-[The {targets} R package user manual](https://books.ropensci.org/targets/) is a great source to learn how to use `targets`. The intro level of `targets` tutorial is well documented in [*Chapter 2 Walkthrough*](https://books.ropensci.org/targets/walkthrough.html). Instead going through the chapter with you, I will focus on some tricks that is not discussed in the user manual. 
+[The {targets} R package user manual](https://books.ropensci.org/targets/) is a great source to learn how to use `targets`. The intro level of `targets` tutorial is well documented in [*Chapter 2 Walkthrough*](https://books.ropensci.org/targets/walkthrough.html). 
+
+Instead going through the chapter with you, I will focus on some tricks that is not discussed in the user manual. 
 
 ## Set up a `targets` workflow
+
 ```{r}
 # Start a new R project
 usethis::create_project("targets_eg")
