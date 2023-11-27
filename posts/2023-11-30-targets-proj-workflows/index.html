@@ -232,13 +232,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#read-ahead" id="toc-read-ahead" class="nav-link" data-scroll-target="#read-ahead">Read ahead</a></li>
   <li><a href="#prerequisites" id="toc-prerequisites" class="nav-link" data-scroll-target="#prerequisites">Prerequisites</a></li>
   <li><a href="#acknowledgements" id="toc-acknowledgements" class="nav-link" data-scroll-target="#acknowledgements">Acknowledgements</a></li>
-  <li><a href="#special-message-from-boyi" id="toc-special-message-from-boyi" class="nav-link" data-scroll-target="#special-message-from-boyi">Special Message from Boyi</a></li>
   </ul></li>
   <li><a href="#learning-objectives" id="toc-learning-objectives" class="nav-link" data-scroll-target="#learning-objectives">Learning objectives</a></li>
-  <li><a href="#what-is-targets" id="toc-what-is-targets" class="nav-link" data-scroll-target="#what-is-targets">What is <code>targets</code>?</a></li>
-  <li><a href="#why-do-we-use-targets" id="toc-why-do-we-use-targets" class="nav-link" data-scroll-target="#why-do-we-use-targets">Why do we use <code>targets</code>?</a></li>
-  <li><a href="#how-to-use-targets" id="toc-how-to-use-targets" class="nav-link" data-scroll-target="#how-to-use-targets">How to use <code>targets</code></a>
+  <li><a href="#overview-of-targets" id="toc-overview-of-targets" class="nav-link" data-scroll-target="#overview-of-targets">Overview of <code>targets</code></a>
   <ul class="collapse">
+  <li><a href="#why-do-we-use-targets" id="toc-why-do-we-use-targets" class="nav-link" data-scroll-target="#why-do-we-use-targets">Why do we use <code>targets</code>?</a></li>
+  <li><a href="#how-to-use-targets" id="toc-how-to-use-targets" class="nav-link" data-scroll-target="#how-to-use-targets">How to use <code>targets</code></a></li>
   <li><a href="#set-up-a-targets-workflow" id="toc-set-up-a-targets-workflow" class="nav-link" data-scroll-target="#set-up-a-targets-workflow">Set up a <code>targets</code> workflow</a>
   <ul class="collapse">
   <li><a href="#optional-version-control-packages-with-renv" id="toc-optional-version-control-packages-with-renv" class="nav-link" data-scroll-target="#optional-version-control-packages-with-renv">(Optional) Version control packages with <code>renv</code></a></li>
@@ -298,7 +297,6 @@ Read ahead
 <div class="cell">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>( <span class="fu">c</span>(<span class="st">"usethis"</span>, <span class="st">"targets"</span>, <span class="st">"renv"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>or use the “Install Packages…” option from the “Tools” menu in RStudio.</p>
 </section>
 <section id="acknowledgements" class="level3">
 <h3 class="anchored" data-anchor-id="acknowledgements">Acknowledgements</h3>
@@ -306,15 +304,6 @@ Read ahead
 <ul>
 <li>https://books.ropensci.org/targets/walkthrough.html</li>
 </ul>
-</section>
-<section id="special-message-from-boyi" class="level3">
-<h3 class="anchored" data-anchor-id="special-message-from-boyi">Special Message from Boyi</h3>
-<p>To students attending online:</p>
-<div style="width:100%;height:0;padding-bottom:56%;position:relative;">
-<iframe src="https://giphy.com/embed/l3q2JK6OLbteDy3zq" width="100%" height="100%" style="position:absolute" frameborder="0" class="giphy-embed" allowfullscreen="">
-</iframe>
-</div>
-<p>I apologize for the scraping sound I made during last lecture.</p>
 </section>
 </section>
 <section id="learning-objectives" class="level1">
@@ -338,33 +327,24 @@ Learning objectives
 </div>
 </div>
 </section>
-<section id="what-is-targets" class="level1">
-<h1>What is <code>targets</code>?</h1>
-<div style="width:100%;height:0;padding-bottom:100%;position:relative;">
-<iframe src="https://giphy.com/embed/l0He7QpY9OzTyEAjm" width="100%" height="100%" style="position:absolute" frameborder="0" class="giphy-embed" allowfullscreen="">
-</iframe>
-</div>
-<p><code>targets</code> is not the grocery store. Instead, it is a R package that helps you to manage your analysis. You can think of <code>targets</code> as a butler who helps you to manage your analytics. These services include</p>
+<section id="overview-of-targets" class="level1">
+<h1>Overview of <code>targets</code></h1>
+<p><code>targets</code> is an R package that helps you to manage your analysis. You can think of <code>targets</code> as a butler who helps you to manage your analytics. These services include:</p>
 <ul>
-<li>to manage the ordering of your analysis so you won’t confuse about the steps when reproducing an analysis</li>
-<li>to save the output of each analytic procedures so you don’t have to wait for repetitive runs of static results</li>
+<li>to manage the ordering of your analysis so you will not confuse the steps when reproducing an analysis</li>
+<li>to save the output of each analytic procedures so you do not have to wait for repetitive runs of static results</li>
 <li>to monitor the change in your code so you can update the only analytic tasks that changes are made</li>
-<li>to reproduce the whole analysis with a click so you don’t have to run multiple scripts</li>
+<li>to reproduce the whole analysis with a click so you do not have to run multiple scripts</li>
 </ul>
-</section>
-<section id="why-do-we-use-targets" class="level1">
-<h1>Why do we use <code>targets</code>?</h1>
-<iframe src="https://gfycat.com/ifr/NeedyRipeKingbird" frameborder="0" scrolling="no" allowfullscreen="" width="640" height="404">
-</iframe>
+<section id="why-do-we-use-targets" class="level2">
+<h2 class="anchored" data-anchor-id="why-do-we-use-targets">Why do we use <code>targets</code>?</h2>
 <p><code>targets</code> helps us be more efficient at managing analytic workflows, and hence improve productivity with bare minimum efforts. Let me simply put this way, managing file names for your code or saved objects can be very painful. But <code>targets</code> can help you handle that when use in combination with other version control system <code>git</code>.</p>
-<div style="width:100%;height:0;padding-bottom:100%;position:relative;">
-<iframe src="https://giphy.com/embed/jtFOBTQhSUmR5STTZx" width="100%" height="100%" style="position:absolute" frameborder="0" class="giphy-embed" allowfullscreen="">
-</iframe>
-</div>
 </section>
-<section id="how-to-use-targets" class="level1">
-<h1>How to use <code>targets</code></h1>
-<p><a href="https://books.ropensci.org/targets/">The {targets} R package user manual</a> is a great source to learn how to use <code>targets</code>. The intro level of <code>targets</code> tutorial is well documented in <a href="https://books.ropensci.org/targets/walkthrough.html"><em>Chapter 2 Walkthrough</em></a>. Instead going through the chapter with you, I will focus on some tricks that is not discussed in the user manual.</p>
+<section id="how-to-use-targets" class="level2">
+<h2 class="anchored" data-anchor-id="how-to-use-targets">How to use <code>targets</code></h2>
+<p><a href="https://books.ropensci.org/targets/">The {targets} R package user manual</a> is a great source to learn how to use <code>targets</code>. The intro level of <code>targets</code> tutorial is well documented in <a href="https://books.ropensci.org/targets/walkthrough.html"><em>Chapter 2 Walkthrough</em></a>.</p>
+<p>Instead going through the chapter with you, I will focus on some tricks that is not discussed in the user manual.</p>
+</section>
 <section id="set-up-a-targets-workflow" class="level2">
 <h2 class="anchored" data-anchor-id="set-up-a-targets-workflow">Set up a <code>targets</code> workflow</h2>
 <div class="cell">
