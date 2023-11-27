@@ -249,7 +249,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#functional-style" id="toc-functional-style" class="nav-link" data-scroll-target="#functional-style">Functional style</a>
   <ul class="collapse">
   <li><a href="#functionals" id="toc-functionals" class="nav-link" data-scroll-target="#functionals">Functionals</a></li>
-  <li><a href="#example-of-a-functional" id="toc-example-of-a-functional" class="nav-link" data-scroll-target="#example-of-a-functional">Example of a functional</a></li>
   </ul></li>
   </ul></li>
   <li><a href="#purrr-the-functional-programming-toolkit" id="toc-purrr-the-functional-programming-toolkit" class="nav-link" data-scroll-target="#purrr-the-functional-programming-toolkit"><code>purrr</code>: the functional programming toolkit</a>
@@ -345,7 +344,7 @@ Learning objectives
 <p><strong>At the end of this lesson you will:</strong></p>
 <ul>
 <li>Be familiar with the concept of <em>functional languages</em> and <em>functional styles</em> of programming</li>
-<li>Get comfortable with the major functions in <code>purrr</code> (e.g.&nbsp;the <code>map</code> family of functions, <code>reduce</code>)</li>
+<li>Get comfortable with the major functions in <code>purrr</code> (e.g.&nbsp;the <code>map</code> family of functions)</li>
 <li>Write your loops with <code>map</code> functions instead of the <code>for</code> loop</li>
 </ul>
 </div>
@@ -438,10 +437,10 @@ Examples of cool things you can do with functions in R
 <pre><code>List of 2
  $ fun_1:function ()  
   ..- attr(*, "srcref")= 'srcref' int [1:8] 2 11 2 36 11 36 2 2
-  .. ..- attr(*, "srcfile")=Classes 'srcfilecopy', 'srcfile' &lt;environment: 0x1061707f0&gt; 
+  .. ..- attr(*, "srcfile")=Classes 'srcfilecopy', 'srcfile' &lt;environment: 0x10c9994f8&gt; 
  $ fun_2:function ()  
   ..- attr(*, "srcref")= 'srcref' int [1:8] 3 11 3 36 11 36 3 3
-  .. ..- attr(*, "srcfile")=Classes 'srcfilecopy', 'srcfile' &lt;environment: 0x1061707f0&gt; </code></pre>
+  .. ..- attr(*, "srcfile")=Classes 'srcfilecopy', 'srcfile' &lt;environment: 0x10c9994f8&gt; </code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>foo_list<span class="sc">$</span><span class="fu">fun_1</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
@@ -482,7 +481,7 @@ Examples of cool things you can do with functions in R
 <pre><code>function(){
     return("This is foo_2.")
   }
-&lt;environment: 0x1329148f0&gt;</code></pre>
+&lt;environment: 0x10d049120&gt;</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>(<span class="fu">foo_wrap</span>())()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
@@ -554,32 +553,40 @@ Note
 <li>When using a functional style, you strive to decompose components of the problem into isolated functions that operate independently.</li>
 <li>Each function taken by itself is simple and straightforward to understand; complexity is handled by composing functions in various ways.</li>
 </ul>
-<section id="functionals" class="level3">
+<section id="functionals" class="level3 page-columns page-full">
 <h3 class="anchored" data-anchor-id="functionals">Functionals</h3>
 <p>In this lecture, we will focus on one type of functional technique, namely <strong>functionals</strong>, which are functions that take another function as an argument and returns a vector as output.</p>
 <p>Functionals allow you to take a function that solves the problem for a single input and generalize it to handle any number of inputs. Once you learn about them, you will find yourself using them all the time in data analysis.</p>
-<p>:::{.callout-note}</p>
-</section>
-<section id="example-of-a-functional" class="level3 page-columns page-full">
-<h3 class="anchored" data-anchor-id="example-of-a-functional">Example of a functional</h3>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Example of a functional
+</div>
+</div>
+<div class="callout-body-container callout-body">
 <p>Here’s a simple functional: it calls the function provided as input with 1000 random uniform numbers.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>randomise <span class="ot">&lt;-</span> <span class="cf">function</span>(f) <span class="fu">f</span>(<span class="fu">runif</span>(<span class="fl">1e3</span>))</span>
 <span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a><span class="fu">randomise</span>(mean)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 0.4809334</code></pre>
+<pre><code>[1] 0.5055154</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="fu">randomise</span>(mean)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 0.4809168</code></pre>
+<pre><code>[1] 0.5032077</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="fu">randomise</span>(sum)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 495.9424</code></pre>
+<pre><code>[1] 507.0181</code></pre>
+</div>
+</div>
 </div>
 </div>
 <p>The chances are that you have already used a functional. You might have used for-loop replacements like base R’s <code>lapply()</code>, <code>apply()</code>, and <code>tapply()</code> or maybe you have used a mathematical functional like <code>integrate()</code> or <code>optim()</code>.</p>
-<p>One of the most common use of functionals is an alternative to for loops.</p>
+<p>One of the most common use of functionals is an alternative to <code>for</code> loops.</p>
 <p>For loops have a bad rap in R because many people believe they are slow, but the real downside of for loops is that they’re very flexible: a loop conveys that you’re iterating, but not what should be done with the results.</p>
 
 <div class="no-row-height column-margin column-container"><div class="">
@@ -1186,8 +1193,8 @@ Note
 <div class="cell">
 <div class="sourceCode cell-code" id="cb90"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb90-1"><a href="#cb90-1" aria-hidden="true" tabindex="-1"></a><span class="fu">map_dbl</span>(<span class="at">.x =</span> xs, <span class="at">.f =</span> mean)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1]        NA 0.3482932 0.4923265 0.5571511 0.4047251 0.4577649 0.4566514
-[8] 0.7045281</code></pre>
+<pre><code>[1]        NA 0.6596358 0.6001102 0.3955773 0.4220107 0.6470785 0.2633766
+[8] 0.6809399</code></pre>
 </div>
 </div>
 <p>But passing <code>ws</code> as an additional argument does not work because arguments after <code>.f</code> are not transformed:</p>
@@ -1201,16 +1208,16 @@ Note
 <div class="cell">
 <div class="sourceCode cell-code" id="cb94"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb94-1"><a href="#cb94-1" aria-hidden="true" tabindex="-1"></a><span class="fu">map2_dbl</span>(<span class="at">.x =</span> xs, <span class="at">.y =</span> ws, <span class="at">.f =</span> weighted.mean)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1]        NA 0.3362642 0.5121746 0.5402261 0.3980590 0.3894902 0.4974226
-[8] 0.7349415</code></pre>
+<pre><code>[1]        NA 0.6461823 0.5858559 0.3832126 0.4033124 0.6399419 0.2586362
+[8] 0.6835747</code></pre>
 </div>
 </div>
 <p>The arguments to <code>map2()</code> are slightly different to the arguments to <code>map()</code> as two vectors come before the function, rather than one. Additional arguments still go afterwards:</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb96"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb96-1"><a href="#cb96-1" aria-hidden="true" tabindex="-1"></a><span class="fu">map2_dbl</span>(<span class="at">.x =</span> xs, <span class="at">.y =</span> ws, <span class="at">.f =</span> weighted.mean, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 0.6443486 0.3362642 0.5121746 0.5402261 0.3980590 0.3894902 0.4974226
-[8] 0.7349415</code></pre>
+<pre><code>[1] 0.5480634 0.6461823 0.5858559 0.3832126 0.4033124 0.6399419 0.2586362
+[8] 0.6835747</code></pre>
 </div>
 </div>
 </section>
