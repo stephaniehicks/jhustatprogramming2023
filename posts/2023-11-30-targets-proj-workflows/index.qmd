@@ -1,8 +1,8 @@
 ---
 title: "Reproducibile Workflows with `targets`"
 author: 
-  - name: Stephanie Hicks
-    url: https://www.stephaniehicks.com
+  - name: Boyi Guo
+    url: https://www.boyi-guo.com
     affiliation: Department of Biostatistics, Johns Hopkins
     affiliation_url: https://publichealth.jhu.edu
 description: "A Make-line pipeline tool for creating reproducible workflows in R"
@@ -10,7 +10,7 @@ date: 2023-11-30
 categories: [module 3, week 6, project management, targets]
 execute:
   eval: false
-draft: true
+image: ../../images/targets/targets_logo.png
 ---
 
 ```{r, setup, include=FALSE}
@@ -33,7 +33,6 @@ knitr::opts_chunk$set(
 
 1.  <https://books.ropensci.org/targets/>
 2.  <https://books.ropensci.org/targets/walkthrough.html>
-3.  <https://boyiguo1.github.io/talks/2020-07-16-Reproducible-Analysis-Workflow.pdf>
 :::
 
 ### Prerequisites
