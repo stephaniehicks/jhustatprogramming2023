@@ -69,7 +69,7 @@ In addition, a website is a great place to market yourself and show your persona
 # What is `pkgdown`?
 While creating a website can be a daunting task for people who don't have extensive web programming experience, `pkgdown` provides a shortcut. `pkgdown` can automatically generate a website of an R package, containing references to the enclosed function, different vignettes if exists, within two lines of code (slight exaggeration). It also helps to deploy the website to `GitHub` server. Amazingly, `pkgdown` facilitates automatic updates of the website following any changes made to the package that are pushed to `GitHub`.
 
-<iframe src='https://gfycat.com/ifr/NeedyRipeKingbird' frameborder='0' scrolling='no' allowfullscreen width='640' height='404'></iframe>
+<!-- <iframe src='https://gfycat.com/ifr/NeedyRipeKingbird' frameborder='0' scrolling='no' allowfullscreen width='640' height='404'></iframe> -->
 
 # How to use `pkgdown`?
 
@@ -97,6 +97,7 @@ In this lecture, we
 
 ::: callout-tip
 -   Create hexagon sticker for your package <https://github.com/GuangchuangYu/hexSticker>
--   Explore badge accessibility<https://usethis.r-lib.org/articles/badge-accessibility.html>
+-   Explore badge accessibility <https://usethis.r-lib.org/articles/badge-accessibility.html>
+-   GitHub Action `pkgdown` Automation <https://usethis.r-lib.org/reference/github_actions.html>
 :::
 
