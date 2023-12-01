@@ -10,6 +10,8 @@
   {
     "listing": "/lectures.html",
     "items": [
+      "/posts/2023-12-14-web-rvest/index.html",
+      "/posts/2023-12-12-flexdashboard/index.html",
       "/posts/2023-12-07-relational-databases/index.html",
       "/posts/2023-12-05-gettingdata-api/index.html",
       "/posts/2023-11-30-pkgdown-pkg-website/index.html",
