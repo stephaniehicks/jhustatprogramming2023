@@ -427,7 +427,7 @@ Note
 <h1>Best practices on sharing data</h1>
 <p>A great article in PeerJ was written titled <a href="https://peerj.com/preprints/3139v5.pdf"><em>How to share data for collaboration</em></a>, in which the authors describe a set of guidelines for sharing data:</p>
 <blockquote class="blockquote">
-<p>We highlight the need to provide raw data to the statistician, the importance of consistent formatting, and the necessity of including all essential experimental information and pre-processing steps carried out to the statistician. With these guidelines we hope to avoid errors and delays in data analysis.</p>
+<p>We highlight the need to provide raw data to the statistician, the importance of consistent formatting, and the necessity of including all essential experimental information and pre-processing steps carried out to the statistician. With these guidelines we hope to avoid errors and delays in data analysis. the importance of consistent formatting, and the necessity of including all essential experimental information and pre-processing steps carried out to the statistician.</p>
 </blockquote>
 <div class="cell">
 <div class="cell-output-display">
@@ -796,14 +796,21 @@ Example
 <span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a>response</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Response [https://api.github.com/user]
-  Date: 2023-12-05 13:26
-  Status: 401
+  Date: 2023-11-24 10:21
+  Status: 200
   Content-Type: application/json; charset=utf-8
-  Size: 137 B
+  Size: 1.76 kB
 {
-  "message": "Requires authentication",
-  "documentation_url": "https://docs.github.com/rest/users/users#get-the-auth...
-}</code></pre>
+  "login": "stephaniehicks",
+  "id": 1452065,
+  "node_id": "MDQ6VXNlcjE0NTIwNjU=",
+  "avatar_url": "https://avatars.githubusercontent.com/u/1452065?v=4",
+  "gravatar_id": "",
+  "url": "https://api.github.com/users/stephaniehicks",
+  "html_url": "https://github.com/stephaniehicks",
+  "followers_url": "https://api.github.com/users/stephaniehicks/followers",
+  "following_url": "https://api.github.com/users/stephaniehicks/following{/ot...
+...</code></pre>
 </div>
 </div>
 <p>We see the response we got is a JSON file.</p>
@@ -814,95 +821,95 @@ Example
 <div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>account_details <span class="ot">&lt;-</span> <span class="fu">fromJSON</span>(httr<span class="sc">::</span><span class="fu">content</span>(response, <span class="at">as =</span> <span class="st">'text'</span>))</span>
 <span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>account_details[<span class="dv">1</span><span class="sc">:</span><span class="dv">30</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>$message
-[1] "Requires authentication"
+<pre><code>$login
+[1] "stephaniehicks"
 
-$documentation_url
-[1] "https://docs.github.com/rest/users/users#get-the-authenticated-user"
+$id
+[1] 1452065
 
-$&lt;NA&gt;
+$node_id
+[1] "MDQ6VXNlcjE0NTIwNjU="
+
+$avatar_url
+[1] "https://avatars.githubusercontent.com/u/1452065?v=4"
+
+$gravatar_id
+[1] ""
+
+$url
+[1] "https://api.github.com/users/stephaniehicks"
+
+$html_url
+[1] "https://github.com/stephaniehicks"
+
+$followers_url
+[1] "https://api.github.com/users/stephaniehicks/followers"
+
+$following_url
+[1] "https://api.github.com/users/stephaniehicks/following{/other_user}"
+
+$gists_url
+[1] "https://api.github.com/users/stephaniehicks/gists{/gist_id}"
+
+$starred_url
+[1] "https://api.github.com/users/stephaniehicks/starred{/owner}{/repo}"
+
+$subscriptions_url
+[1] "https://api.github.com/users/stephaniehicks/subscriptions"
+
+$organizations_url
+[1] "https://api.github.com/users/stephaniehicks/orgs"
+
+$repos_url
+[1] "https://api.github.com/users/stephaniehicks/repos"
+
+$events_url
+[1] "https://api.github.com/users/stephaniehicks/events{/privacy}"
+
+$received_events_url
+[1] "https://api.github.com/users/stephaniehicks/received_events"
+
+$type
+[1] "User"
+
+$site_admin
+[1] FALSE
+
+$name
+[1] "Stephanie Hicks"
+
+$company
+[1] "Johns Hopkins"
+
+$blog
+[1] "http://www.stephaniehicks.com"
+
+$location
+[1] "Baltimore, MD"
+
+$email
 NULL
 
-$&lt;NA&gt;
+$hireable
 NULL
 
-$&lt;NA&gt;
-NULL
+$bio
+[1] "Associate Prof at Johns Hopkins Biostatistics"
 
-$&lt;NA&gt;
-NULL
+$twitter_username
+[1] "stephaniehicks"
 
-$&lt;NA&gt;
-NULL
+$public_repos
+[1] 90
 
-$&lt;NA&gt;
-NULL
+$public_gists
+[1] 8
 
-$&lt;NA&gt;
-NULL
+$followers
+[1] 275
 
-$&lt;NA&gt;
-NULL
-
-$&lt;NA&gt;
-NULL
-
-$&lt;NA&gt;
-NULL
-
-$&lt;NA&gt;
-NULL
-
-$&lt;NA&gt;
-NULL
-
-$&lt;NA&gt;
-NULL
-
-$&lt;NA&gt;
-NULL
-
-$&lt;NA&gt;
-NULL
-
-$&lt;NA&gt;
-NULL
-
-$&lt;NA&gt;
-NULL
-
-$&lt;NA&gt;
-NULL
-
-$&lt;NA&gt;
-NULL
-
-$&lt;NA&gt;
-NULL
-
-$&lt;NA&gt;
-NULL
-
-$&lt;NA&gt;
-NULL
-
-$&lt;NA&gt;
-NULL
-
-$&lt;NA&gt;
-NULL
-
-$&lt;NA&gt;
-NULL
-
-$&lt;NA&gt;
-NULL
-
-$&lt;NA&gt;
-NULL
-
-$&lt;NA&gt;
-NULL</code></pre>
+$following
+[1] 18</code></pre>
 </div>
 </div>
 <p>Next, let’s perform the same request we did above about my 85 repositories, but instead of reading in the JSON file from the web, we use an authenticated <code>GET()</code> response:</p>
@@ -912,7 +919,7 @@ NULL</code></pre>
 <span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>repo_details <span class="ot">&lt;-</span> <span class="fu">as_tibble</span>(<span class="fu">fromJSON</span>(httr<span class="sc">::</span><span class="fu">content</span>(response, <span class="at">as =</span> <span class="st">'text'</span>)))</span>
 <span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a>repo_details</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 90 × 79
+<pre><code># A tibble: 90 × 80
        id node_id name  full_name private owner$login html_url description fork 
     &lt;int&gt; &lt;chr&gt;   &lt;chr&gt; &lt;chr&gt;     &lt;lgl&gt;   &lt;chr&gt;       &lt;chr&gt;    &lt;chr&gt;       &lt;lgl&gt;
  1 1.60e8 MDEwOl… 2018… stephani… FALSE   stephanieh… https:/… &lt;NA&gt;        FALSE
@@ -926,7 +933,7 @@ NULL</code></pre>
  9 1.40e8 MDEwOl… benc… stephani… FALSE   stephanieh… https:/… Repository… FALSE
 10 1.78e8 MDEwOl… benc… stephani… FALSE   stephanieh… https:/… Data and B… FALSE
 # ℹ 80 more rows
-# ℹ 87 more variables: owner$id &lt;int&gt;, $node_id &lt;chr&gt;, $avatar_url &lt;chr&gt;,
+# ℹ 88 more variables: owner$id &lt;int&gt;, $node_id &lt;chr&gt;, $avatar_url &lt;chr&gt;,
 #   $gravatar_id &lt;chr&gt;, $url &lt;chr&gt;, $html_url &lt;chr&gt;, $followers_url &lt;chr&gt;,
 #   $following_url &lt;chr&gt;, $gists_url &lt;chr&gt;, $starred_url &lt;chr&gt;,
 #   $subscriptions_url &lt;chr&gt;, $organizations_url &lt;chr&gt;, $repos_url &lt;chr&gt;,
@@ -969,7 +976,7 @@ NULL</code></pre>
 <div class="cell-output cell-output-stdout">
 <pre><code>
  0  1  2 
-84  5  1 </code></pre>
+83  6  1 </code></pre>
 </div>
 </div>
 <p>Whew! Not as many as I thought.</p>
@@ -991,20 +998,20 @@ More about <code>GET</code>
 <span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a>dplyr_details <span class="ot">&lt;-</span> <span class="fu">as_tibble</span>(<span class="fu">fromJSON</span>(httr<span class="sc">::</span><span class="fu">content</span>(req, <span class="at">as =</span> <span class="st">'text'</span>)))</span>
 <span id="cb23-4"><a href="#cb23-4" aria-hidden="true" tabindex="-1"></a>dplyr_details</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 51 × 30
+<pre><code># A tibble: 50 × 30
    url         repository_url labels_url comments_url events_url html_url     id
    &lt;chr&gt;       &lt;chr&gt;          &lt;chr&gt;      &lt;chr&gt;        &lt;chr&gt;      &lt;chr&gt;     &lt;int&gt;
- 1 https://ap… https://api.g… https://a… https://api… https://a… https:/… 2.02e9
- 2 https://ap… https://api.g… https://a… https://api… https://a… https:/… 2.01e9
- 3 https://ap… https://api.g… https://a… https://api… https://a… https:/… 2.00e9
- 4 https://ap… https://api.g… https://a… https://api… https://a… https:/… 1.99e9
+ 1 https://ap… https://api.g… https://a… https://api… https://a… https:/… 2.01e9
+ 2 https://ap… https://api.g… https://a… https://api… https://a… https:/… 2.00e9
+ 3 https://ap… https://api.g… https://a… https://api… https://a… https:/… 1.99e9
+ 4 https://ap… https://api.g… https://a… https://api… https://a… https:/… 1.98e9
  5 https://ap… https://api.g… https://a… https://api… https://a… https:/… 1.98e9
- 6 https://ap… https://api.g… https://a… https://api… https://a… https:/… 1.98e9
- 7 https://ap… https://api.g… https://a… https://api… https://a… https:/… 1.96e9
- 8 https://ap… https://api.g… https://a… https://api… https://a… https:/… 1.95e9
- 9 https://ap… https://api.g… https://a… https://api… https://a… https:/… 1.94e9
-10 https://ap… https://api.g… https://a… https://api… https://a… https:/… 1.92e9
-# ℹ 41 more rows
+ 6 https://ap… https://api.g… https://a… https://api… https://a… https:/… 1.96e9
+ 7 https://ap… https://api.g… https://a… https://api… https://a… https:/… 1.95e9
+ 8 https://ap… https://api.g… https://a… https://api… https://a… https:/… 1.94e9
+ 9 https://ap… https://api.g… https://a… https://api… https://a… https:/… 1.92e9
+10 https://ap… https://api.g… https://a… https://api… https://a… https:/… 1.87e9
+# ℹ 40 more rows
 # ℹ 23 more variables: node_id &lt;chr&gt;, number &lt;int&gt;, title &lt;chr&gt;,
 #   user &lt;df[,18]&gt;, labels &lt;list&gt;, state &lt;chr&gt;, locked &lt;lgl&gt;,
 #   assignee &lt;df[,18]&gt;, assignees &lt;list&gt;, milestone &lt;lgl&gt;, comments &lt;int&gt;,
@@ -1072,8 +1079,8 @@ More about <code>GET</code>
 <div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a>raw_data <span class="ot">&lt;-</span> <span class="fu">GET</span>(API_URL)</span>
 <span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a>raw_data</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>Response [https://api.fda.gov/food/enforcement.json?api_key=&amp;count=voluntary_mandated.exact]
-  Date: 2023-12-05 13:26
+<pre><code>Response [https://api.fda.gov/food/enforcement.json?api_key=6cz2JMCPEw0gxiI8GtZeZXDD6wt1J3aM3Mp9rDDE&amp;count=voluntary_mandated.exact]
+  Date: 2023-11-24 10:21
   Status: 200
   Content-Type: application/json; charset=utf-8
   Size: 711 B
@@ -1082,7 +1089,7 @@ More about <code>GET</code>
     "disclaimer": "Do not rely on openFDA to make decisions regarding medical...
     "terms": "https://open.fda.gov/terms/",
     "license": "https://open.fda.gov/license/",
-    "last_updated": "2023-11-29"
+    "last_updated": "2023-11-22"
   },
   "results": [
     {
@@ -1108,10 +1115,10 @@ Pro-tip
 <div class="sourceCode cell-code" id="cb29"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(raw_data)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>List of 10
- $ url        : chr "https://api.fda.gov/food/enforcement.json?api_key=&amp;count=voluntary_mandated.exact"
+ $ url        : chr "https://api.fda.gov/food/enforcement.json?api_key=6cz2JMCPEw0gxiI8GtZeZXDD6wt1J3aM3Mp9rDDE&amp;count=voluntary_mandated.exact"
  $ status_code: int 200
- $ headers    :List of 20
-  ..$ date                            : chr "Tue, 05 Dec 2023 13:26:32 GMT"
+ $ headers    :List of 22
+  ..$ date                            : chr "Fri, 24 Nov 2023 10:21:51 GMT"
   ..$ content-type                    : chr "application/json; charset=utf-8"
   ..$ vary                            : chr "Accept-Encoding"
   ..$ access-control-allow-credentials: chr "true"
@@ -1119,15 +1126,17 @@ Pro-tip
   ..$ age                             : chr "0"
   ..$ cache-control                   : chr "no-cache, no-store, must-revalidate"
   ..$ content-security-policy         : chr "default-src 'none'"
-  ..$ etag                            : chr "W/\"2c7-qgN4a7Qd63mh9kbUb1ECdh3TfPM\""
+  ..$ etag                            : chr "W/\"2c7-D4yYChONTPyF2qQYL1Qita83Uu4\""
   ..$ strict-transport-security       : chr "max-age=31536000;"
   ..$ strict-transport-security       : chr "max-age=31536000; preload"
   ..$ vary                            : chr "Accept-Encoding"
   ..$ via                             : chr "https/1.1 api-umbrella (ApacheTrafficServer [cMsSf ])"
-  ..$ x-api-umbrella-request-id       : chr "cc78kacoqqqnhtc6n7l0"
+  ..$ x-api-umbrella-request-id       : chr "cc03cq16o9mdgfjlqf30"
   ..$ x-cache                         : chr "MISS"
   ..$ x-content-type-options          : chr "nosniff"
-  ..$ x-vcap-request-id               : chr "209fd3bd-cf3f-4b25-523d-344d1ab68efa"
+  ..$ x-ratelimit-limit               : chr "240"
+  ..$ x-ratelimit-remaining           : chr "239"
+  ..$ x-vcap-request-id               : chr "d6a63001-2511-441a-4dab-58c1ab363d6d"
   ..$ x-xss-protection                : chr "1; mode=block"
   ..$ x-frame-options                 : chr "deny"
   ..$ content-encoding                : chr "gzip"
@@ -1136,8 +1145,8 @@ Pro-tip
   ..$ :List of 3
   .. ..$ status : int 200
   .. ..$ version: chr "HTTP/2"
-  .. ..$ headers:List of 20
-  .. .. ..$ date                            : chr "Tue, 05 Dec 2023 13:26:32 GMT"
+  .. ..$ headers:List of 22
+  .. .. ..$ date                            : chr "Fri, 24 Nov 2023 10:21:51 GMT"
   .. .. ..$ content-type                    : chr "application/json; charset=utf-8"
   .. .. ..$ vary                            : chr "Accept-Encoding"
   .. .. ..$ access-control-allow-credentials: chr "true"
@@ -1145,15 +1154,17 @@ Pro-tip
   .. .. ..$ age                             : chr "0"
   .. .. ..$ cache-control                   : chr "no-cache, no-store, must-revalidate"
   .. .. ..$ content-security-policy         : chr "default-src 'none'"
-  .. .. ..$ etag                            : chr "W/\"2c7-qgN4a7Qd63mh9kbUb1ECdh3TfPM\""
+  .. .. ..$ etag                            : chr "W/\"2c7-D4yYChONTPyF2qQYL1Qita83Uu4\""
   .. .. ..$ strict-transport-security       : chr "max-age=31536000;"
   .. .. ..$ strict-transport-security       : chr "max-age=31536000; preload"
   .. .. ..$ vary                            : chr "Accept-Encoding"
   .. .. ..$ via                             : chr "https/1.1 api-umbrella (ApacheTrafficServer [cMsSf ])"
-  .. .. ..$ x-api-umbrella-request-id       : chr "cc78kacoqqqnhtc6n7l0"
+  .. .. ..$ x-api-umbrella-request-id       : chr "cc03cq16o9mdgfjlqf30"
   .. .. ..$ x-cache                         : chr "MISS"
   .. .. ..$ x-content-type-options          : chr "nosniff"
-  .. .. ..$ x-vcap-request-id               : chr "209fd3bd-cf3f-4b25-523d-344d1ab68efa"
+  .. .. ..$ x-ratelimit-limit               : chr "240"
+  .. .. ..$ x-ratelimit-remaining           : chr "239"
+  .. .. ..$ x-vcap-request-id               : chr "d6a63001-2511-441a-4dab-58c1ab363d6d"
   .. .. ..$ x-xss-protection                : chr "1; mode=block"
   .. .. ..$ x-frame-options                 : chr "deny"
   .. .. ..$ content-encoding                : chr "gzip"
@@ -1167,17 +1178,17 @@ Pro-tip
   ..$ name      : logi(0) 
   ..$ value     : logi(0) 
  $ content    : raw [1:711] 7b 0a 20 20 ...
- $ date       : POSIXct[1:1], format: "2023-12-05 13:26:32"
- $ times      : Named num [1:6] 0 0.135 0.224 0.328 0.515 ...
+ $ date       : POSIXct[1:1], format: "2023-11-24 10:21:51"
+ $ times      : Named num [1:6] 0 0.062 0.137 0.218 0.386 ...
   ..- attr(*, "names")= chr [1:6] "redirect" "namelookup" "connect" "pretransfer" ...
  $ request    :List of 7
   ..$ method    : chr "GET"
-  ..$ url       : chr "https://api.fda.gov/food/enforcement.json?api_key=&amp;count=voluntary_mandated.exact"
+  ..$ url       : chr "https://api.fda.gov/food/enforcement.json?api_key=6cz2JMCPEw0gxiI8GtZeZXDD6wt1J3aM3Mp9rDDE&amp;count=voluntary_mandated.exact"
   ..$ headers   : Named chr "application/json, text/xml, application/xml, */*"
   .. ..- attr(*, "names")= chr "Accept"
   ..$ fields    : NULL
   ..$ options   :List of 2
-  .. ..$ useragent: chr "libcurl/7.86.0 r-curl/5.1.0 httr/1.4.7"
+  .. ..$ useragent: chr "libcurl/8.1.2 r-curl/5.1.0 httr/1.4.7"
   .. ..$ httpget  : logi TRUE
   ..$ auth_token: NULL
   ..$ output    : list()
@@ -1225,10 +1236,10 @@ Note
   ..$ disclaimer  : chr "Do not rely on openFDA to make decisions regarding medical care. While we make every effort to ensure that data"| __truncated__
   ..$ terms       : chr "https://open.fda.gov/terms/"
   ..$ license     : chr "https://open.fda.gov/license/"
-  ..$ last_updated: chr "2023-11-29"
+  ..$ last_updated: chr "2023-11-22"
  $ results:'data.frame':    4 obs. of  2 variables:
   ..$ term : chr [1:4] "Voluntary: Firm initiated" "Voluntary: Firm Initiated" "FDA Mandated" ""
-  ..$ count: int [1:4] 24222 563 397 6</code></pre>
+  ..$ count: int [1:4] 24217 563 397 6</code></pre>
 </div>
 </div>
 </div>
@@ -1240,7 +1251,7 @@ Note
 <span id="cb36-2"><a href="#cb36-2" aria-hidden="true" tabindex="-1"></a>ts_df</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>                       term count
-1 Voluntary: Firm initiated 24222
+1 Voluntary: Firm initiated 24217
 2 Voluntary: Firm Initiated   563
 3              FDA Mandated   397
 4                               6</code></pre>
