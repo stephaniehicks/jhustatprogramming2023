@@ -176,7 +176,7 @@ titled [_How to share data for collaboration_](https://peerj.com/preprints/3139v
 in which the authors describe a set of guidelines
 for sharing data:
 
-> We highlight the need to provide raw data to the statistician, the importance of consistent formatting, and the necessity of including all essential experimental information and pre-processing steps carried out to the statistician. With these guidelines we hope to avoid errors and delays in data analysis. 
+> We highlight the need to provide raw data to the statistician, the importance of consistent formatting, and the necessity of including all essential experimental information and pre-processing steps carried out to the statistician. With these guidelines we hope to avoid errors and delays in data analysis. the importance of consistent formatting, and the necessity of including all essential experimental information and pre-processing steps carried out to the statistician.
 
 ```{r}
 #| echo: false
