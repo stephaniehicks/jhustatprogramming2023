@@ -54,7 +54,7 @@ For Qmd files, go to the [course GitHub repository](https://github.com/stephanie
 | | | |
 | **Module 4** |  | **Interactive web apps and dashboards**  | | 
 | | | |
-|  Week 8 | Dec 12  |  Building dashboards with `flexdashboard` and `shinydashboard` \[[html](posts/2023-12-12-flexdashboard/index.qmd)\] \[[Qmd](https://github.com/stephaniehicks/jhustatprogramming2023/blob/main/posts/2023-12-12-flexdashboard/index.qmd)\] | `r emojifont::emoji('fallen_leaf')` Project 3 due  <br />  `r emojifont::emoji('palm_tree')` Project 4 | 
+|  Week 8 | Dec 12  |  Building dashboards with `flexdashboard` and `shinydashboard` \[[html](posts/2023-12-12-flexdashboard/index.qmd)\] \[[Qmd](https://github.com/stephaniehicks/jhustatprogramming2023/blob/main/posts/2023-12-12-flexdashboard/index.qmd)\] | `r emojifont::emoji('fallen_leaf')` Project 3 due  <br />  `r emojifont::emoji('palm_tree')` Project 4 \[[html](projects/2023-12-12-project-4/index.qmd)\] \[[Qmd](https://github.com/stephaniehicks/jhustatprogramming2023/blob/main/projects/2023-12-12-project-4/index.qmd)\]| 
 | | | |
 | | Dec 14  | Scraping data from the web with `rvest`\[[html](posts/2023-12-14-web-rvest/index.qmd)\] \[[Qmd](https://github.com/stephaniehicks/jhustatprogramming2023/blob/main/posts/2023-12-14-web-rvest/index.qmd)\] |  | 
 | | | |
