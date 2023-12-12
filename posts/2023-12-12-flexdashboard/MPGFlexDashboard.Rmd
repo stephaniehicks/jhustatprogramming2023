@@ -1,6 +1,8 @@
 ---
 title: "Mile per gallon investigation"
-output: flexdashboard::flex_dashboard
+output: 
+  flexdashboard::flex_dashboard:
+    orientation: columns
 runtime: shiny
 source_code: embed
 ---
@@ -11,8 +13,7 @@ mpgData <- mtcars
 mpgData$am <- factor(mpgData$am, labels = c("Automatic", "Manual"))
 ```
 
-Column {.sidebar}
------------------------------------------------------------------------
+## Column {.sidebar}
 
 To see how miles per gallon varies across car attribute.
 
@@ -25,8 +26,7 @@ selectInput("variable", "Variable:",
 checkboxInput("outliers", "Show outliers", TRUE)
 ```
 
-Column
------------------------------------------------------------------------
+## Column
 
 ### Miles per gallon (mpg)
 
@@ -43,6 +43,5 @@ renderPlot({
             outline = input$outliers,
             col = "#75AADB", pch = 19, main=formulaText())
   })
-
 ```
 
