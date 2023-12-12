@@ -30,11 +30,9 @@ and building effective data visualizations to communicate to an audience.
 
 - Create a public github repository for yourself. The link to create the repository will be in CoursePlus. 
 - Follow the instructions below and push all your code to this github repository. 
-- Then, you will also need to deploy your dashboard. As an example, here is a deployed interactive dashboard from the lecture we had on dashboards. 
-
-- <https://stephaniehicks.shinyapps.io/GeyserFlexDashboard>
-
+- Then, you will also need to deploy your dashboard. As an example, here is a deployed interactive dashboard from the lecture we had on dashboards (<https://stephaniehicks.shinyapps.io/OldFaithfulGeyser>).
 - You must include a `README.md` in your github repository with your source code that includes a link to your deployed dashboard. 
+- Share a link to your github repo with your code and your deployed interactive dashboard on CoursePlus. 
 
 # Part 1: Identify the data
 
@@ -94,10 +92,7 @@ Use principles of good storytelling and presentations to get your key points acr
 # Part 5: Deploy dashboard and push code to Github 
 
 - Using the public github repository that you created from CoursePlus, push your source code for this dashboard to GitHub. 
-- Deploy the website using [shinyapps.io](https://www.shinyapps.io). As an example, here is a deployed interactive dashboard from our lecture on dashboards.
-
-- <https://stephaniehicks.shinyapps.io/GeyserFlexDashboard>
-
+- Deploy the website using [shinyapps.io](https://www.shinyapps.io). As an example, here is a deployed interactive dashboard from our lecture on dashboards (<https://stephaniehicks.shinyapps.io/OldFaithfulGeyser>).
 - Include a `README.md` file in the GitHub repository with your name and a link to the deployed dashboard.  
 - Share a link to your github repo with your code and your deployed interactive dashboard on CoursePlus. 
 
