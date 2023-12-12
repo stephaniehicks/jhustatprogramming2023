@@ -107,13 +107,14 @@ If you encounter a tag that you have never seen before, you can find out what it
 
 I recommend the [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/HTML) which are produced by Mozilla, the company that makes the Firefox web browser.
 
+
 ### Contents
 
 Most elements can have content in between their start and end tags.
 This content can either be text or more elements.
 For example, the following HTML contains paragraph of text, with one word in bold.
 
-```{=html}
+```{.html}
 <p>
   Hi! My <b>name</b> is Stephanie.
 </p>
@@ -136,7 +137,7 @@ These are often useful when scraping data off a page.
 ## Reading HTML with `rvest`
 
 You will usually start the scraping process with `read_html()`.
-This returns a `xml_document` object which you will then manipulate using rvest functions:
+This returns a `xml_document` object which you will then manipulate using `rvest` functions:
 
 :::{.callout-tip}
 
