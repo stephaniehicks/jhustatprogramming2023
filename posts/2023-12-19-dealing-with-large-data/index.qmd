@@ -313,10 +313,7 @@ idx <- sample(0:n_rows, replace = FALSE)
 # df_mod <- 
   
   df_mod <- flights_df |>
-    group_by(is_delayed) |>
-    # Within each class
-    mutate(x = runif(n())) |> 
-    ungroup()
+    mutate(x = runif(n()))
 ```
 
 
