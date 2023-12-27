@@ -141,7 +141,7 @@ In this part, you will create a new S3 class called `ci_class` (confidence inter
 
 1. Create a constructor function for the `ci_class` called `make_ci_class()`. 
 2. Create a `print()` method to work with the `ci_class` to return a message with name of the class and the the number of observations in the S3 object. 
-3. Modify the `calculate_CI()` function to work with the `ci_class` and still return a `lower_bound` and `upper_bound`. 
+3. Re-write the `calculate_CI()` function as a generic method with an implementation for the `ci_class` and still return a `lower_bound` and `upper_bound`.  
 
 For example, this is what the output of your code might look like: 
 
